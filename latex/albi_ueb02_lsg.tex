@@ -1,0 +1,314 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\usepackage{xyling}
+
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{2}
+\date{Montag, dem 29. Oktober 2012}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00}
+\tutor{Alena van Bömmel (Übungsgruppe 3)}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{Maximum Parsimony}{40}
+
+\begin{enumerate}
+
+\item
+
+Sei $k$ Vorgänger der Knoten $i$ und $j$, so gilt:
+
+$$R_k=\begin{cases}
+R_i \cap R_j & R_i \cap R_j \neq \emptyset\\
+R_i \cup R_j & \text{ else}
+\end{cases}$$
+
+Merkmal 1 mit score 3
+
+\Treek[-1]{1.5}{
+&&&& \K{\{\textbf{C}\}} \B{dll}_{0} \B{ddrrr}_{0} &&&&\\
+&& \K{\{A, \textbf{C}, G\}} \B{dl}_{0} \B{ddrr}_{1} &&&&&&\\
+& \{A, \textbf{C}\} \B{dl}_{1} \B{dr}_{0} &&&&&& \{\textbf{C}, T\} \B{dl}_{0} \B{dr}_{1} &\\
+A & & C & & G & & C & & T\\
+a & & b & & e & & c & & d
+}
+
+Merkmal 2 mit score 3
+
+\Treek[-1]{1.5}{
+&&&& \{\textbf{A}, C\} \B{dll}_{0} \B{ddrrr}_{0} &&&&\\
+&& \{\textbf{A}, C, T\} \B{dl}_{0} \B{ddrr}_{1} &&&&&&\\
+& \{\textbf{A}, C\} \B{dl}_{0} \B{dr}_{1} &&&&&& \{\textbf{A}, C\} \B{dl}_{1} \B{dr}_{0} &\\
+A & & C & & T & & C & & A\\
+a & & b & & e & & c & & d
+}
+
+Merkmal 3 mit score 1
+
+\Treek[-1]{1.5}{
+&&&& \{\textbf{A}\} \B{dll}_{0} \B{ddrrr}_{0} &&&&\\
+&& \{\textbf{A}, T\} \B{dl}_{0} \B{ddrr}_{1} &&&&&&\\
+& \{\textbf{A}\} \B{dl}_{0} \B{dr}_{0} &&&&&& \{\textbf{A}\} \B{dl}_{0} \B{dr}_{0} &\\
+A & & A & & T & & A & & A\\
+a & & b & & e & & c & & d
+}
+
+Aus allen 3 Merkmalen ergibt sich dann ein minimaler Score von $3+3+1=7$.
+
+\item
+
+Sankoff-Algorithmus
+
+Kostenfunktion
+
+$$c(a, b) := \begin{cases}
+1 & a \neq b\\
+0 & \text{ else}
+\end{cases}$$
+
+\begin{enumerate}
+\item Blätter
+$$S_k(a) = \begin{cases}
+0 & (a = X_n^k \rightarrow Sequenz)\\
+\infty & \text{ else}
+\end{cases}$$
+
+\item innere Knoten, i,j-Kinderknoten, k-Elternknoten
+$$S_k(a) = \min_b[S_i(b) + S(a, b)] + \min_b[S_j(b)+S(a, b)]$$
+\end{enumerate}
+
+
+Merkmal 1
+
+\Treek[-1]{1.5}{
+&&&& [5,3,4,5] \B{dll} \B{ddrrr} &&&&\\
+&& [2,2,2,4] \B{dl} \B{ddrr} &&&&&&\\
+& [1,1,2,3] \B{dl} \B{dr} &&&&&& [3,1,2,1] \B{dl} \B{dr} &\\
+[0,\infty,\infty,\infty] && [\infty,0,\infty,\infty] && [\infty,\infty,0,\infty] && [\infty,0,\infty,\infty] && [\infty,\infty,\infty,0]\\
+a & & b & & e & & c & & d
+}
+
+Merkmal 2
+
+\Treek[-1]{1.5}{
+&&&& [4,3,5,6] \B{dll} \B{ddrrr} &&&&\\
+&& [3,2,3,3] \B{dl} \B{ddrr} &&&&&&\\
+& [1,1,2,3] \B{dl} \B{dr} &&&&&& [1,1,2,3] \B{dl} \B{dr} &\\
+[0,\infty,\infty,\infty] && [\infty,0,\infty,\infty] && [\infty,\infty,\infty,0] && [\infty,0,\infty,\infty] && [0,\infty,\infty,\infty]\\
+a & & b & & e & & c & & d
+}
+
+Merkmal 3
+
+\Treek[-1]{1.5}{
+&&&& [2,5,5,8] \B{dll} \B{ddrrr} &&&&\\
+&& [2,3,3,4] \B{dl} \B{ddrr} &&&&&&\\
+& [0,2,2,4] \B{dl} \B{dr} &&&&&& [0,2,2,4] \B{dl} \B{dr} &\\
+[0,\infty,\infty,\infty] && [0,\infty,\infty,\infty] && [\infty,\infty,\infty,0] && [0,\infty,\infty,\infty] && [0,\infty,\infty,\infty]\\
+a & & b & & e & & c & & d
+}
+
+
+\item 
+
+Die ersten beiden Spalten sind phylogenetisch informativer. Bedingt durch den geringeren Parsimony-Score der Spalte 3 sind dort kaum alternative Baumtopologien möglich.
+
+\end{enumerate}
+
+\aufgabe{Jukes-Cantor}{40}
+
+Aus der Vorlesung ist folgendes bekannt:
+\begin{itemize}
+	\item $P^{(0)}=Id$
+	\item $P^{(s+t)}=P^{(s)}+P^{(t)}$
+	\item $\frac{d}{dt}P^{(t)} = Q$ für $t=0$
+\end{itemize}
+Um jetzt $P^{(t)}$ annähernd zu berechnen, kann $t$ in gleichmässige Teilstücke der Länge $l = t/m$ geteilt werden.
+Je größer $m$ ist, desto eher ist
+$P^{(l)}=Id$.\\
+Daher: $P^{(t)}=(P^{(l)})^m=(Id)^m$\\
+Da $m$ hinreichend gross ist, kann die additive Null hinzugefügt werden:\\
+$(Id)^m=(Id+Q/m)^m \rightarrow exp(tQ)$
+
+\aufgabe{Jukes-Cantor-Simulation}{40 (+20)}
+
+\begin{enumerate}
+\item[a, b)] Der vollständige Quelltext wird per E-Mail abgegeben.
+Hier folgen relevante Ausschnitte mit Erklärungen:
+
+%\lstinputlisting[language=python]{../python/albi_ueb02_a7.py}
+
+\begin{lstlisting}[language=python]
+def simulation(L, TE, dtE, aE, sE):
+	"""
+	simulation(100, 9, 5, -7, 6)
+	"""
+	seq = rseq(L)
+	mut = seq
+	data = []
+	for step in xrange(pow(10, TE - sE)):
+		for m in xrange(pow(10, sE - dtE)):
+			mut = map(lambda s: mutate(s, aE), mut)
+		d = dist(seq, mut)
+		e = jcest(d, L)
+		data.append((step, d, e));
+	return data
+\end{lstlisting}
+
+Diese Funktion erzeugt eine Liste von Messergebnissen für eine Simulation mit
+folgenden Parametern:
+\begin{description}
+\item[\texttt{L}] Länge der DNA-Sequenz
+\item[\texttt{TE}] Gesamtzeit in $\log_{10} T$
+\item[\texttt{dtE}] Dauer eines Mutationszyklus in $\log_{10} \Delta t$
+\item[\texttt{aE}] Mutationsrate in $\log_{10} \alpha$
+\item[\texttt{sE}] Dauer eines Messintervalles in $\log_{10} step$
+\end{description}
+
+Die äußere \texttt{for}-Schleife iteriert über die Anzahl gewünschter
+Messergebnisse (Schritte), berechnet durch $\frac{T}{step}$. Die innere
+\texttt{for}-Schleife iteriert über die Anzahl Mutationszyklen pro
+Messintervall, berechnet durch $\frac{step}{\Delta t}$. Pro Messzyklus wird
+jeweils die Hamming-Distanz $d$ zur ursprünglichen Sequenz und der mittels
+Jukes-Cantor-Modell berechnete evolutionäre Abstand $e$ bestimmt und jeweils in
+die Liste von Messwerten $data$ eingetragen.
+
+Die Parameter für die Funktion \texttt{simulation} sind auch die Parameter für
+den Aufruf über die Kommandozeile. Die Ausgabe erfolgt momentan in Form von
+\LaTeX-Code, der ein Diagramm wie das folgende erzeugt:
+
+\begin{center}
+\setlength{\unitlength}{0.1mm}
+\input{albi_ueb02_a7_dia.tex}
+\end{center}
+
+Auf der x-Achse ist dabei die Zeit, auf der y-Achse die Hamming-Distanz (obere
+Kurve) bzw. der geschätzte evolutionäre Abstand (untere Kurve) aufgetragen.
+Dieses Beispiel wurde durch den Aufruf mit folgenden Parametern erzeugt:
+
+\texttt{\$ python albi\_ueb02\_a7.py -L 100 -TE 9 -dtE 5 -aE -4 -sE 6}
+
+Dabei fallen mehrere Dinge auf. Einerseits war es uns nicht möglich, ein
+aussagekräftiges Diagramm für einen realistischeren Wert von zum Beispiel
+$\alpha = 10^{-7}$ zu erhalten, da dann beide Kurven auf Null fielen. Dies
+könnte auf Rundungsfehler zurückzuführen sein.
+
+Weiterhin zeigt sich, dass die Kurve der Zeitschätzung relativ linear ansteigt,
+währenddessen die Hamming-Distanz anfangs stark ansteigt, dann abflacht und
+gegen $75$ konvergiert.
+
+Diejenigen Stellen, an denen die Zeitschätzung Null zeigt, resultieren aus einer
+Entscheidung bei der Implementierung. Es kann nämlich vorkommen, dass das
+Argument für den Logarithmus in
+$- \frac{3}{4} \cdot \log(1 - \frac{4}{3} \cdot p)$
+negativ und dafür der Logarithmus nicht definiert ist. In diesem Fall wählen wir
+$0$ als Ergebnis der Schätzung:
+
+\begin{lstlisting}[language=python]
+def jcest(dist, len):
+	""" returns estimated evolutionary distance for proportion dist/len of differences """
+	p = float(dist) / float(len)
+	critical = 4.0 * p / 3.0
+	if critical < 1.0:
+		return (-3.0) * math.log(1.0 - critical) / 4.0
+	else:
+		return 0.0
+\end{lstlisting}
+
+\item[c)]
+
+\end{enumerate}
+
+\aufgabe{Markov-Ketten}{60}
+\begin{enumerate}
+\item $$P = \begin{pmatrix}
+0,8 & 0,1 & 0,1\\
+0,2 & 0,05 & 0,75\\
+0,3 & 0,02 & 0,95
+\end{pmatrix}$$
+
+\begin{center}
+\setlength{\unitlength}{0.75cm}
+\begin{picture}(5.0,5.0)
+
+\put(0.5,1.5){\circle{1}} \put(0.2,1.25){M}
+\put(2.5,4.5){\circle{1}} \put(2.25,4.25){F}
+\put(4.5,1.5){\circle{1}} \put(4.25,1.25){V}
+
+%\put(2.5,){0,03}
+%\put(2.5,){0,1}
+%\put(1.5,3.0){0,2}
+%\put(1.5,3.0){0,1}
+%\put(3.5,3.0){0,02}
+%\put(3.5,3.0){0,75}
+%\put(0.5,1.5){0,8}
+%\put(2.5,4.5){0,05}
+%\put(4.5,1.5){0,95}
+
+\end{picture}
+\end{center}
+
+\item Für die stationäre Verteilung $\pi$ muss gelten $\pi \cdot P = \pi$.
+\begin{eqnarray*}
+(\pi_M, \pi_F, \pi_V) \cdot \begin{pmatrix}
+0,8 & 0,1 & 0,1\\
+0,2 & 0,05 & 0,75\\
+0,3 & 0,02 & 0,95
+\end{pmatrix}
+= & (\pi_M, \pi_F, \pi_V)
+& | \quad \text{Falk-Schema}\\
+\begin{pmatrix}
+0,8 \pi_M & 0,1 \pi_M & 0,1 \pi_M\\
++ 0,2 \pi_F & + 0,05 \pi_F & + 0,75 \pi_F\\
++ 0,3 \pi_V & + 0,02 \pi_V & + 0,95 \pi_V\\
+= \pi_M' & = \pi_F' & = \pi_V'
+\end{pmatrix}
+= & (\pi_M, \pi_F, \pi_V)
+& | \quad \square - \pi\\
+(\pi_M' - \pi_M, \pi_F' - \pi_F, \pi_V' - \pi_V)
+= & 0
+\end{eqnarray*}
+
+Aus der letzten Gleichung ergibt sich ein Gleichungssystem, welches z.B. mit
+Hilfe des Gauß-Algorithmus gelöst werden kann:
+
+$$\left(\begin{array}{ccc|c}
+-0,2	& 0,2	& 0,03	& 0\\
+0,1		& -0,95	& 0,02	& 0\\
+0,1		& 0,75	& -0,05	& 0
+\end{array}\right)$$
+
+$$\pi_M \approx 4,6429 \phi \qquad \pi_F = \phi \qquad \pi_V \approx 24,2857 \phi$$
+
+Es zeigt sich, dass das Gleichungssystem nicht eindeutig lösbar ist. Da wir aber
+wissen, dass gelten muss $\pi_M + \pi_F + \pi_V = 1$, können wir $\phi \approx 0,0334$
+eindeutig bestimmen und erhalten dadurch
+
+$$\pi \approx (0,1551, \quad 0,0334, \quad 0,8115)$$
+
+\item Wir wissen zwar nicht, in welchem Zustand wir uns zuletzt befanden, gehen
+aber davon aus, dass das System bereits ausreichend lange läuft, um akkummuliert
+betrachtet die stationäre Verteilung erreicht zu haben. Daraus können wir eine
+Wahrscheinlichkeit von $81,15\%$ ablesen.
+
+\item Wir gehen wieder davon aus, dass sich das System anfangs im stationären
+Zustand befindet und erhalten eine Startwahrscheinlichkeit von $81,14\%$ dafür,
+dass wir im Zustand $V$ starten. Anschließend vollziehen wir die Ereignisfolge
+im Zustandsdiagramm nach und bilden das Produkt aus der Startwahrscheinlichkeit
+und den jeweiligen Wahrscheinlichkeiten für die Zustandsübergänge. Wir erhalten
+für die gegebene Zustandsfolge eine Wahrscheinlichkeit von $0,2197\%$:
+
+$$0,8115 \cdot 0,95 \cdot 0,95 \cdot 0,03 \cdot 0,1 = 2,197 \cdot 10^{-3}$$
+
+\item Wenn wir wissen, dass es an einem Tag Fleisch gab, so befinden wir uns in
+dem reinen Zustand $(1, 0, 0)$. Multipliziert mit $P^4$ erhalten wir eine
+Wahrscheinlichkeitsverteilung für die verschiedenen Speisen von etwa $42,3722\%$
+für Fleisch, $0,4821\%$ für Fisch und $27,5153\%$ für Gemüse.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}

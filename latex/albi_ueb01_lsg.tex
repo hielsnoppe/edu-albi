@@ -1,0 +1,130 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{1}
+\date{Montag, dem 22. Oktober 2012}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00 und 12:00 - 14:00}
+\tutor{Alena van Bömmel und ?}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{Sequenzstatistik}{20}
+
+Für Sequenzen der Länge sieben bestehend aus Zeichen des vierelementigen Alphabetes $\{A,C,G,T\}$ gibt es $4^7$ mögliche Permutationen.
+Davon sind alle Sequenzen der Form \texttt{**CTGAC}, \texttt{*CTGAC*} oder \texttt{CTGAC**} Treffer.
+Da diese drei Muster disjunkt sind und jeweils zwei Wildcards enthalten,
+errechnet sich dafür eine Trefferzahl von $3 \cdot 4^2 = 48$.
+Insgesamt berechnet sich also eine Trefferwahrscheinlichkeit von $\frac{48}{4^7} = \frac{3}{1024} \approx 2,929 \cdot 10^{-3}$.
+Bei $10.000$ Sequenzen sind also $29,296875$ exakte Treffer zu erwarten.
+
+\textbf{Bonus (20 Punkte):} Wählen wir als Beispiel die Sequenz \texttt{ACACA},
+so erhalten wir als Muster für Treffer \texttt{**ACACA}, \texttt{*ACACA*} und \texttt{ACACA**}.
+Dabei zeigt sich, dass das erste und das letzte Muster nicht disjunkt sind.
+Wir müssen dies bei der Berechnung der Trefferzahl mit dem Inklusions-Exklusions-Prinzip berücksichtigen.
+Es gibt dafür also $3 \cdot 4^2 - 1 = 47$ Treffer, da die Sequenz \texttt{ACACACA} sonst doppelt gezählt würde.
+Entsprechend verändert sich der Erwartungswert zu $28,68652344$ Treffern auf $10.000$ Sequenzen.
+
+\aufgabe{Reguläre Ausdrücke in Python}{40}
+
+\lstinputlisting[language=python]{albi_ueb01_a2.py}
+
+Beispielaufruf:
+
+\begin{verbatim}
+$ python3 albi_ueb01_a2.py -i orf_trans.fasta -o output.file
+\end{verbatim}
+
+\aufgabe{Bestimmung einer Proteinfamilie}{50}
+
+makeblastdb Aufruf:
+\begin{verbatim}
+$ makeblastdb -in output.file -input_type fasta -dbtype prot
+-out result.db -title "hefe"
+\end{verbatim}
+
+FAL1.fsa:
+\begin{verbatim}
+>YDR021W 
+MSFDREEDQKLKFKTSKKLKVSSTFESMNLKDDLLRGIYSYGFEAPSSIQSRAITQIISG 
+KDVIAQAQSGTGKTATFTIGLLQAIDLRKKDLQALILSPTRELASQIGQVVKNLGDYMNV 
+NAFAITGGKTLKDDLKKMQKHGCQAVSGTPGRVLDMIKKQMLQTRNVQMLVLDEADELLS 
+ETLGFKQQIYDIFAKLPKNCQVVVVSATMNKDILEVTRKFMNDPVKILVKRDEISLEGIK 
+QYVVNVDKEEWKFDTLCDIYDSLTITQCVIFCNTKKKVDWLSQRLIQSNFAVVSMHGDMK 
+QEERDKVMNDFRTGHSRVLISTDVWARGIDVQQVSLVINYDLPEIIENYIHRIGRSGRFG 
+RKGVAINFITKADLAKLREIEKFYSIKINPMPANFAELS*
+\end{verbatim}
+
+blastp Query:
+\begin{verbatim}
+$ blastp -db result.db -query FAL1.fsa -out "results.out"
+\end{verbatim}
+
+$results.out$ enthält nun die Scores zu allen Homologen von FAL1.
+Werden alle betrachtet (auch welche mit geringen Score und FAL1 selbst) gibt es 
+\begin{verbatim}
+$ wc -l homologen.fal1 
+53 homologen.fal1
+\end{verbatim}
+in der DB.\\
+Die Namen der Homologen müssen nun für den Input des Python Scripts zeilenweise in eine Datei geschrieben werden.
+Die $protein\_properties.tab$ kann unverändert genutzt werden.
+Um das Ergebnis in einer Ausgabedatei zu erhalten, einfach den StdOut pipen, beispiel:
+
+\begin{verbatim}
+$ python3 albi_ueb01_a2.py 
+		-i homologen.fal1 
+		-p protein_properties.tab 
+		> result_aufg3.txt
+\end{verbatim}
+
+\lstinputlisting[language=python]{albi_ueb01_a3.py}
+
+\aufgabe{Dynamische Programmierung}{50}
+\begin{enumerate}
+\item[1.] Dynamische Programmierung berechnet eine Gesamtlösung für ein Problem,
+indem sie es rekursiv in einfachere Teilprobleme teilt,
+deren jeweilige Lösung sich aus anderen Teilergebnissen leicht berechnen lässt.
+Um die wiederholte Berechnung von Teilergebnissen zu vermeiden, werden alle Teilergebnisse z.B. in einer Matrix gespeichert.
+Die Gesamtlösung ist je nach Problemstellung häufig ein Maximum oder Minimum in der Ergebnismatrix.
+Der optimale Lösungsweg wird anschließend durch Rückverfolgung (backtrace) der Teilergebnisse,
+die zu der optimalen Lösung geführt haben, ermittelt.
+
+\item[2.] Die Matrix wurde durch den Smith-Waterman-Algorithmus erzeugt.
+\item[3.] Die verwendete gap penalty beträgt $d = 1$, die Scoring Funktion ist
+$$s(x_i, y_j) = \begin{cases}
+2	& \text{ if } x_i = y_j\\
+-1	& \text{ else}
+\end{cases}.$$
+
+\item[4.] Die restlichen Felder der Matrix ergeben sich durch den Algorithmus wie folgt:
+
+\begin{center}
+\begin{tabular}{c|c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c}
+& && A && A && G && C && C && T && T && G && C && A && A\\\hline
+\ldots & & & & & & $\quad$ & & & & & & & & & & & & & & & &\\
+& $\uparrow$ & $\nwarrow$ & & & $\uparrow$ & & $\uparrow$ & $\nwarrow$ & & $\nwarrow$ & & & & & & & & $\nwarrow$ & & & & & $\uparrow$\\
+C & 0 && 0 && 1 && 4 && 7 && 7 & $\leftarrow$ & 6 & $\leftarrow$ & 5 & $\leftarrow$ & 4 && 6 & $\leftarrow$ & 5 && 6\\
+& $\uparrow$ & $\nwarrow$ & & $\nwarrow$ & & & $\uparrow$ & $\nwarrow$ & & $\nwarrow$ & & & & & & & & $\nwarrow$ & & $\nwarrow$ & & & $\uparrow$\\
+C & 0 && 0 && 0 && 3 && 6 && \textbf{9} & $\leftarrow$ & 8 & $\leftarrow$ & 7 & $\leftarrow$ & 6 && 6 && 5 && 5\\
+& $\uparrow$ & $\nwarrow$ & & $\nwarrow$ & & & $\uparrow$ & & $\uparrow$ & & $\uparrow$ & $\nwarrow$ & & $\nwarrow$ & & $\nwarrow$ & & $\nwarrow$ & & $\nwarrow$ & & $\nwarrow$ &\\
+A & 0 && 2 && 2 && 2 && 5 && 8 && 8 && 7 && 6 && 5 && 8 && 7
+\end{tabular}
+\end{center}
+
+\item[5.] Die optimalen lokalen Alignments ergeben sich durch Backtracing der Felder mit Wert 9.
+Es sind dies:
+
+\begin{verbatim}
+AAGCCTTGCAA               AA-GCCTTGCAA
+  GAC--GCAAGGCCA     GACGCAAGGCCA
+\end{verbatim}
+
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
