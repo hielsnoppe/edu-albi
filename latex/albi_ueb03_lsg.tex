@@ -1,6 +1,6 @@
 \documentclass{homework}
 \usepackage{marvosym}
-\usepackage{xyling}
+%\usepackage{xyling}
 
 \course{Algorithmische Bioinformatik}
 \semester{Wintersemester 2012 / 2013}
@@ -14,13 +14,79 @@
 \maketitle
 \begin{enumerate} 
 
-\aufgabe{}{}
+\aufgabe{Distanzmatrizen}{15 + 15}
+\begin{enumerate}
+\item Das Kriterium einer aditiven Metrik ist erfüllt, wenn es eine Belegung der
+Variablen $x, y, u$ und $v$ mit $a, b, c$ und $d$ gibt, sodass gilt:
+$$d(x,y) + d(u,v) \leq d(x,u) + d(y,v) = d(x,v) + d(y,u)$$
 
-\aufgabe{}{}
+Das Kriterium einer Ultrametrik ist erfüllt, wenn es eine Belegung der Variablen
+$x, y, z$ aus jedem 3-Tupel aus $a, b, c$ und $d$ gibt, sodass gilt:
+$$d(x,y) \leq d(x,z) = d(y,z)$$
 
-\aufgabe{Implementierung Clustering-Verfahren}{}
+Außerdem ist jede Ultrametrik additiv, sodass eine nicht additive Metrik auch
+keine Ultrametrik sein kann.
 
-\aufgabe{}{}
+\begin{enumerate}
+\item Das Kriterium einer additiven Metrik ist erfüllt, da gilt:
+\begin{eqnarray*}
+d(a,b) + d(c,d) \leq & d(a,c) + d(b,d) & = d(a,d) + d(b,c)\\
+9 + 2 \leq & 9 + 5 & = 9 + 5
+\end{eqnarray*}
+Das Kriterium einer Ultrametrik ist erfüllt, da gilt:
+\begin{description}
+\item[$(a,b,c)$] \begin{eqnarray*}
+d(b,c) \leq & d(b,a) & = d(c,a)\\
+5 \leq & 9 & = 9
+\end{eqnarray*}
+\item[$(a,b,d)$] \begin{eqnarray*}
+d(b,d) \leq & d(b,a) & = d(d,a)\\
+5 \leq & 9 & = 9
+\end{eqnarray*}
+\item[$(a,c,d)$] \begin{eqnarray*}
+d(c,d) \leq & d(c,a) & = d(d,a)\\
+2 \leq & 9 & = 9
+\end{eqnarray*}
+\item[$(b,c,d)$] \begin{eqnarray*}
+d(c,d) \leq & d(c,b) & = d(d,b)\\
+2 \leq & 5 & = 5
+\end{eqnarray*}
+\end{description}
+
+\item Das Kriterium einer additiven Metrik ist erfüllt, da gilt:
+\begin{eqnarray*}
+d(a,b) + d(c,d) \leq & d(a,c) + d(b,d) & = d(a,d) + d(b,c)\\
+5 + 2 \leq & 7 + 9 & = 8 + 8
+\end{eqnarray*}
+Das Kriterium einer Ultrametrik ist nicht erfüllt, da keine zwei Distanzen
+gleich sind und der zweite Teil der Ungleichung damit nicht erfüllbar ist.
+
+\end{enumerate}
+\item \textbf{Bonus:}
+\end{enumerate}
+
+\aufgabe{Phylogenetische Bäume}{30}
+\begin{enumerate}
+\item
+\item
+\item
+\end{enumerate}
+
+\aufgabe{Implementierung Clustering-Verfahren}{60}
+\begin{enumerate}
+\item
+\item
+\item
+\end{enumerate}
+
+\aufgabe{Maximum-Likelihood-Schätzung}{60}
+\begin{enumerate}
+\item
+\item
+\item
+\item
+\item
+\end{enumerate}
 
 \end{enumerate}
 \end{document}
