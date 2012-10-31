@@ -69,9 +69,38 @@ Die Daten eines additiven Baumes brauchen nicht mehr ultrametrisch sein, d.h. di
 	\item alle Werte größer 0, bis auf Diagonale
 	\item 4-Punkt-Bedingung
 \end{enumerate}
+Eine einfache ultrametrische Distanzmatrix für den Baum $(((A,B),(C,D)),(E,F))$ ist:\\
 
+\begin{array}{ccccccc}
+ & A & B & C & D & E & F \\ 
+A & 0 & 2 & 4 & 4 & 6 & 6 \\ 
+B &  & 0 & 4 & 4 & 6 & 6 \\ 
+C &  &  & 0 & 2 & 6 & 6 \\ 
+D &  &  &  & 0 & 6 & 6 \\ 
+E &  &  &  &  & 0 & 2 \\ 
+F &  &  &  &  &  & 0
+\end{array} \\
+Verkürzen wir den Abstand von $E$ und verlängern den Abstand von $F$ zu ihren gemeinsamen inneren Knoten (hypotetischer Vorgänger), so erhalten wir beispielsweise folgende Distanzmatrix: \\
+\begin{array}{ccccccc}
+ & A & B & C & D & E & F \\ 
+A & 0 & 2 & 4 & 4 & 5.5 & 6.5 \\ 
+B &  & 0 & 4 & 4 & 5.5 & 6.5 \\ 
+C &  &  & 0 & 2 & 5.5 & 6.5 \\ 
+D &  &  &  & 0 & 5.5 & 6.5 \\ 
+E &  &  &  &  & 0 & 2 \\ 
+F &  &  &  &  &  & 0
+\end{array} \\
 
-
+Die ultrametrische Eigenschaft ist nicht mehr gegeben, da beispielsweise:
+\begin{description}
+\item[$(A,E,F)$] \begin{eqnarray*}
+d(E,F) \leq & d(A,E) & \neq d(A,F)\\
+2 \leq & 5.5 & \neq 6.5\\
+d(E,F) \leq & d(A,F) & \neq d(A,E)\\
+2 \leq & 6.5 & \neq 5.5
+\end{eqnarray*}
+\end{description}
+Jedoch ist klar, dass die additive Metrik erhalten bleibt, da die Distanz vom $(E,F)$ Paar zu den anderen Paaren wie bei der ultrametrischen Distanzmatrix immernoch gleich ist.
 \end{enumerate}
 
 \aufgabe{Phylogenetische Bäume}{30}
