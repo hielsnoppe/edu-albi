@@ -1,10 +1,12 @@
 import sys
 import os
 import re
+import itertools
+import heapq
 
 def dist(seqa, seqb):
 	""" returns hamming distance of the sequences seqa and seqb """
-	return sum(0 if a == b else 1 for a, b in zip(seqa, seqb))
+	return sum(0.0 if a == b else 1.0 for a, b in zip(seqa, seqb))
 
 def jcest(dist, len):
 	""" returns estimated evolutionary distance for proportion dist/len of differences """
@@ -29,25 +31,30 @@ def read_alignment(filename):
 				seq[name] += line.strip()
 	return seq
 
-# https://github.com/SergioFierens/ai4r/blob/master/lib/ai4r/clusterers/single_linkage.rb
-#def create_distance_matrix(data_set)
-#	@distance_matrix = Array.new(data_set.data_items.length-1) {|index| Array.new(index+1)}
-#	data_set.data_items.each_with_index do |a, i|
-#		i.times do |j|
-#			b = data_set.data_items[j]
-#			@distance_matrix[i-1][j] = @distance_function.call(a, b)
-#		end
-#	end
-#end
-
 def create_distance_matrix(alignment):
 	return [[dist(seqa, seqb) for seqb in alignment] for seqa in alignment]
 
 def upgma(alignment, d):
-	for seq in alignment:
-		skip
-	return
+	indices = [i for i in xrange(len(d))]
+	clusters = dict([(i, i) for i in xrange(len(d))])
+	next = len(indices)
+	while len(indices) > 1:
+		candidates = [(d[a][b], a, b) for a, b in itertools.combinations(indices, 2)]
+		heapq.heapify(candidates)
+		dist, a, b = heapq.heappop(candidates)
+		for row in d:
+			row.append((row[a] + row[b]) / 2)		# compute entry for new column
+		d.append([row[next] for row in d] + [0])	# copy last column to new row
+		indices.remove(a)
+		indices.remove(b)
+		indices.append(next)
+		clusters[next] = (clusters[a], clusters[b])
+		next += 1
+	return clusters[next-1]
 
-alnm = read_alignment("data/test.aln")
-for row in create_distance_matrix(alnm):
-	print row
+alignment = read_alignment("data/test.aln")
+#alignment = {"1":"ACG--TA", "2":"ACAGGTA", "3":"ACGA-TA", "4":"CC-GGTA"}
+
+d = create_distance_matrix(alignment)
+tree = upgma(alignment, d)
+print tree
