@@ -17,7 +17,7 @@
 \aufgabe{Distanzmatrizen}{15 + 15}
 \begin{enumerate}
 \item Das Kriterium einer aditiven Metrik ist erfüllt, wenn es eine Belegung der
-Variablen $x, y, u$ und $v$ mit $a, b, c$ und $d$ gibt, sodass gilt:
+Variablen $x, y, u$ und $v$ mit $a, b, c$ und $d$ gibt (4-Punkt Bedingung), sodass gilt:
 $$d(x,y) + d(u,v) \leq d(x,u) + d(y,v) = d(x,v) + d(y,u)$$
 
 Das Kriterium einer Ultrametrik ist erfüllt, wenn es eine Belegung der Variablen
@@ -62,7 +62,16 @@ Das Kriterium einer Ultrametrik ist nicht erfüllt, da kein 3-Tupel zwei gleiche
 Distanzen enthält und der zweite Teil der Ungleichung damit nicht erfüllbar ist.
 
 \end{enumerate}
-\item \textbf{Bonus:}
+\item \textbf{Bonus:}\\
+Die Daten eines additiven Baumes brauchen nicht mehr ultrametrisch sein, d.h. die Annahme der Molekular Uhr kann verletzt werden. Wir nehmen uns also eine ultrametrische Distanzmatrix und formen diese um, sodass noch folgende Eigenschaften erhalten bleiben:
+\begin{enumerate}
+	\item symmetrisch
+	\item alle Werte größer 0, bis auf Diagonale
+	\item 4-Punkt-Bedingung
+\end{enumerate}
+
+
+
 \end{enumerate}
 
 \aufgabe{Phylogenetische Bäume}{30}
