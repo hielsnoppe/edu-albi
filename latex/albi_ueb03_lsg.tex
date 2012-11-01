@@ -125,9 +125,29 @@ ist.
 
 \aufgabe{Implementierung Clustering-Verfahren}{60}
 \begin{enumerate}
-\item
-\item
-\item
+\item Wir lesen die Sequenzen aus der Datei in ein dictionary und verwenden die
+Bezeichnungen als Schlüssel:
+
+\begin{lstlisting}[language=python]
+def read_alignment(filename):
+	with open(filename, 'r') as seqfile:
+		seq = {}
+		regex = r"^>(\S+)\s"
+		name = ""
+		for line in seqfile:
+			c = re.match(regex, line)
+			if (c):
+				name = c.group(1)
+				seq[name] = ""
+			else:
+				seq[name] += line.strip()
+	return seq
+\end{lstlisting}
+
+\item \textbf{TODO}
+
+\item \textbf{TODO:} Ist die Berechnung des Durchschnittes so korrekt, oder muss
+tatsächlich über jedes Element eines Clusters gemittelt werden?
 \end{enumerate}
 
 \aufgabe{Maximum-Likelihood-Schätzung}{60}
