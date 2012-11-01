@@ -5,8 +5,8 @@ import itertools
 import heapq
 
 def dist(seqa, seqb):
-	""" returns hamming distance of the sequences seqa and seqb """
-	return sum(0.0 if a == b else 1.0 for a, b in zip(seqa, seqb))
+	""" returns normalized hamming distance of the sequences seqa and seqb """
+	return sum(0.0 if a == b else 1.0 for a, b in zip(seqa, seqb)) / len(seqa)
 
 def jcest(dist, len):
 	""" returns estimated evolutionary distance for proportion dist/len of differences """
@@ -35,8 +35,8 @@ def create_distance_matrix(alignment):
 	return [[dist(seqa, seqb) for seqb in alignment] for seqa in alignment]
 
 def upgma(alignment, d):
-	indices = [i for i in xrange(len(d))]
-	clusters = dict([(i, i) for i in xrange(len(d))])
+	indices = [i for i in range(len(d))]
+	clusters = dict([(i, i) for i in range(len(d))])
 	next = len(indices)
 	while len(indices) > 1:
 		candidates = [(d[a][b], a, b) for a, b in itertools.combinations(indices, 2)]
@@ -52,9 +52,9 @@ def upgma(alignment, d):
 		next += 1
 	return clusters[next-1]
 
-alignment = read_alignment("data/test.aln")
+alignment = read_alignment("../data/test.aln")
 #alignment = {"1":"ACG--TA", "2":"ACAGGTA", "3":"ACGA-TA", "4":"CC-GGTA"}
 
 d = create_distance_matrix(alignment)
 tree = upgma(alignment, d)
-print tree
+print (tree)
