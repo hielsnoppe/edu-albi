@@ -152,10 +152,45 @@ def read_alignment(filename):
 	return seq
 \end{lstlisting}
 
-\item \textbf{TODO}
+\item Wir erzeugen der Einfachheitalber die komplette Distanzmatrix, statt nur
+der benötigten Hälfte. \textbf{TODO:} Verwende Jukes-Cantor-Korrektur statt
+normierter Hammingdistanz.
 
-\item \textbf{TODO:} Ist die Berechnung des Durchschnittes so korrekt, oder muss
+\begin{lstlisting}[language=python]
+def create_distance_matrix(alignment):
+	return [[dist(seqa, seqb) for seqb in alignment] for seqa in alignment]
+\end{lstlisting}
+
+\item Wir führen den UPGMA-Algorithmus mit einem dictionary von Clustern und
+einer erweiterten Distanzmatrix durch. Die Cluster sind anfangs die Sequenzen
+selbst, die Distanzmatrix die zuvor berechnete Distanzmatrix. Jeweils diejenigen
+beiden Cluster mit dem geringsten Abstand werden zu einem neuen Cluster
+vereinigt und die ursprünglichen beiden Cluster aus der Liste gelöscht.
+Außerdem wird die Distanzmatrix um eine Spalte und Zeile für das neue Cluster
+erweitert. Dies wird solage durchgeführt, bis nur noch ein Cluster übrig ist und
+dieses als Ergebnis zurückgegeben.
+
+\textbf{TODO:} Ist die Berechnung des Durchschnittes so korrekt, oder muss
 tatsächlich über jedes Element eines Clusters gemittelt werden?
+
+\begin{lstlisting}[language=python]
+def upgma(alignment, d):
+	clusters = dict([(i, i) for i in range(len(d))])
+	next = len(clusters)
+	while len(clusters) > 1:
+		candidates = [(d[a][b], a, b) for a, b in itertools.combinations(clusters.keys(), 2)]
+		heapq.heapify(candidates)
+		dist, a, b = heapq.heappop(candidates)
+		for row in d:
+			row.append((row[a] + row[b]) / 2)		# compute entry for new column
+		d.append([row[next] for row in d] + [0])	# copy last column to new row
+		clusters[next] = (clusters[a], clusters[b])
+		del(clusters[a])
+		del(clusters[b])
+		next += 1
+	return clusters[next-1]
+\end{lstlisting}
+
 \end{enumerate}
 
 \aufgabe{Maximum-Likelihood-Schätzung}{60}
