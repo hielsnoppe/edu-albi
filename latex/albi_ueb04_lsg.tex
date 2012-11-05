@@ -1,0 +1,79 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\usepackage{multicol}
+%\usepackage{xyling}
+
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{4}
+\date{Montag, dem 12. November 2012}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00}
+\tutor{Alena van Bömmel (Übungsgruppe 3)}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{Multiples Alignment}{100}
+\begin{enumerate}
+\item Bei dem Datensatz handelt es sich um das Protein \textit{ubiquitin}.
+\item Hier die ersten 5 Zeilen aus BBS20030.aln:
+\begin{verbatim}
+1awd_       YKVTLK--TP-S-G--EETIECPEDTYILD----AAEEAGLDLPYSCRAG
+FER1_ANASP  FKVTLI--NEAE-G-TKHEIEVPDDEYILD----AAEEQGYDLPFSCRAG
+FER_SPIMA   YKVTLI--SEAE-G-INETIDCDDDTYILD----AAEEAGLDLPYSCRAG
+FER1_CYAPA  YKVRLI--CEEQ-G-LDTTIECPDDEYILD----AAEEQGIDLPYSCRAG
+FER3_CYACA  YKIHLV--NKDQ-G-IDETIECPDDQYILD----AAEEQGLDLPYSCRAG
+\end{verbatim}
+\item Quelle: http://en.wikipedia.org/wiki/Multiple\_sequence\_alignment\\
+Das progressive Alignment baut eine MSA durch Kombinieren der paarweisen Alignments, beginnend mit dem ähnlichsten Paar und fortlaufend mit den am weitesten entfernten Paaren, auf. Alle progressiven Alignment-Verfahren erfordern zwei Stufen: eine erste Stufe, in welcher die Beziehungen zwischen den Sequenzen als Baum, genannt \textit{guide tree}, repräsentiert wird und einem zweiten Schritt, in dem das MSA durch sequentielles hinzufügen der Sequenzen anhand des guide tree aufgebaut wird. Der initiale guide tree wird durch eine effiziente Clusteringmethode wie Neighbor-Joining oder UPGMA bestimmt. \\
+Progressive Alignments können kein globales Optimum garantieren, da Fehler beim Hinzufügen von Sequenzen zum MSA propagieren. Die Laufzeit ist exponential.
+
+\item Die iterativen Alignment Algorithmen basieren auf den progressiven, jedoch wird hier beim Hinzufügen von Sequenzen zum MSA die bereits alignten Sequenzen erneut alignt. Dadurch können propagierende Fehler vermieden werden und  ein global optimales Alignment garantiert werden.
+
+\item
+\begin{verbatim}
+seq1       seq2          Sim   [ALL]           Tot  
+BBS20030      47         57.5    94.5 [100.0]   [184912]
+\end{verbatim}
+D.h. es gibt eine Übereinstimmung von 94,5\%. 
+
+\item
+Das Alignment von T-Coffee hat eine höhere Übereinstimmung (94\%) als Muscle (92,6\%).
+\end{enumerate}
+
+\aufgabe{Bayes'sche Regel}{40+10}
+\begin{enumerate}
+\item 
+	
+\item
+	
+\item
+	
+\end{enumerate}
+
+
+\aufgabe{HMM}{40}
+\begin{enumerate}
+\item 
+
+\item 
+
+\item 
+
+\end{enumerate}
+
+\aufgabe{Viterbi in the occasionally dishonest casino}{60}
+
+\begin{enumerate}
+\item
+	
+\item
+
+\item
+
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
