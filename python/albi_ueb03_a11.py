@@ -4,14 +4,14 @@ import re
 import itertools
 import heapq
 import argparse
+import math
 
 def dist(seqa, seqb):
 	""" returns normalized hamming distance of the sequences seqa and seqb """
 	return sum(0.0 if a == b else 1.0 for a, b in zip(seqa, seqb)) / len(seqa)
 
-def jcest(dist, len):
-	""" returns estimated evolutionary distance for proportion dist/len of differences """
-	p = float(dist) / float(len)
+def jcest(p):
+	""" returns estimated evolutionary distance for proportion p of differences """
 	critical = 4.0 * p / 3.0
 	if critical < 1.0:
 		return (-3.0) * math.log(1.0 - critical) / 4.0
@@ -33,7 +33,7 @@ def read_alignment(filename):
 	return seq
 
 def create_distance_matrix(alignment):
-	return [[dist(seqa, seqb) for seqb in alignment] for seqa in alignment]
+	return [[jcest(dist(seqa, seqb)) for seqb in alignment] for seqa in alignment]
 
 def upgma(alignment, d):
 	clusters = dict([(i, i) for i in range(len(d))])
