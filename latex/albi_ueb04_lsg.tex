@@ -41,17 +41,38 @@ D.h. es gibt eine Übereinstimmung von 94,5\%.
 
 \item
 Das Alignment von T-Coffee hat eine höhere Übereinstimmung (94\%) als Muscle (92,6\%).
-\end{enumerate}
 
 \item
 Der Score veringert sich sogar auf 93,6\%.
+\end{enumerate}
+
+
 
 \aufgabe{Bayes'sche Regel}{40+10}
+Gegeben:\\
+$P(Test+ | HIV+) = 99,9$\%$ = 0,999$\\
+$P(Test- | HIV-) = 99,5$\%$ = 0,995$\\
 \begin{enumerate}
 \item 
-	
+Aus der Risikogruppe ergibt sich:\\
+$P(HIV+) = 0,1$\%$ = 0,001$\\
+Gesucht ist:\\
+$P(HIV+ | Test+) = \frac{P(Test+ | HIV+) * P(HIV+)}{P(Test+)}$\\
+Die Wahrscheinlichkeit, dass ein Test positiv ist, ergibt sich aus:\\
+\begin{tabular}{l l}
+$P(Test+)$ & $= P(Test+ \cap HIV+) + P(Test+ \cap HIV-)$ \\ 
+ & $= P(Test+ | HIV+) * P(HIV+) + P(Test+ | HIV-) * P(HIV-)$ \\ 
+ & $= P(Test+ | HIV+) * P(HIV+) + (1-P(Test- | HIV-)) * (1-P(HIV+))$\\
+ & $= 0,999 * 0,001 + (1-0,995)*(1-0,001)$\\
+ & $= 0,005994$\\
+\end{tabular} 
+Daher: \\
+	$P(HIV+ | Test+) = \frac{0,999*0,001}{0,005994}$\\
+	$ = 0,2 = 20$\% 
 \item
-	
+Aus der Risikogruppe ergibt sich:\\
+$P(HIV+) = 20$\%$ = 0,2$\\
+...
 \item
 	
 \end{enumerate}
