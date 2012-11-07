@@ -120,7 +120,8 @@ ist.
 
 \aufgabe{Phylogenetische Bäume}{30}
 
-Es wurde die JC Korrektur genutzt, um mögliche Rückmutationen zu berücksichtigen. \\ \\
+Es wurde die Jukes-Cantor Korrektur genutzt, um mögliche Rückmutationen zu berücksichtigen.
+
 Alle konstruierten Bäumen sind sich in der Topologie ähnlich. Die Gruppierungen der Taxen ist überall gleich. Auffallend ist, dass beim Neighbor Joining $O$ und $P$ aus $L$ bzw. $M$ hervorgehen. Dies ist bei den anderen Bäumen nicht der Fall, jedoch sind die vier Taxen stets unmitelbare Nachbarn. Bei UPGMA wird die Länge zu einem hypotetischen Vorgänger nicht berücksichtigt. Generell beinhaltet dieser Baum weniger Informationen über den zeitlichen Verlauf der Mutationen. Die beiden anderen Bäume ähneln sich zu stark, um diese zu unterscheiden.
 %\begin{enumerate}
 %\item
@@ -159,7 +160,7 @@ der benötigten Hälfte:
 
 \begin{lstlisting}[language=python]
 def create_distance_matrix(alignment):
-	return [[jcest(seqa, seqb) for seqb in alignment] for seqa in alignment]
+	return [[jcest(dist(seqa, seqb)) for seqb in alignment] for seqa in alignment]
 \end{lstlisting}
 
 \item Wir führen den UPGMA-Algorithmus mit einem dictionary von Clustern und
