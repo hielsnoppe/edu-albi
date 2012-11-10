@@ -18,7 +18,7 @@
 \aufgabe{Multiples Alignment}{100}
 \begin{enumerate}
 \item Bei dem Datensatz handelt es sich um das Protein \textit{ubiquitin}.
-\item Hier die ersten 5 Zeilen aus BBS20030.aln:
+\item Der Aufruf \textit{t\_coffee BBS20030.tfa} erzeugt u.a. die Datei \textit{BBS20030.aln}. Hier der Auszug der ersten 5 Zeilen:
 \begin{verbatim}
 1awd_       YKVTLK--TP-S-G--EETIECPEDTYILD----AAEEAGLDLPYSCRAG
 FER1_ANASP  FKVTLI--NEAE-G-TKHEIEVPDDEYILD----AAEEQGYDLPFSCRAG
@@ -26,21 +26,30 @@ FER_SPIMA   YKVTLI--SEAE-G-INETIDCDDDTYILD----AAEEAGLDLPYSCRAG
 FER1_CYAPA  YKVRLI--CEEQ-G-LDTTIECPDDEYILD----AAEEQGIDLPYSCRAG
 FER3_CYACA  YKIHLV--NKDQ-G-IDETIECPDDQYILD----AAEEQGLDLPYSCRAG
 \end{verbatim}
-\item Quelle: http://en.wikipedia.org/wiki/Multiple\_sequence\_alignment\\
-Das progressive Alignment baut eine MSA durch Kombinieren der paarweisen Alignments, beginnend mit dem ähnlichsten Paar und fortlaufend mit den am weitesten entfernten Paaren, auf. Alle progressiven Alignment-Verfahren erfordern zwei Stufen: eine erste Stufe, in welcher die Beziehungen zwischen den Sequenzen als Baum, genannt \textit{guide tree}, repräsentiert wird und einem zweiten Schritt, in dem das MSA durch sequentielles hinzufügen der Sequenzen anhand des guide tree aufgebaut wird. Der initiale guide tree wird durch eine effiziente Clusteringmethode wie Neighbor-Joining oder UPGMA bestimmt. \\
+\item Quelle: http://en.wikipedia.org/wiki/Multiple\_sequence\_alignment\\ \\
+Das progressive Alignment baut eine MSA durch Kombinieren der paarweisen Alignments, beginnend mit dem ähnlichsten Paar und fortlaufend mit den am weitesten entfernten Paaren, auf. Alle progressiven Alignment-Verfahren erfordern zwei Stufen: eine erste Stufe, in welcher die Beziehungen zwischen den Sequenzen als Baum, genannt \textit{Guide Tree}, repräsentiert wird und einem zweiten Schritt, in dem das MSA durch sequentielles hinzufügen der Sequenzen anhand des Guide Tree aufgebaut wird. Der initiale Guide Tree wird durch eine effiziente Clusteringmethode wie Neighbor-Joining oder UPGMA bestimmt. \\
 Progressive Alignments können kein globales Optimum garantieren, da Fehler beim Hinzufügen von Sequenzen zum MSA propagieren. Die Laufzeit ist exponential.
 
 \item Die iterativen Alignment Algorithmen basieren auf den progressiven, jedoch wird hier beim Hinzufügen von Sequenzen zum MSA die bereits alignten Sequenzen erneut alignt. Dadurch können propagierende Fehler vermieden werden und  ein global optimales Alignment garantiert werden.
 
 \item
 \begin{verbatim}
+$ t_coffee -other_pg aln_compare 
+-al1 BBS20030.aln -al2 muscle-clustalw_strict.aln 
+*****************************************************
 seq1       seq2          Sim   [ALL]           Tot  
 BBS20030      47         57.5    94.5 [100.0]   [184912]
+
+$ t_coffee -other_pg aln_compare 
+-al2 BBS20030.aln -al1 muscle-clustalw_strict.aln 
+*****************************************************
+seq1       seq2          Sim   [ALL]           Tot  
+muscle-clustalw_strict 47         57.5    93.6 [100.0]   [186804]
 \end{verbatim}
-D.h. es gibt eine Übereinstimmung von 94,5\%. 
+D.h. es gibt eine Übereinstimmung von 94,5\% der Alignments, wenn der progressive Ansatz mit dem iterativen Ansatz verglichen wird bzw. 93,6\% Übereinstimmung andersrum. 
 
 \item
-Das Alignment von T-Coffee hat eine höhere Übereinstimmung (94\%) als Muscle (92,6\%).
+Erstaunlicherweise, hat das Alignment von T-Coffee eine höhere Übereinstimmung (94\%) als das von Muscle (92,6\%). Eventuell gibt es zu wenig Daten für den Vergleich?
 
 \item
 Der Score veringert sich sogar auf 93,6\%.
@@ -62,19 +71,34 @@ Die Wahrscheinlichkeit, dass ein Test positiv ist, ergibt sich aus:\\
 \begin{tabular}{l l}
 $P(Test+)$ & $= P(Test+ \cap HIV+) + P(Test+ \cap HIV-)$ \\ 
  & $= P(Test+ | HIV+) * P(HIV+) + P(Test+ | HIV-) * P(HIV-)$ \\ 
- & $= P(Test+ | HIV+) * P(HIV+) + (1-P(Test- | HIV-)) * (1-P(HIV+))$\\
+ & $= P(Test+ | HIV+) * P(HIV+)$ \\
+ & $+ (1-P(Test- | HIV-)) * (1-P(HIV+))$\\
  & $= 0,999 * 0,001 + (1-0,995)*(1-0,001)$\\
  & $= 0,005994$\\
 \end{tabular} 
 Daher: \\
 	$P(HIV+ | Test+) = \frac{0,999*0,001}{0,005994}$\\
-	$ = 0,2 = 20$\% 
+	$ = 0,167 = 16,7$\% 
 \item
 Aus der Risikogruppe ergibt sich:\\
 $P(HIV+) = 20$\%$ = 0,2$\\
-...
+Daher: \\
+$P(Test+) = 0,2038$\\
+$P(HIV+ | Test+) = \frac{0,999*0,2}{0,2038}$\\
+	$ = 0,98 = 98$\% 
 \item
-	
+	$P(HIV+ | 2*Test+) = \frac{P(2*Test+| HIV+) * P(HIV+)}{P(2*Test+)} $\\
+\begin{tabular}{l l}
+$P(2*Test+)$ & $= P(2*Test+ \cap HIV+) + P(2*Test+ \cap HIV-)$ \\ 
+ & $= P(2*Test+ | HIV+) * P(HIV+) + P(2*Test+ | HIV-) * P(HIV-)$ \\ 
+ & $= P(2*Test+ | HIV+) * P(HIV+)$ \\
+ & $+ (1-P(2*Test- | HIV-)) * (1-P(HIV+))$\\
+ & $= 0,999^2 * 0,001 + (1-0,995)^2*(1-0,001)$\\
+ & $= 0,001023$
+\end{tabular}
+Ergibt: \\
+$P(HIV+ | 2*Test+) = \frac{0,999^2*0,001}{0,001023}$\\
+	$ = 0,9756 = 97,56$\% 
 \end{enumerate}
 
 
