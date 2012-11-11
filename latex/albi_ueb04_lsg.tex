@@ -1,7 +1,6 @@
 \documentclass{homework}
 \usepackage{marvosym}
-\usepackage{multicol}
-%\usepackage{xyling}
+\usepackage{hyperref}
 
 \course{Algorithmische Bioinformatik}
 \semester{Wintersemester 2012 / 2013}
@@ -26,11 +25,12 @@ FER_SPIMA   YKVTLI--SEAE-G-INETIDCDDDTYILD----AAEEAGLDLPYSCRAG
 FER1_CYAPA  YKVRLI--CEEQ-G-LDTTIECPDDEYILD----AAEEQGIDLPYSCRAG
 FER3_CYACA  YKIHLV--NKDQ-G-IDETIECPDDQYILD----AAEEQGLDLPYSCRAG
 \end{verbatim}
-\item Quelle: http://en.wikipedia.org/wiki/Multiple\_sequence\_alignment\\ \\
+\item Quelle: \url{http://en.wikipedia.org/wiki/Multiple\_sequence\_alignment}
+
 Das progressive Alignment baut eine MSA durch Kombinieren der paarweisen Alignments, beginnend mit dem ähnlichsten Paar und fortlaufend mit den am weitesten entfernten Paaren, auf. Alle progressiven Alignment-Verfahren erfordern zwei Stufen: eine erste Stufe, in welcher die Beziehungen zwischen den Sequenzen als Baum, genannt \textit{Guide Tree}, repräsentiert wird und einem zweiten Schritt, in dem das MSA durch sequentielles hinzufügen der Sequenzen anhand des Guide Tree aufgebaut wird. Der initiale Guide Tree wird durch eine effiziente Clusteringmethode wie Neighbor-Joining oder UPGMA bestimmt. \\
 Progressive Alignments können kein globales Optimum garantieren, da Fehler beim Hinzufügen von Sequenzen zum MSA propagieren. Die Laufzeit ist exponential.
 
-\item Die iterativen Alignment Algorithmen basieren auf den progressiven, jedoch wird hier beim Hinzufügen von Sequenzen zum MSA die bereits alignten Sequenzen erneut alignt. Dadurch können propagierende Fehler vermieden werden und  ein global optimales Alignment garantiert werden.
+\item Die iterativen Alignment Algorithmen basieren auf den progressiven, jedoch wird hier beim Hinzufügen von Sequenzen zum MSA die bereits alinierten Sequenzen erneut aliniert. Dadurch können propagierende Fehler vermieden werden und  ein global optimales Alignment garantiert werden.
 
 \item
 \begin{verbatim}
@@ -114,8 +114,8 @@ $$P(H^+ | 2\cdot T^+) = \frac{0,999^2\cdot0,001}{0,001023} = 0,9756 = 97,56\%$$
 \aufgabe{HMM}{40}
 \begin{enumerate}
 \item $$\Sigma = \{A, C, G, T\} \quad S = \{Begin, 1, 2, 3, 4, End\}$$
+%B	& 1		& 2		& 3		& 4		& E\\
 $$A = \begin{pmatrix}
-B	& 1		& 2		& 3		& 4		& E\\
 0	& 0,5	& 0		& 0,5	& 0		& 0\\
 0	& 0		& 1		& 0		& 0		& 0\\
 0	& 0		& 0,5	& 0,3	& 0		& 0,2\\
@@ -132,6 +132,11 @@ ist "`Begin, 3, 4, 4, End"'.
 \end{enumerate}
 
 \aufgabe{Viterbi in the occasionally dishonest casino}{60}
+
+Der erzeugende Quelltext wurde per E-Mail eingesandt.
+Es fällt auf, dass der Viterbi-Pfad in (a) und (c) identisch sind. Der Pfad aus
+(b) unterscheidet sich jedoch von den übrigen. Außerdem sind in allen Pfaden
+Unterschiede zur Vorhersage aus der Datei \textit{casino.txt} festzustellen.
 
 \begin{enumerate}
 \item \begin{verbatim}
@@ -151,6 +156,28 @@ LLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \end{verbatim}
 
 \item \begin{verbatim}
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFF
+FFFLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFF
+\end{verbatim}
+
+\item[casino.txt] Vorhersage:
+\begin{verbatim}
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLL
+LLLFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLL
+LLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLFFFFFFFFFFF
+\end{verbatim}
+Tatsächlich:
+\begin{verbatim}
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLL
+LLLFFFFFFFFFFFFLLLLLLLLLLLLLLLLFFFLLLLLLLLLLLLLLFFFFFFFFFFFFFFF
+FFLLLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFF
 \end{verbatim}
 
 \end{enumerate}

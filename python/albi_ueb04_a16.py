@@ -77,6 +77,7 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
         newpath = {}
  
         for y in states:
+#        for y in reversed(states):		# fuer Aufgabe 16.3
             (prob, state) = max([(V[t-1][y0] * trans_p[y0][y] * emit_p[y][obs[t]], y0) for y0 in states])
             V[t][y] = prob
             newpath[y] = path[state] + [y]
@@ -84,33 +85,27 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
         # Don't need to remember the old paths
         path = newpath
  
-    print_dptable(V)
+#    print_dptable(V)					# fuer die Aufgaben nicht benoetigt
     (prob, state) = max([(V[len(obs) - 1][y], y) for y in states])
     return (prob, path[state])
 
-def a15():
-	return viterbi(data["a15"]["observations"],
+# Aufgabe 15
+print("".join(viterbi(data["a15"]["observations"],
                    data["a15"]["states"],
                    data["a15"]["start_probability"],
                    data["a15"]["transition_probability"],
-                   data["a15"]["emission_probability"])
-def a16(sub = 1):
-	observations = data["a16"]["observations"]
-	states = data["a16"]["states"]
-	if sub == 2:
-		observations = data["a16"]["observations"][::-1]
-	if sub == 3:
-		states = reversed(states)
-	return viterbi(observations,
-                   states,
+                   data["a15"]["emission_probability"])[1]))
+# Aufgabe 16.1
+print("".join(viterbi(data["a16"]["observations"],
+                   data["a16"]["states"],
                    data["a16"]["start_probability"],
                    data["a16"]["transition_probability"],
-                   data["a16"]["emission_probability"])
-def example():
-    return viterbi(data["example"]["observations"],
-                   data["example"]["states"],
-                   data["example"]["start_probability"],
-                   data["example"]["transition_probability"],
-                   data["example"]["emission_probability"])
-
-print("".join(a16(3)[1]))
+                   data["a16"]["emission_probability"])[1]))
+# Aufgabe 16.2
+print("".join(viterbi(data["a16"]["observations"][::-1],
+                   data["a16"]["states"],
+                   data["a16"]["start_probability"],
+                   data["a16"]["transition_probability"],
+                   data["a16"]["emission_probability"])[1]))
+# Aufgabe 16.3 entspricht Aufgabe 16.1, jedoch muss die markierte Aenderung in
+# der Funktion viterbi() vorgenommen werden.
