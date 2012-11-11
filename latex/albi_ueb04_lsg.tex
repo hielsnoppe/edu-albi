@@ -58,47 +58,56 @@ Der Score veringert sich sogar auf 93,6\%.
 
 
 \aufgabe{Bayes'sche Regel}{40+10}
-Gegeben:\\
-$P(Test+ | HIV+) = 99,9$\%$ = 0,999$\\
-$P(Test- | HIV-) = 99,5$\%$ = 0,995$\\
+Bezeichne $T^+$ bzw. $T^-$ ein positives bzw. negatives Testergebnis und $H^+$
+bzw. $H^-$ eine tatsächlich bestehende bzw. nicht bestehende Erkrankung an HIV,
+so ist gegeben:
+
+$$P(T^+ | H^+) = 99,9\% = 0,999$$
+$$P(T^- | H^-) = 99,5\% = 0,995$$
+
 \begin{enumerate}
-\item 
-Aus der Risikogruppe ergibt sich:\\
-$P(HIV+) = 0,1$\%$ = 0,001$\\
-Gesucht ist:\\
-$P(HIV+ | Test+) = \frac{P(Test+ | HIV+) * P(HIV+)}{P(Test+)}$\\
-Die Wahrscheinlichkeit, dass ein Test positiv ist, ergibt sich aus:\\
-\begin{tabular}{l l}
-$P(Test+)$ & $= P(Test+ \cap HIV+) + P(Test+ \cap HIV-)$ \\ 
- & $= P(Test+ | HIV+) * P(HIV+) + P(Test+ | HIV-) * P(HIV-)$ \\ 
- & $= P(Test+ | HIV+) * P(HIV+)$ \\
- & $+ (1-P(Test- | HIV-)) * (1-P(HIV+))$\\
- & $= 0,999 * 0,001 + (1-0,995)*(1-0,001)$\\
- & $= 0,005994$\\
-\end{tabular} 
-Daher: \\
-	$P(HIV+ | Test+) = \frac{0,999*0,001}{0,005994}$\\
-	$ = 0,167 = 16,7$\% 
+\item Aus der Risikogruppe ergibt sich:
+$$P(H^+) = 0,1\% = 0,001$$
+
+Gesucht ist:
+$$P(H^+ | T^+) = \frac{P(T^+ | H^+) \cdot P(H^+)}{P(T^+)}$$
+
+Die Wahrscheinlichkeit, dass ein Test positiv ist, ergibt sich aus:
+
+\begin{eqnarray*}
+P(T^+)
+& = & P(T^+ \cap H^+) + P(T^+ \cap H^-) \\ 
+& = & P(T^+ | H^+) \cdot P(H^+) + P(T^+ | H^-) \cdot P(H^-) \\ 
+& = & P(T^+ | H^+) \cdot P(H^+) + (1-P(T^- | H^-)) \cdot (1-P(H^+))\\
+& = & 0,999 \cdot 0,001 + (1-0,995)\cdot(1-0,001)\\
+& = & 0,005994\\
+\end{eqnarray*}
+
+Daher:
+$$P(H^+ | T^+) = \frac{0,999\cdot0,001}{0,005994} = 0,167 = 16,7\%$$
+
+\item Aus der Risikogruppe ergibt sich:
+
+$$P(H^+) = 20\% = 0,2$$
+
+Daher:
+$$P(T^+) = 0,2038$$
+$$P(H^+ | T^+) = \frac{0,999\cdot0,2}{0,2038} = 0,98 = 98\%$$
+
 \item
-Aus der Risikogruppe ergibt sich:\\
-$P(HIV+) = 20$\%$ = 0,2$\\
-Daher: \\
-$P(Test+) = 0,2038$\\
-$P(HIV+ | Test+) = \frac{0,999*0,2}{0,2038}$\\
-	$ = 0,98 = 98$\% 
-\item
-	$P(HIV+ | 2*Test+) = \frac{P(2*Test+| HIV+) * P(HIV+)}{P(2*Test+)} $\\
-\begin{tabular}{l l}
-$P(2*Test+)$ & $= P(2*Test+ \cap HIV+) + P(2*Test+ \cap HIV-)$ \\ 
- & $= P(2*Test+ | HIV+) * P(HIV+) + P(2*Test+ | HIV-) * P(HIV-)$ \\ 
- & $= P(2*Test+ | HIV+) * P(HIV+)$ \\
- & $+ (1-P(2*Test- | HIV-)) * (1-P(HIV+))$\\
- & $= 0,999^2 * 0,001 + (1-0,995)^2*(1-0,001)$\\
- & $= 0,001023$
-\end{tabular}
+	$$P(H^+ | 2\cdot T^+) = \frac{P(2\cdot T^+| H^+) \cdot P(H^+)}{P(2\cdot T^+)} $$
+
+\begin{eqnarray*}
+P(2\cdot T^+)
+& = & P(2\cdot T^+ \cap H^+) + P(2\cdot T^+ \cap H^-) \\ 
+& = & P(2\cdot T^+ | H^+) \cdot P(H^+) + P(2\cdot T^+ | H^-) \cdot P(H^-) \\ 
+& = & P(2\cdot T^+ | H^+) \cdot P(H^+) + (1-P(2\cdot T^- | H^-)) \cdot (1-P(H^+))\\
+& = & 0,999^2 \cdot 0,001 + (1-0,995)^2\cdot(1-0,001)\\
+& = & 0,001023
+\end{eqnarray*}
+
 Ergibt: \\
-$P(HIV+ | 2*Test+) = \frac{0,999^2*0,001}{0,001023}$\\
-	$ = 0,9756 = 97,56$\% 
+$$P(H^+ | 2\cdot T^+) = \frac{0,999^2\cdot0,001}{0,001023} = 0,9756 = 97,56\%$$
 \end{enumerate}
 
 
@@ -115,7 +124,8 @@ B	& 1		& 2		& 3		& 4		& E\\
 0	& 0		& 0		& 0		& 0		& 0
 \end{pmatrix}$$
 
-\item 
+\item Der Viterbi-Pfad mit einer maximalen Gesamtwahrscheinlichkeit von 0,25\%
+ist "`Begin, 3, 4, 4, End"'.
 
 \item 
 
@@ -124,11 +134,24 @@ B	& 1		& 2		& 3		& 4		& E\\
 \aufgabe{Viterbi in the occasionally dishonest casino}{60}
 
 \begin{enumerate}
-\item
+\item \begin{verbatim}
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFF
+FFFLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLL
+LLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFF
+\end{verbatim}
 	
-\item
+\item \begin{verbatim}
+FFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLFFFFF
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFLLLLLLLLLLLFFFFFFFFFFFFFFFFFL
+LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+LLLFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\end{verbatim}
 
-\item
+\item \begin{verbatim}
+\end{verbatim}
 
 \end{enumerate}
 
