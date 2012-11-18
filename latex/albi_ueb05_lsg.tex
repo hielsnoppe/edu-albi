@@ -16,8 +16,97 @@
 
 \aufgabe{Matrix Diagonalisierung}{60}
 \begin{enumerate}
-\item fertig auf Papier
-\item fertig auf Papier
+\item
+Eigenwerte aus $det(A - \lambda I)$ bestimmen:
+
+\begin{eqnarray*}
+det(A - \lambda I) & = & \left|\begin{array}{ccc}
+2 - \lambda & 1 & 1\\
+-1 & 2 - \lambda & 1\\
+1 & 1 & 2 - \lambda
+\end{array}\right|\\
+& = & 1 \cdot \left|\begin{array}{cc}
+1 & 1\\ 1 & 2 - \lambda
+\end{array}\right| - (2 - \lambda) \cdot \left|\begin{array}{cc}
+2 - \lambda & 1\\ 1 & 2 - \lambda
+\end{array}\right| - 1 \cdot \left|\begin{array}{cc}
+2 - \lambda & 1\\ 1 & 1
+\end{array}\right|\\
+& = & (2 - \lambda - 1) - (2 - \lambda) ((2 - \lambda)^2 - 1) - (2 - \lambda - 1)\\
+& = & -(\lambda - 3)(\lambda-2)(\lambda-1)
+\end{eqnarray*}
+
+Als Lösung dafür ergeben sich die Eigenwerte $\lambda_1 = 3$, $\lambda_2 = 2$ und $\lambda_3 = 1$.
+
+Eigenvektoren $\vec{v_i}$ aus $A \vec{v_i} = \lambda_i \vec{v_i}$ bestimmen:
+
+\begin{itemize}
+\item[$(\lambda_1 = 3)$]
+$$
+\left.\begin{array}{rcl}
+2x + y + z & = & 3x\\
+-x + 2y + z & = & 3y\\
+x + y + 2z & = & 3z
+\end{array}\right\}
+\vec{v_1} = (1, 0, 1)
+$$
+
+\item[$(\lambda_2 = 2)$]
+$$
+\left.\begin{array}{rcl}
+2x + y + z & = & 2x\\
+-x + 2y + z & = & 2y\\
+x + y + 2z & = & 2z
+\end{array}\right\}
+\vec{v_2} = (1, -1, 1)
+$$
+
+\item[$(\lambda_3 = 1)$]
+$$
+\left.\begin{array}{rcl}
+2x + y + z & = & 1x\\
+-x + 2y + z & = & 1y\\
+x + y + 2z & = & 1z
+\end{array}\right\}
+\vec{v_3} = (0, -1, 1)
+$$
+\end{itemize}
+
+\item $D$ und $T$ ergeben sich aus den Eigenwerten und Eigenvektoren als
+$$D = \begin{pmatrix}3 & 0 & 0\\ 0 & 2 & 0\\ 0 & 0 & 1\end{pmatrix}
+\quad \text{ und } \quad
+T = \begin{pmatrix}1 & 1 & 0\\ 0 & -1 & -1\\ 1 & 1 & 1\end{pmatrix}.$$
+
+Das Inverse $T^{-1}$ berechnen wir durch paralleles Umformen mit der Einheitsmatrix $I$,
+denn es gilt $(T | I) \Leftrightarrow (I | T^{-1})$:
+
+$$\left(\begin{array}{ccc|ccc}
+1 & 1 & 0 & 1 & 0 & 0\\
+0 & -1 & -1 & 0 & 1 & 0\\
+1 & 1 & 1 & 0 & 0 & 1
+\end{array}\right) \quad \text{III} = \text{III} - \text{I}$$
+
+$$\left(\begin{array}{ccc|ccc}
+1 & 1 & 0 & 1 & 0 & 0\\
+0 & -1 & -1 & 0 & 1 & 0\\
+0 & 0 & 1 & -1 & 0 & 1
+\end{array}\right) \quad \text{II} = (-1)(\text{II} + \text{I})$$
+
+$$\left(\begin{array}{ccc|ccc}
+1 & 1 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 1 & -1 & 1\\
+0 & 0 & 1 & -1 & 0 & 1
+\end{array}\right) \quad \text{I} = \text{I} - \text{II}$$
+
+$$\left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & 0 & 1 & 1\\
+0 & 1 & 0 & 1 & -1 & 1\\
+0 & 0 & 1 & -1 & 0 & 1
+\end{array}\right)$$
+
+Daraus ergibt sich $T^{-1}$ als
+$$T^{-1} = \begin{pmatrix}0 & 1 & 1\\1 & -1 & -1\\ -1 & 0 & 1\end{pmatrix}.$$
+
 \item
 \end{enumerate}
 
@@ -32,5 +121,63 @@
 
 \aufgabe{Baum-Welch Algorithmus}{100}
 
+1. Iteration, 1. Sequenz
+
+$$a_{2,1} = a{2,2} = 0,4 \quad e_2(x) = e_2(y) = 0,5$$
+$$F = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0,1 & 0,25 & 0\\
+0 & 0,12 & 0,065 & 0\\
+0 & 0,0688 & 0,031 & 0\\
+0 & 0 & 0 & 0,0108
+\end{pmatrix}
+\quad
+B = \begin{pmatrix}
+0,0108 & 0 & 0 & 0\\
+0 & 0,03224 & 0,03027 & 0\\
+0 & 0,0596 & 0,056 & 0\\
+0 & 0,11 & 0,104 & 0\\
+0 & 0,2 & 0,2 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}$$
+
+1. Iteration, 2. Sequenz
+
+$$F = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0,4 & 0,25 & 0\\
+0 & 0,06 & 0,11 & 0\\
+0 & 0,0148 & 0,031 & 0\\
+0 & 0,01584 & 0,00842 & 0\\
+0 & 0 & 0 & 0,00485
+\end{pmatrix}
+\quad
+B = \begin{pmatrix}
+0,004852 & 0 & 0 & 0\\
+0 & 0,0071 & 0,008048 & 0\\
+0 & 0,0266 & 0,0296 & 0\\
+0 & 0,11 & 0,104 & 0\\
+0 & 0,2 & 0,2 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}$$
+
 \end{enumerate}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
