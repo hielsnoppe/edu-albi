@@ -107,7 +107,25 @@ $$\left(\begin{array}{ccc|ccc}
 Daraus ergibt sich $T^{-1}$ als
 $$T^{-1} = \begin{pmatrix}0 & 1 & 1\\1 & -1 & -1\\ -1 & 0 & 1\end{pmatrix}.$$
 
-\item
+\item Wir berechnen $exp(A) = T \cdot exp(D) \cdot T^{-1}$ mit Hilfe des Falk-Schemas:
+$$
+\begin{array}{ccc|ccc|ccc}
+ & & & e^3 & 0 & 0 & 0 & 1 & 1\\
+ & & & 0 & e^2 & 0 & 1 & -1 & -1\\
+ & & & 0 & 0 & e & -1 & 0 & 1\\\hline
+1 & 1 & 0 & e^3 & e^2 & 0 & e^2 & e^3-e^2 & e^3-e^2\\
+0 & -1 & -1 & 0 & -e^2 & -e & -e^2+2 & e^2 & e^2-e\\
+1 & 1 & 1 & e^3 & e^2 & e & e^2-e & e^3-e^2 & e^3-e^2+e
+\end{array}
+$$
+
+Daraus ergibt sich $T^{-1}$ als
+$$T^{-1} = \begin{pmatrix}
+e^2 & e^3-e^2 & e^3-e^2\\
+-e^2+2 & e^2 & e^2-e\\
+e^2-e & e^3-e^2 & e^3-e^2+e
+\end{pmatrix}$$
+
 \end{enumerate}
 
 \aufgabe{Profile HMMs}{80}
@@ -121,9 +139,13 @@ $$T^{-1} = \begin{pmatrix}0 & 1 & 1\\1 & -1 & -1\\ -1 & 0 & 1\end{pmatrix}.$$
 
 \aufgabe{Baum-Welch Algorithmus}{100}
 
-1. Iteration, 1. Sequenz
+$$a_{2,1} = a_{2,2} = 0,4 \quad e_2(x) = e_2(y) = 0,5$$
 
-$$a_{2,1} = a{2,2} = 0,4 \quad e_2(x) = e_2(y) = 0,5$$
+1. Iteration
+
+\begin{itemize}
+\item[\texttt{YXXX}]
+
 $$F = \begin{pmatrix}
 1 & 0 & 0 & 0\\
 0 & 0,1 & 0,25 & 0\\
@@ -141,7 +163,7 @@ B = \begin{pmatrix}
 0 & 0 & 0 & 1
 \end{pmatrix}$$
 
-1. Iteration, 2. Sequenz
+\item[\texttt{XYYX}]
 
 $$F = \begin{pmatrix}
 1 & 0 & 0 & 0\\
@@ -160,6 +182,90 @@ B = \begin{pmatrix}
 0 & 0,2 & 0,2 & 0\\
 0 & 0 & 0 & 1
 \end{pmatrix}$$
+
+\item
+
+\begin{eqnarray*}
+A_{2,1} & = & 0,5 \cdot (0,15 \cdot 0,4 \cdot 0,8 \cdot 0,0596 + 0,065 \cdot 0,4 \cdot 0,8 \cdot 0,116 + 0,031 \cdot 0,4 \cdot 0,8 \cdot 0,2)\\
+&& + 0,5 \cdot (0,25 \cdot 0,4 \cdot 0,2 \cdot 0,0266 + 0,11 \cdot 0,4 \cdot 0,2 \cdot 0,11 + 0,031 \cdot 0,4 \cdot 0,8 \cdot 0,2)\\
+& = & 0,006262\\
+A_{2,2} & = & 0,5 \cdot (0,25 \cdot 0,4 \cdot 0,5 + 0,056 + 0,065 \cdot 0,4 \cdot 0,5 \cdot 0,104 + 0,031 \cdot 0,4 \cdot 0,5 \cdot 0,2)\\
+&& + 0,5 \cdot (0,25 \cdot 0,4 \cdot 0,5 \cdot 0,0296 + 0,11 \cdot 0,4 \cdot 0,5 \cdot 0,104 + 0,031 \cdot 0,4 \cdot 0,5 \cdot 0,2)\\
+& = & 0,0052\\
+E_2(x) & = & 0,5 \cdot (0,065 \cdot 0,056 + 0,031 \cdot 0,104 + 0,01652 \cdot 0,2) + 0,5 \cdot (0,25 \cdot 0,008048 + 0,00842 \cdot 0,2)\\
+& = & 0,0,00693\\
+E_2(y) & = & 0,5 \cdot (0,25 \cdot 0,03027) + 0,5 \cdot (0,11 \cdot 0,00296 + 0,031 \cdot 0,104)\\
+& = & 0,00556\\
+a_{2,1} & = & \frac{A_{2,1}}{A_{2,1} + A_{2,2}} \cdot 0,8 = 0,437\\
+a_{2,2} & = & \frac{A_{2,2}}{A_{2,1} + A_{2,2}} \cdot 0,8 = 0,363\\
+e_2(x) & = & \frac{E_2(x)}{E_2(x) + E_2(y)} = 0,555\\
+e_2(y) & = & \frac{E_2(y)}{E_2(x) + E_2(y)} = 0,445
+\end{eqnarray*}
+
+\end{itemize}
+
+2. Iteration
+
+\begin{itemize}
+\item[\texttt{YXXX}]
+
+$$F = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0,1 & 0,2225 & 0\\
+0 & 0,11779 & 0,06148 & 0\\
+0 & 0,068609 & 0,031998 & 0\\
+0 & 0,03863 & 0,0177834 & 0\\
+0 & 0 & 0 & 0,011282
+\end{pmatrix}
+\quad
+B = \begin{pmatrix}
+0,01129897 & 0 & 0 & 0\\
+0 & 0,03576 & 0,03471 & 0\\
+0 & 0,06367 & 0,061814 & 0\\
+0 & 0,1133 & 0,110213 & 0\\
+0 & 0,2 & 0,2 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}$$
+
+\item[\texttt{XYYX}]
+
+$$F = \begin{pmatrix}
+1 & 0 & 0 & 0\\
+0 & 0,4 & 0,2775 & 0\\
+0 & 0,0642535 & 0,098226 & 0\\
+0 & 0,0150103 & 0,0244448 & 0\\
+0 & 0,01455002 & 0,00742399 & 0\\
+0 & 0 & 0 & 0,0043948
+\end{pmatrix}
+\quad
+B = \begin{pmatrix}
+0,0067516 & 0 & 0 & 0\\
+0 & 0,0063031 & 0,0067516 & 0\\
+0 & 0,0260434 & 0,0277057 & 0\\
+0 & 0,1133 & 0,110213 & 0\\
+0 & 0 & 0 & 1
+\end{pmatrix}$$
+
+\item
+
+\begin{eqnarray*}
+A_{2,1} & = & 0,5 \cdot (0,2225 \cdot 0,363 \cdot 0,555 \cdot 0,061814 + 0,06148 \cdot 0,363 \cdot 0,555  0,110213 + 0,033998 \cdot 0,363 \cdot 0,555 \cdot 0,2)\\
+&& + 0,5 \cdot (0,2775 \cdot 0,363 \cdot 0,445 \cdot 0,0277057 + 0,098226 \cdot 0,363 \cdot 0,445 \cdot 0,110213 + 0,0244448 \cdot 0,363 \cdot 0,555 \cdot 0,2)\\
+& = & 0,0033737\\
+A_{2,2} & = & 0,5 \cdot (0,2225 \cdot 0,437 \cdot 0,8 \cdot 0,06367 + 0,06148 \cdot 0,437 \cdot 0,8 \cdot 0,1133 + 0,031998 \cdot 0,437 \cdot 0,8 \cdot 0,2)\\
+&& + 0,5 \cdot (0,2775 \cdot 0,437 \cdot 0,2 \cdot 0,0260434 + 0,098226 \cdot 0,437 \cdot 0,2 \cdot 0,1133 + 0,0244448 \cdot 0,437 \cdot 0,8 \cdot 0,2)\\
+& = & 0,0064693\\
+E_2(x) & = & 0,5 \cdot (0,06148 \cdot 0,061814 + 0,031998 \cdot 0,110213 + 0,0177834 \cdot 0,2) + 0,5 \cdot (0,2775 \cdot 0,0067516 + 0,00742399 \cdot 0,2)\\
+& = & 0,0242224\\
+E_2(y) & = & 0,5 \cdot (0,2225 \cdot 0,03471) + 0,5 \cdot (0,098226 \cdot 0,0277057 + 0,0244448 \cdot 0,110213)\\
+& = & 0,0065693\\
+a_{2,1} & = & \frac{A_{2,1}}{A_{2,1} + A_{2,2}} \cdot 0,8 = 0,5258\\
+a_{2,2} & = & \frac{A_{2,2}}{A_{2,1} + A_{2,2}} \cdot 0,8 = 0,2742\\
+e_2(x) & = & \frac{E_2(x)}{E_2(x) + E_2(y)} = 0,7867\\
+e_2(y) & = & \frac{E_2(y)}{E_2(x) + E_2(y)} = 0,2133
+\end{eqnarray*}
+
+\end{itemize}
 
 \end{enumerate}
 \end{document}
