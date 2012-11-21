@@ -1,0 +1,1418 @@
+ /home/sme/Downloads/fasta-35.4.12/bin/fasta35 -A -g=-10 query.fa library.fa
+FASTA searches a protein or DNA sequence data bank version 35.04 Feb. 20, 2010
+Please cite:
+ W.R. Pearson & D.J. Lipman PNAS (1988) 85:2444-2448
+
+Query: , 100 nt
+  1>>> myrandomnukl - 100 nt - 100 ntresult.out
+Library: library.fa 10000000 residues in 10000 sequences
+
+       opt      E()
+  20     0     0:
+  22     0     0:           one = represents 17 library sequences
+  24     0     0:
+  26     3     0:=
+  28     0     2:*
+  30    30    14:*=
+  32   113    53:===*===
+  34   113   144:======= *
+  36   565   297:=================*================
+  38   627   490:============================*========
+  40   504   684:==============================          *
+  42  1014   836:=================================================*==========
+  44   842   922:==================================================    *
+  46   792   939:===============================================        *
+  48   836   899:==================================================  *
+  50   665   821:========================================        *
+  52   602   721:====================================      *
+  54   560   616:=================================   *
+  56   487   515:============================= *
+  58   432   423:========================*=
+  60   376   342:====================*==
+  62   305   274:================*=
+  64   230   218:============*=
+  66   198   173:==========*=
+  68   133   136:=======*
+  70   112   106:======*
+  72    88    83:====*=
+  74    82    65:===*=
+  76    79    50:==*==
+  78    53    39:==*=
+  80    46    30:=*=
+  82    27    23:=*
+  84    20    18:=*
+  86    12    14:*
+  88     8    11:*          inset = represents 1 library sequences
+  90     9     9:*
+  92     6     7:*         :======*
+  94     7     5:*         :====*==
+  96     4     4:*         :===*
+  98     6     3:*         :==*===
+ 100     5     2:*         :=*===
+ 102     3     2:*         :=*=
+ 104     2     1:*         :*=
+ 106     2     1:*         :*=
+ 108     0     1:*         :*
+ 110     0     1:*         :*
+ 112     1     1:*         :*
+ 114     1     0:=         *=
+ 116     0     0:          *
+ 118     0     0:          *
+ 120     0     0:          *
+10000000 residues in 10000 sequences
+Statistics: MLE_cen statistics: Lambda= 0.1357;  K=0.007026 (cen=500)
+ Kolmogorov-Smirnov  statistic: 0.0450 (N=29) at  38
+Algorithm: FASTA (3.5 Sept 2006) [optimized]
+Parameters: +5/-4 matrix (5:-4) ktup: 6
+ join: 46, opt: 31, open/ext: -12/-2, width:  16
+
+The best scores are:                                      opt bits E(10000)
+ random8661                                    (1000) [f]  113 29.3     1.5
+ random3998                                    (1000) [r]  112 29.1     1.8
+ random271                                     (1000) [f]  107 28.1     3.5
+ random2216                                    (1000) [f]  105 27.7     4.6
+ random3687                                    (1000) [r]  104 27.5     5.2
+ random3592                                    (1000) [f]  103 27.3       6
+ random9822                                    (1000) [r]  102 27.1     6.9
+ random2265                                    (1000) [f]  102 27.1     6.9
+ random2647                                    (1000) [f]  102 27.1     6.9
+ random8355                                    (1000) [f]  101 26.9     7.9
+ random658                                     (1000) [r]  100 26.7       9
+ random2720                                    (1000) [f]  100 26.7       9
+ random5835                                    (1000) [f]  100 26.7       9
+ random771                                     (1000) [r]  100 26.7       9
+ random9135                                    (1000) [r]   99 26.5      10
+ random7427                                    (1000) [r]   99 26.5      10
+ random4023                                    (1000) [r]   99 26.5      10
+ random8577                                    (1000) [r]   98 26.3      12
+ random8563                                    (1000) [r]   98 26.3      12
+ random557                                     (1000) [r]   98 26.3      12
+ random2365                                    (1000) [r]   97 26.1      14
+ random8798                                    (1000) [r]   97 26.1      14
+ random6241                                    (1000) [r]   96 25.9      15
+ random969                                     (1000) [r]   96 25.9      15
+ random4805                                    (1000) [f]   95 25.7      18
+ random2456                                    (1000) [f]   95 25.7      18
+ random8937                                    (1000) [r]   95 25.7      18
+ random8233                                    (1000) [f]   95 25.7      18
+ random6284                                    (1000) [r]   95 25.7      18
+ random98                                      (1000) [f]   94 25.6      20
+ random5320                                    (1000) [f]   94 25.6      20
+ random2780                                    (1000) [f]   94 25.6      20
+ random1358                                    (1000) [f]   93 25.4      23
+ random6665                                    (1000) [f]   93 25.4      23
+ random739                                     (1000) [f]   93 25.4      23
+ random9188                                    (1000) [f]   92 25.2      27
+ random5555                                    (1000) [f]   92 25.2      27
+ random3715                                    (1000) [f]   91 25.0      31
+ random4523                                    (1000) [r]   91 25.0      31
+ random9357                                    (1000) [r]   91 25.0      31
+ random3042                                    (1000) [f]   90 24.8      35
+ random5231                                    (1000) [r]   90 24.8      35
+ random4815                                    (1000) [f]   90 24.8      35
+ random397                                     (1000) [f]   90 24.8      35
+ random1332                                    (1000) [r]   90 24.8      35
+ random4126                                    (1000) [r]   90 24.8      35
+ random7984                                    (1000) [f]   89 24.6      40
+ random8015                                    (1000) [r]   89 24.6      40
+ random9185                                    (1000) [r]   89 24.6      40
+ random7117                                    (1000) [f]   89 24.6      40
+ random1783                                    (1000) [f]   89 24.6      40
+ random4999                                    (1000) [f]   88 24.4      46
+ random9854                                    (1000) [f]   88 24.4      46
+ random513                                     (1000) [r]   88 24.4      46
+ random6069                                    (1000) [f]   88 24.4      46
+ random3774                                    (1000) [r]   88 24.4      46
+ random9278                                    (1000) [r]   88 24.4      46
+ random8335                                    (1000) [r]   88 24.4      46
+ random5700                                    (1000) [f]   88 24.4      46
+ random2502                                    (1000) [f]   87 24.2      53
+ random1098                                    (1000) [f]   87 24.2      53
+ random8640                                    (1000) [r]   87 24.2      53
+ random1964                                    (1000) [f]   86 24.0      60
+ random8154                                    (1000) [r]   86 24.0      60
+ random3459                                    (1000) [r]   86 24.0      60
+ random8730                                    (1000) [f]   86 24.0      60
+ random2131                                    (1000) [r]   86 24.0      60
+ random2086                                    (1000) [f]   86 24.0      60
+ random123                                     (1000) [f]   86 24.0      60
+ random6724                                    (1000) [r]   86 24.0      60
+ random3092                                    (1000) [r]   86 24.0      60
+ random6072                                    (1000) [f]   86 24.0      60
+ random8158                                    (1000) [f]   86 24.0      60
+ random952                                     (1000) [f]   85 23.8      69
+ random6833                                    (1000) [r]   85 23.8      69
+ random9854                                    (1000) [r]   85 23.8      69
+ random113                                     (1000) [f]   85 23.8      69
+ random7247                                    (1000) [r]   85 23.8      69
+ random7137                                    (1000) [r]   85 23.8      69
+ random5898                                    (1000) [f]   85 23.8      69
+ random732                                     (1000) [r]   85 23.8      69
+ random9751                                    (1000) [r]   85 23.8      69
+ random8746                                    (1000) [f]   85 23.8      69
+ random6721                                    (1000) [r]   85 23.8      69
+ random9878                                    (1000) [f]   84 23.6      79
+ random4832                                    (1000) [f]   84 23.6      79
+ random9196                                    (1000) [f]   84 23.6      79
+ random2245                                    (1000) [r]   84 23.6      79
+ random5100                                    (1000) [f]   84 23.6      79
+ random1211                                    (1000) [r]   84 23.6      79
+ random9148                                    (1000) [f]   84 23.6      79
+ random7746                                    (1000) [f]   84 23.6      79
+ random3567                                    (1000) [f]   84 23.6      79
+ random7640                                    (1000) [f]   84 23.6      79
+ random2075                                    (1000) [r]   84 23.6      79
+ random2371                                    (1000) [r]   84 23.6      79
+ random7298                                    (1000) [r]   83 23.4      90
+ random9073                                    (1000) [f]   83 23.4      90
+ random3498                                    (1000) [r]   83 23.4      90
+ random9536                                    (1000) [r]   83 23.4      90
+ random4126                                    (1000) [f]   83 23.4      90
+ random541                                     (1000) [r]   83 23.4      90
+ random9639                                    (1000) [f]   83 23.4      90
+ random6839                                    (1000) [f]   83 23.4      90
+ random4098                                    (1000) [r]   83 23.4      90
+ random7356                                    (1000) [f]   83 23.4      90
+ random4662                                    (1000) [f]   83 23.4      90
+ random7366                                    (1000) [f]   83 23.4      90
+ random5814                                    (1000) [r]   83 23.4      90
+ random1319                                    (1000) [r]   83 23.4      90
+ random1774                                    (1000) [f]   83 23.4      90
+ random7265                                    (1000) [f]   83 23.4      90
+ random7829                                    (1000) [f]   83 23.4      90
+ random9177                                    (1000) [r]   83 23.4      90
+ random2818                                    (1000) [f]   83 23.4      90
+ random3749                                    (1000) [f]   82 23.2   1e+02
+ random1704                                    (1000) [r]   82 23.2   1e+02
+ random6652                                    (1000) [r]   82 23.2   1e+02
+ random9260                                    (1000) [f]   82 23.2   1e+02
+ random8940                                    (1000) [r]   82 23.2   1e+02
+
+
+>> random8661                                             (1000 nt)
+ initn:  50 init1:  50 opt: 113  Z-score: 113.9  bits: 29.3 E():  1.5
+Smith-Waterman score: 113; 61.5% identity (61.5% similar) in 96 nt overlap (1-95:828-917)
+
+                                             10        20        30
+                                     GGCTCGATGTTACCTCCTATACGGTGCGGT
+                                     ::: :: : ::  :     :::::: : : 
+       TCCGCTCAGACGTAATCGGCAGGGGAGTCTGGCGCGGTTTTGGCGGGCCTACGGTCCCG-
+       800       810       820       830       840       850       
+
+               40        50         60        70        80         
+       GGCCAACCGGTAAATCTTTGGATAGTAT-ACTCTATATATACTTAACTCCTCGCAAAGAG
+       :::    :: :::::  ::::  ::  : :::: ::: :  : :    :::: : : :::
+       GGCATGGCGCTAAATACTTGGGCAGGCTCACTCAATAGAGTCAT----CCTCACGA-GAG
+        860       870       880       890       900            910 
+
+      90       100                                                 
+       CTGGAGATGAG                                                 
+       ::::::                                                      
+       CTGGAGGCTTCAGAATTTAGTTCTTGTGTCATAAGACCGTAACCGATCTGCGACTAAGGA
+             920       930       940       950       960       970 
+
+>> random3998                                             (1000 nt)
+rev-comp initn:  42 init1:  42 opt: 112  Z-score: 112.9  bits: 29.1 E():  1.8
+Smith-Waterman score: 112; 70.4% identity (70.4% similar) in 71 nt overlap (95-28:615-679)
+
+                              100        90         80        70   
+-                               CTCATCTCCAGC-TCTTTGCGAGGAGTTAAGTAT-
+                                     ::::::  :: :: : :::::: :: :   
+       TCATGTAGTCCGGGGATGTATTTTCGGATCCTCCAGTATCGTT-CAAGGAGT-AACTCCC
+          590       600       610       620        630        640  
+
+              60        50        40        30        20        10 
+-      -ATATAGAGTATACTATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAAC
+        :::: ::::  : :::  :::: ::::::  :: ::::::                   
+       AATATCGAGTTCAGTAT--AAAGTTTTACC--TTTGCCACCCTGGAAGTCACACACATCT
+            650         660       670         680       690        
+
+                                                                   
+-      ATCGAGCC                                                    
+                                                                   
+       TCAATAGAATCTCCCTGCATAGACTCGGACGCAGGGGCAATTTACACTCCTGTATTCCAA
+      700       710       720       730       740       750        
+
+>> random271                                              (1000 nt)
+ initn:  45 init1:  45 opt: 107  Z-score: 107.6  bits: 28.1 E():  3.5
+Smith-Waterman score: 107; 67.2% identity (67.2% similar) in 58 nt overlap (42-96:466-520)
+
+              20        30        40           50        60        
+       ACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCT---TTGGATAGTATACTCTATATA
+                                     ::::::   : :::  : :::::::::  :
+       CCTCGGAGGTCTGATACACCAGGCAGAAAAAAATCTGCTTCGGACCGAATACTCTATTCA
+         440       450       460       470       480       490     
+
+       70        80        90       100                            
+       TACTTAACTCCTCGCAAAGAGCTGGAGATGAG                            
+         ::   :: ::::: : : :::: :::                                
+       GTCT---CTACTCGCTATGGGCTGTAGACTGCGCCTAATGACTGTAGTGACAATCATACC
+            500       510       520       530       540       550  
+
+>> random2216                                             (1000 nt)
+ initn:  60 init1:  60 opt: 105  Z-score: 105.5  bits: 27.7 E():  4.6
+Smith-Waterman score: 105; 74.0% identity (74.0% similar) in 50 nt overlap (31-77:522-570)
+
+               10        20        30        40         50         
+       GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGG-TAAATCTTTGGATAGTAT-
+                                     ::::::  :: :::::::::::: : ::: 
+       ATTTAGTTACCGTTAGGGTATTGGCCATAAGGCCAAAGGGATAAATCTTTGGA-ATTATC
+             500       510       520       530       540        550
+
+        60        70        80        90       100                 
+       -ACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG                 
+        ::: ::: :   :::: ::                                        
+       GACTGTATCTCCCCTTACCTAACTGTGTCTTGTGTGGAGTAACTCGCGCTCGACTGCCTG
+              560       570       580       590       600       610
+
+>> random3687                                             (1000 nt)
+rev-comp initn:  45 init1:  45 opt: 104  Z-score: 104.4  bits: 27.5 E():  5.2
+Smith-Waterman score: 104; 62.3% identity (62.3% similar) in 77 nt overlap (100-31:229-304)
+
+                                   100        90           80      
+-                                    CTCATCTCCAGCTCTTTGC---GAGGAGTT
+                                     : :: :: ::::::  ::    :: :::::
+       AAGTTCGCCTAGTGGCTGTCCAGCCACTCGCACAACTTCAGCTCGCTGATTAGAAGAGTT
+      200       210       220       230       240       250        
+
+         70        60        50            40        30        20  
+-      AAGTATATATAGAGTATACTATCCAAAGATTTAC----CGGTTGGCCACCGCACCGTATA
+           :   :::::::   : ::: : : ::: ::    :::::::::             
+       TTC-ACGGATAGAGTCAGCGATCGATAAATTCACGGGTCGGTTGGCCGTTGACTCATAAG
+      260        270       280       290       300       310       
+
+             10                                                    
+-      GGAGGTAACATCGAGCC                                           
+                                                                   
+       CCGCGGCCCAGTAATCCGGAGCTTTCTACACCCGAAATAGGGACCGGTCTACCCTCGTCG
+       320       330       340       350       360       370       
+
+>> random3592                                             (1000 nt)
+ initn:  35 init1:  35 opt: 103  Z-score: 103.3  bits: 27.3 E():    6
+Smith-Waterman score: 103; 66.1% identity (66.1% similar) in 56 nt overlap (20-75:184-230)
+
+                          10        20        30        40         
+                  GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTT
+                                     ::: :: :::::::        : : : ::
+       GGGAGGGGAGGACTAATCTACATGTTGTAGTACCGT-CGGTGGC--------ACAACATT
+           160       170       180        190               200    
+
+      50        60        70        80        90       100         
+       GGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG         
+       :: ::  ::: ::::: ::::::: :                                  
+       GGCTATCATATTCTATTTATACTTCAGCTAGTCTACCCTGCAGCGTGCCCCCAAGTTGAT
+          210       220       230       240       250       260    
+
+>> random9822                                             (1000 nt)
+rev-comp initn:  35 init1:  35 opt: 102  Z-score: 102.3  bits: 27.1 E():  6.9
+Smith-Waterman score: 102; 62.5% identity (62.5% similar) in 96 nt overlap (100-10:335-426)
+
+                                   100        90        80         
+-                                    CTCATCTCCAGCTCTTTGCGAGGAGTTAAG
+                                     :::: :: : ::: :  ::  ::::::: :
+       CCGCTTGGACGGCGAAAATGGGCGCCAAAACTCA-CTTCTGCTATG-GCATGGAGTTACG
+          310       320       330        340        350       360  
+
+      70        60        50           40        30          20    
+-      TATATATAGAGTATACTATCCAAAGATTTAC---CGGTTGGCCACCGC--ACCGTATAGG
+          :::: : : :: :  ::::  :::  ::   : ::::: :: : :  : : : : ::
+       CG-ATAT-GCGAATCCGTTCCAGCGATAAACAAACAGTTGGTCATCACGTAACCTCTGGG
+              370       380       390       400       410       420
+
+           10                                                      
+-      AGGTAACATCGAGCC                                             
+        :::::                                                      
+       CGGTAAGCTTTGACGGTCCGAAACTCCATACATGTGAATCCGCGCAACGAAGGGACGCAT
+              430       440       450       460       470       480
+
+>> random2265                                             (1000 nt)
+ initn:  50 init1:  50 opt: 102  Z-score: 102.3  bits: 27.1 E():  6.9
+Smith-Waterman score: 102; 58.4% identity (58.4% similar) in 89 nt overlap (5-87:387-474)
+
+                                         10        20        30    
+                                 GGCTCGATGTTACCTCCTATACGGTGCGGTGGCC
+                                     :::: : :: : ::   :   ::::::: :
+       GGATTGTCATGTTCGGGCGAAACTAATATCCGATATGACGTACTGAGCAA-GCGGTGGTC
+        360       370       380       390       400        410     
+
+           40              50        60        70        80        
+       AACCGGTAAATC------TTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGA
+       ::  :: ::::       :  :: :  :  :   :  : ::::: ::::::::::  :: 
+       AAGGGGAAAATTACGCCGTGGGGCTCCTGCAAGTTCGACATACTCAACTCCTCGCTCAGC
+         420       430       440       450       460       470     
+
+       90       100                                                
+       GCTGGAGATGAG                                                
+                                                                   
+       CACAAGCCGGTCAAGCTCTCGCGCGGTGGCATTAGCCACTGTGTTTGGCCTGCAGTCGAT
+         480       490       500       510       520       530     
+
+>> random2647                                             (1000 nt)
+ initn:  54 init1:  54 opt: 102  Z-score: 102.3  bits: 27.1 E():  6.9
+Smith-Waterman score: 102; 59.6% identity (59.6% similar) in 104 nt overlap (5-97:255-353)
+
+                                         10           20         30
+                                 GGCTCGATGTTA---CCTCCTAT-ACGGTGCGGT
+                                     :: :::::   :: ::: : ::  : ::  
+       GAAGTTTTCAGGTTCATTTAGAAAATCTACCGTTGTTAGTTCCCCCTGTCACAATTCGAC
+          230       240       250       260       270       280    
+
+               40        50        60        70            80      
+       GGCCAACCGGTAAATCTTTGGATAGTATACTCTATATATACTT----AACTCCTC---GC
+       :  :   : ::   :::::   ::::::  ::  :::::: ::    :::: ::    ::
+       GCTCGTGCCGTCCCTCTTTC--TAGTATTATCCCTATATAGTTCACGAACTTCTGATAGC
+          290       300         310       320       330       340  
+
+            90       100                                           
+       AAAGAGCTGGAGATGAG                                           
+        :::   :::::::                                              
+       CAAG---TGGAGATACCTCAAAGGAAGTCAACTCAAGCAGAACGACTAATCTAATCACGT
+               350       360       370       380       390         
+
+>> random8355                                             (1000 nt)
+ initn:  35 init1:  35 opt: 101  Z-score: 101.2  bits: 26.9 E():  7.9
+Smith-Waterman score: 101; 63.2% identity (63.2% similar) in 87 nt overlap (5-91:142-221)
+
+                                         10        20        30    
+                                 GGCTCGATGTTACCTCCTATACGGTGCGGTGGCC
+                                     :::: :::::::  :  : : ::  :::::
+       GTTGTCATGTAGCCGGAATCCGCTATCATGCGAT-TTACCTC--AACCCGGGC--TGGCC
+             120       130       140        150         160        
+
+           40        50        60        70        80        90    
+       AACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGA
+        :: ::: :::::    :: ::: :::: :  : ::    : :: : ::::   :::   
+       TAC-GGTGAATCTGACCATCGTAAACTCCAACTGTAAGGTAGTC-TGGCAAGTTGCTTAT
+         170       180       190       200        210       220    
+
+          100                                                      
+       GATGAG                                                      
+                                                                   
+       CGTGCCAGTTCTTCAAAATAACGCACAATTTAGCAGGGCCTGAGACCAGAAGCAACAAGG
+          230       240       250       260       270       280    
+
+>> random658                                              (1000 nt)
+rev-comp initn:  61 init1:  61 opt: 100  Z-score: 100.2  bits: 26.7 E():    9
+Smith-Waterman score: 100; 63.0% identity (63.0% similar) in 92 nt overlap (87-5:813-898)
+
+                      100        90        80        70            
+-                       CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTAT-ATATAG---
+                                     :: ::::: :     ::: : :::: :   
+       GTAGTCTATATAGACGGAGTGCCCCAGTGACTCTGCGAAGGC---AGTCTGATATCGGCT
+            790       800       810       820          830         
+
+       60           50        40        30          20        10   
+-      AGTATACTATC---CAAAGATTTACCGGTTGGCCACC--GCACCGTATAGGAGGTAACAT
+       :::: ::::::   ::::: :   :  :   : : ::  : ::: :: ::::::: ::::
+       AGTAAACTATCAGACAAAGGT--GCGTGAGCGTCTCCTAGGACCTTA-AGGAGGTCACAT
+     840       850       860         870       880        890      
+
+                                                                   
+-      CGAGCC                                                      
+       ::                                                          
+       CGCTATACGGCTAGTTAGCGTGTGGGCGTAAACATTATCAACCATCCCTACGTGGTCATG
+        900       910       920       930       940       950      
+
+>> random2720                                             (1000 nt)
+ initn:  40 init1:  40 opt: 100  Z-score: 100.2  bits: 26.7 E():    9
+Smith-Waterman score: 100; 59.3% identity (59.3% similar) in 81 nt overlap (16-96:212-290)
+
+                              10        20        30        40     
+                      GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAAT
+                                     :: :: :  : : :  ::: :  :: : : 
+       TTATAACGCCTTTAAGAAGGCGTAAAGTAGCCGATTCCCTCCCGGCGCCTAGAGGAAGAC
+             190       200       210       220       230       240 
+
+          50        60        70        80        90       100     
+       CTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG     
+          :::  :::::   : : : ::   :::  :::: ::: :::::::: :         
+       ACGTGGTAAGTATTTGCGACAGATC--TAATCCCTCTCAAGGAGCTGGAAAGATTTGGCA
+             250       260         270       280       290         
+
+       ATGGACCACTCAGTTGCTCCAGAGGTAGATATTTGCGATTGCATCATGTGATTTTATCCC
+     300       310       320       330       340       350         
+
+>> random5835                                             (1000 nt)
+ initn:  50 init1:  50 opt: 100  Z-score: 100.2  bits: 26.7 E():    9
+Smith-Waterman score: 100; 61.4% identity (61.4% similar) in 88 nt overlap (14-98:90-173)
+
+                                10        20        30        40   
+                        GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAA
+                                     :::::    :::: :  :  ::: : :: :
+       AAAGAGAGATATACGATATTGAGAAAAGTACTCCTG---GGTGTGCGGCTCAAGCAGTCA
+      60        70        80        90          100       110      
+
+             50        60        70        80        90         100
+       ATCTT-TGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCT--GGAGATGAG
+        :::  : :: : :: :::::::::: : : :::  :: :   ::  ::  ::  :::  
+       CTCTGCTCGACA-TACACTCTATATAAAATCAACGTCTGGGGTAGGTCTTAGGTTATGCT
+        120        130       140       150       160       170     
+
+       ACCTTTGAGTCAAGGCGCGTATAACGGAGCAAAACGAGTTGCTGCAAAATGTACATCCTA
+         180       190       200       210       220       230     
+
+>> random771                                              (1000 nt)
+rev-comp initn:  45 init1:  45 opt: 100  Z-score: 100.2  bits: 26.7 E():    9
+Smith-Waterman score: 100; 67.9% identity (67.9% similar) in 56 nt overlap (59-10:924-976)
+
+     90        80        70        60          50            40    
+-      CTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTA--TCCA----AAGATTTACCGGT
+                                     :::: ::  ::::    :: : ::: ::::
+       GCCGGAGCGGAAGGACAGCCCCTCAAGCTCTATAATACCTCCATGGGAAAAGTTATCGGT
+           900       910       920       930       940       950   
+
+           30        20        10                        
+-      TGGCCACCGCACCGTATAGGAGGTAACATCGAGCC               
+       ::::: :   ::::  :: ::::: :                        
+       TGGCCCC---ACCGGGTAAGAGGTGATCTGCAGTGTGATACAGTATGCGC
+           960          970       980       990      1000
+
+>> random9135                                             (1000 nt)
+rev-comp initn:  40 init1:  40 opt:  99  Z-score: 99.1  bits: 26.5 E():   10
+Smith-Waterman score: 99; 58.3% identity (58.3% similar) in 108 nt overlap (99-1:511-615)
+
+                                  100        90             80     
+-                                   CTCATCTCCAGCTCTTTGCG-----AGGAGT
+                                     : : : ::: ::  :::::     : ::: 
+       GGGCAAACAGCTCTGATGCAATCTCTACTATTAACGCCACCTACTTGCGGTACGAAGAGG
+              490       500       510       520       530       540
+
+          70        60         50        40        30           20 
+-      TAAGTATATATAGAGTATAC-TATCCAAAGATTTACCGGTTGGCCACCGCA---CCGTAT
+       :: : :: ::   ::  : : : :::   :::  :: ::: :   :  ::    ::: ::
+       TATGCATTTAATAAGCGTTCGTGTCC--GGATGCACGGGTGGCAGATGGCTGAGCCGGAT
+              550       560         570       580       590        
+
+              10                                                   
+-      AGGAGGTAACATCGAGCC                                          
+       :::::: ::  ::: :::                                          
+       AGGAGGCAAG-TCGGGCCAGGTTCGTATACATTGGCTTCCGAGGGTGCCATGAGTTTCCA
+      600        610       620       630       640       650       
+
+>> random7427                                             (1000 nt)
+rev-comp initn:  62 init1:  62 opt:  99  Z-score: 99.1  bits: 26.5 E():   10
+Smith-Waterman score: 99; 63.9% identity (63.9% similar) in 61 nt overlap (62-7:88-145)
+
+        90        80        70        60        50             40  
+-      CAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTATCCAAAGATT-----TACCG
+                                     ::  : ::::::: ::: :      :: ::
+       GGCGTCTGTGGCGCTGTGATGTCATTGGCCGATGAGACTATCCGAAGGTACTGTATATCG
+        60        70        80        90       100       110       
+
+             30        20        10                                
+-      GTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC                       
+        :::::::  :::::::   :  :: : :::                             
+       TTTGGCCAAGGCACCGT---GCGGGGATCATGCGCGATACACGCGAGTTTGGGAGGCTCC
+       120       130          140       150       160       170    
+
+       TTGAAGAAGGCAGGGTGCGGTCGGCCTTGAACACCAGTGTGAGTGTAGCGCCGCATTCGC
+          180       190       200       210       220       230    
+
+>> random4023                                             (1000 nt)
+rev-comp initn:  60 init1:  60 opt:  99  Z-score: 99.1  bits: 26.5 E():   10
+Smith-Waterman score: 99; 71.7% identity (71.7% similar) in 46 nt overlap (97-57:627-672)
+
+                                100        90        80            
+-                                 CTCATCTCCAGCTCTTTGCGAGGAGTTA----A
+                                     : :::::::::::: : ::::: :     :
+       CATTAGGAAGCTAGTAGGTCAGACTGCCCGAGCTCCAGCTCTTTACAAGGAGATGTGAGA
+        600       610       620       630       640       650      
+
+       70         60        50        40        30        20       
+-      GTATATA-TAGAGTATACTATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGG
+       :::  :: ::::: ::                                            
+       GTACGTAGTAGAGAATGATGAGTGGCAGAACGTGATCGGGAACCTATTAGGAGGTGTGTA
+        660       670       680       690       700       710      
+
+>> random8577                                             (1000 nt)
+rev-comp initn:  55 init1:  55 opt:  98  Z-score: 98.1  bits: 26.3 E():   12
+Smith-Waterman score: 98; 61.1% identity (61.1% similar) in 95 nt overlap (100-12:139-231)
+
+                                   100        90        80         
+-                                    CTCATCTCCAGCTCTTTGCGAGGAGTTAAG
+                                     ::: : :   : : : :  ::::: ::: :
+       TATGACCGAAGCCCTCGGAACCGTCGCAACCTCTTTTGGGGTTTTATTTGAGGA-TTAGG
+      110       120       130       140       150       160        
+
+      70            60         50        40        30         20   
+-      TA----TATATAGAGTAT-ACTATCCAAAGATTTACCGGTTGGCCACC-GCACCGTATAG
+       :     : :::::  : : ::::::::::: : : :   :: : :::: : ::: :  ::
+       TGGCGGTCTATAGCCTGTGACTATCCAAAG-TCTGCGTCTTCGTCACCCGTACCATGGAG
+       170       180       190        200       210       220      
+
+            10                                                     
+-      GAGGTAACATCGAGCC                                            
+       : : :                                                       
+       GGGATGCCTGCACCGACACCGGATTTAGAAACTACACGTAAGGCGATGGGCGCGATCATG
+        230       240       250       260       270       280      
+
+>> random8563                                             (1000 nt)
+rev-comp initn:  40 init1:  40 opt:  98  Z-score: 98.1  bits: 26.3 E():   12
+Smith-Waterman score: 98; 67.7% identity (67.7% similar) in 65 nt overlap (90-26:932-991)
+
+                         100        90        80        70         
+-                          CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGA
+                                     ::: ::::::::   ::: ::: :: : ::
+       GTCAAATCCGGCTATGAGAAAGCGGAGAGGGCTATTTGCGAGTTATTAGGTA-ATGT-GA
+             910       920       930       940       950           
+
+      60        50        40        30        20        10         
+-      GTATACTATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC
+       :::  : :  : ::: : :: :: :: :  :::::                         
+       GTACCC-ACGCTAAGTTGTAGCGATTCG--ACCGCTGAGTGCCA                
+     960        970       980         990      1000                
+
+>> random557                                              (1000 nt)
+rev-comp initn:  70 init1:  70 opt:  98  Z-score: 98.1  bits: 26.3 E():   12
+Smith-Waterman score: 98; 76.5% identity (76.5% similar) in 34 nt overlap (72-45:344-377)
+
+       100        90        80        70              60        50 
+-        CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGA------GTATACTATCCA
+                                     :: :::::::::      ::::::::::::
+       TCAGTGCGGTACAAAGTCCGGGTGATCCAGAGGATATATAGACTCGTGGTATACTATCCA
+           320       330       340       350       360       370   
+
+              40        30        20        10                     
+-      AAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC            
+       :: :                                                        
+       AAAACCGCGACCGTAATCACCCTCCATTGTCCGGGACCACATTCATCTTTGGGCATTGAA
+           380       390       400       410       420       430   
+
+>> random2365                                             (1000 nt)
+rev-comp initn:  65 init1:  65 opt:  97  Z-score: 97.0  bits: 26.1 E():   14
+Smith-Waterman score: 97; 66.2% identity (66.2% similar) in 68 nt overlap (99-36:63-128)
+
+                                  100        90          80        
+-                                   CTCATCTCCAGC-TC-TTTGCGAGGAGTTAA
+                                     :::: ::   : :: :::::  :::  : :
+       GGCTTTAATCTACTTGATGACTCCACCGCATCATATCGTACGTCGTTTGCTTGGA--TGA
+             40        50        60        70        80          90
+
+       70        60        50          40        30        20      
+-      GTATATATAGAGTATACTATCCAAAGATTT--ACCGGTTGGCCACCGCACCGTATAGGAG
+       : : : : ::::::  :::   ::::::::  :: :::                      
+       GCAGACACAGAGTAGCCTACGTAAAGATTTTGACAGGTCTATGGTTCTACCTTATAATCA
+              100       110       120       130       140       150
+
+         10                                                        
+-      GTAACATCGAGCC                                               
+                                                                   
+       AGCCTCAGTCGCTGTTTCTCGGTGTGTCGTGACAAGCTTTAATGAGCAGAAGTCCTGGGG
+              160       170       180       190       200       210
+
+>> random8798                                             (1000 nt)
+rev-comp initn:  45 init1:  45 opt:  97  Z-score: 97.0  bits: 26.1 E():   14
+Smith-Waterman score: 97; 60.7% identity (60.7% similar) in 107 nt overlap (98-4:377-477)
+
+                                 100        90         80          
+-                                  CTCATCTCCAGCTCTTTGC-GAGGAGTTAAGT
+                                     :: ::  :::::  ::: :: : ::   ::
+       CTTGCTCTTGGGAACCGTGATATAAACAGGCAACTGGAGCTC--TGCTGATGGGT---GT
+        350       360       370       380         390          400 
+
+     70          60        50           40            30           
+-      ATATATAG--AGTATACTATCCAAAGATTTA---CCGG----TTGGCCACCGCACCGTA-
+       :::::: :  :: : ::::::::: :   ::   :::     :::   :  :: ::::: 
+       ATATATTGGAAGCACACTATCCAATGTACTAGTGCCGAATGCTTGATTAAAGC-CCGTAG
+             410       420       430       440       450        460
+
+      20        10                                                 
+-      -TAGGAGGTAACATCGAGCC                                        
+        : :   ::: : ::::                                           
+       CTCGTCTGTACCTTCGACTCATTCGTATGCGACAATTGACACGTGTGCTCCAAAATCAGT
+              470       480       490       500       510       520
+
+>> random6241                                             (1000 nt)
+rev-comp initn:  50 init1:  50 opt:  96  Z-score: 95.9  bits: 25.9 E():   15
+Smith-Waterman score: 96; 61.4% identity (61.4% similar) in 101 nt overlap (94-1:661-755)
+
+                             100        90        80        70     
+-                              CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATA
+                                     ::::: :::  ::: :: : :: : : :::
+       CTTTGAGAGAGACTATCGTAGGGTACTTCATCCAGGTCTAGGCGCGGCGCTA-GAAAATA
+              640       650       660       670       680          
+
+          60        50           40        30           20         
+-      TAGAGTATACTATCCAA---AGATTTACCGGTTGGCCACCGCAC---CGTAT-AGGAGGT
+          ::::   :    ::   :::   :::::  : :::::::::   : ::: :::  : 
+       ATAAGTAAGTTGAGAAACCCAGA---ACCGGACG-CCACCGCACACCCTTATCAGGCTGC
+     690       700       710          720        730       740     
+
+       10                                                          
+-      AACATCGAGCC                                                 
+       : :: ::: ::                                                 
+       AGCA-CGAACCGGCCGTACTTATTACTTTATACTGGGGAAAGAACCGAGGGCAACCCTGC
+          750       760       770       780       790       800    
+
+>> random969                                              (1000 nt)
+rev-comp initn:  66 init1:  66 opt:  96  Z-score: 95.9  bits: 25.9 E():   15
+Smith-Waterman score: 96; 64.6% identity (64.6% similar) in 65 nt overlap (81-19:681-740)
+
+                100        90        80        70          60      
+-                 CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAG--AGTATACT
+                                     :::  : :::  ::::  ::  :: :: : 
+       TGAGGGTTCATGCACGACCGCGGGACAAATGAGACGATAAACATATCAAGTGAGAATCCG
+              660       670       680       690       700       710
+
+         50        40        30        20        10                
+-      ATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC       
+        ::  : :: ::::    :::::: :::::::: :                         
+       -TCGGAGGACTTAC----TGGCCAACGCACCGTGTGATTATAAGGCCGCCAGTGTTTGTT
+               720           730       740       750       760     
+
+       AAGATGCCCATTAAAACCACTAGCGTCGCCGCATGACTAACTTAGCACGTTACAGGCTCG
+         770       780       790       800       810       820     
+
+>> random4805                                             (1000 nt)
+ initn:  40 init1:  40 opt:  95  Z-score: 94.9  bits: 25.7 E():   18
+Smith-Waterman score: 95; 65.1% identity (65.1% similar) in 63 nt overlap (6-68:584-639)
+
+                                        10        20        30     
+                                GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCA
+                                     :::::::      :: ::: :::: :::  
+       AGGACAAAAGATTAAGCCTCGATACCGGCAGATGTTA----TAATTCGGCGCGG-GGCG-
+           560       570       580       590           600         
+
+          40        50        60        70        80        90     
+       ACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAG
+        ::  :: ::::  :::::::: :  : : :::                           
+       -CCTTTATATCTAGGGATAGTAGAAACGAGATAGCCCTCTGCCACCCGGGCCCTGTTCGG
+        610       620       630       640       650       660      
+
+         100                                                       
+       ATGAG                                                       
+                                                                   
+       CATAGTGCGAACGGCGCCTAACCACCTAAAAACCAGGCCTGTTAGGGTGCTTATCTAAGG
+        670       680       690       700       710       720      
+
+>> random2456                                             (1000 nt)
+ initn:  40 init1:  40 opt:  95  Z-score: 94.9  bits: 25.7 E():   18
+Smith-Waterman score: 96; 63.5% identity (63.5% similar) in 63 nt overlap (35-86:12-73)
+
+           10        20        30        40        50              
+       CGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGG----------ATA
+                                     ::::: ::  ::::: :          :: 
+                          GCAGAGCTGAGAACCG-TACCTCTTTTGCCATCCCCGAATC
+                                  10         20        30        40
+
+           60        70         80        90       100             
+       GTATACTCTATATATACTTAACTC-CTCGCAAAGAGCTGGAGATGAG             
+          :::::: :: :: :: ::::: ::::::::                           
+       CACTACTCTTTACATCCTAAACTCTCTCGCAAATTGTTACCGACATTAAGCATTACCCCT
+               50        60        70        80        90       100
+
+       TTGTGTATCTAGCCTTAAGCCGCGCACGTACTGTTAGCACTCCGTATCACCTACGCTCAT
+              110       120       130       140       150       160
+
+>> random8937                                             (1000 nt)
+rev-comp initn:  50 init1:  50 opt:  95  Z-score: 94.9  bits: 25.7 E():   18
+Smith-Waterman score: 99; 59.7% identity (59.7% similar) in 119 nt overlap (100-1:442-557)
+
+                                   100        90         80        
+-                                    CTCATCTCCAGCTCTTTGCGA-GGAGTTAA
+                                     :: :: : : :: ::  :: : ::::  ::
+       AGAAATAAATTTGGCGGGTAAATTTACAAGCTTATATGCCGCCCTCAGCAAAGGAG--AA
+             420       430       440       450       460           
+
+       70        60        50             40             30        
+-      GTATATATAGAGTATACTATCCAA-AGATTTA----CCGGT-----TGGCCACCGC----
+       ::    :  :: : :::::::::: :::: ::    :::::     : :::  ::     
+       GTCCGGAGTGAAT-TACTATCCAACAGATCTAGTGGCCGGTGACGTTAGCCGACGAGATG
+     470       480        490       500       510       520        
+
+           20           10                                         
+-      ACCGTATAGG---AGGTAACATCG-AGCC                               
+       ::: :: ::    :::  : :::: ::::                               
+       ACCATAGAGAGCAAGGATAAATCGCAGCCGAGAGCGTTCTAAAGACAGCTGACCATCTCA
+      530       540       550       560       570       580        
+
+>> random8233                                             (1000 nt)
+ initn:  55 init1:  55 opt:  95  Z-score: 94.9  bits: 25.7 E():   18
+Smith-Waterman score: 95; 59.3% identity (59.3% similar) in 86 nt overlap (6-88:743-823)
+
+                                        10        20        30     
+                                GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCA
+                                     :::  :: :: :: :   :  :  ::::: 
+       GGGTATGTCGACTTGCGTGGAATCTTAGGTGATAATAGCTTCTGTGAAGGCCCATGGCCT
+            720       730       740       750       760       770  
+
+          40           50        60        70        80        90  
+       ACCGGTA---AATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTG
+         :  :    :::: : :::    :: ::::::::::: ::  ::::: :  : ::    
+       GTCCTTTTGTAATCCTCGGA----ATTCTCTATATATA-TTGTCTCCTGGGCATGATATA
+            780       790           800        810       820       
+
+            100                                                    
+       GAGATGAG                                                    
+                                                                   
+       TGTCGGCAGCCCAGTAGCTGAAACGTGTGCGCCAGTCATAGGCGATGAACCAAGTGCCGC
+       830       840       850       860       870       880       
+
+>> random6284                                             (1000 nt)
+rev-comp initn:  49 init1:  49 opt:  95  Z-score: 94.9  bits: 25.7 E():   18
+Smith-Waterman score: 95; 60.2% identity (60.2% similar) in 88 nt overlap (99-15:429-510)
+
+                                  100        90        80          
+-                                   CTCATCTCCAGCTCTTTGCGAGGAGTTAAGT
+                                     ::: ::: :::  ::: ::::     : ::
+       AAGTACAACGGACGTGACGGGGCCGGCTGTTCAGCTCTAGCA-TTTACGAG-----AGGT
+      400       410       420       430       440             450  
+
+     70        60          50        40        30         20       
+-      ATATATAGAGTAT--ACTATCCAAAGATTTACCGGTTGGCCAC-CGCACCGTATAGGAGG
+       :  : ::::::::  :  ::   ::: : : :: : ::  ::  : : :: : : :::  
+       ACCTCTAGAGTATCTAACATATGAAGTTATGCCTGATGATCATTCACCCCCTGTGGGAAC
+            460       470       480       490       500       510  
+
+        10                                                         
+-      TAACATCGAGCC                                                
+                                                                   
+       GCAGTATCGCCAGTATACAAACGAATTCCGATCAGAGCAATTCAGAATGGCTCAAGGTTG
+            520       530       540       550       560       570  
+
+>> random98                                               (1000 nt)
+ initn:  35 init1:  35 opt:  94  Z-score: 93.8  bits: 25.6 E():   20
+Smith-Waterman score: 94; 64.7% identity (64.7% similar) in 68 nt overlap (29-96:527-585)
+
+                 10        20        30        40        50        
+         GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGGATAGTAT
+                                     ::: :   :  :::: :::::  ::::   
+       TGCTCCGGGCAGACGAGGAGCCGTGCTTTAGTGTCTTCCTAGTAATTCTTTACATAGCG-
+        500       510       520       530       540       550      
+
+       60        70        80        90       100                  
+       ACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG                  
+        :::  ::::::: :   ::::: ::::   :: ::::                      
+       -CTCATTATATACCT---TCCTC-CAAA---CTTGAGAACCATTAACCTGCTACAGGCAT
+          560          570           580       590       600       
+
+       GACCATGAGCACCATCAGTGTGGGCCATAAACGACCTAGCATGGCTTCTGTTTAGCCATT
+       610       620       630       640       650       660       
+
+>> random5320                                             (1000 nt)
+ initn:  40 init1:  40 opt:  94  Z-score: 93.8  bits: 25.6 E():   20
+Smith-Waterman score: 97; 57.5% identity (57.5% similar) in 113 nt overlap (6-97:142-251)
+
+                                        10             20          
+                                GGCTCGATGTTACCTC-----CTATAC--------
+                                     ::::  :::::     :: :::        
+       AATTGCGTTCGATTCCAACACTTCTTTACAGATGACACCTCTACCCCTGTACCTTGAACA
+             120       130       140       150       160       170 
+
+             30           40        50        60         70        
+       GGTGCGGTGGCCAA---CCGGTAAATCTTTGGATAGTATACTCTATATA-TACTTAACTC
+       :: ::  : :  ::   ::: :: :::::::: :  :   : :::: :  ::::::   :
+       GGGGCTCTTGATAATCCCCGTTACATCTTTGGGTGATTGCCACTATGTGGTACTTA---C
+             180       190       200       210       220           
+
+       80          90         100                                  
+       CTCGCAAA--GAGCT--GGAGATGAG                                  
+       :  ::::   : :::  ::::::                                     
+       CCAGCAACACGGGCTTCGGAGATTGTGGGAAGTAGTGGTAGTAGGCGTTGACCTAAGGGA
+      230       240       250       260       270       280        
+
+>> random2780                                             (1000 nt)
+ initn:  40 init1:  40 opt:  94  Z-score: 93.8  bits: 25.6 E():   20
+Smith-Waterman score: 94; 61.1% identity (61.1% similar) in 108 nt overlap (1-99:635-737)
+
+                                             10             20     
+                                     GGCTCGATGTTACCTCCTA-----TACGGT
+                                     ::::: : : ::: :: ::     ::: : 
+       CTTCGGACCCTAACGACTGGTCGGCGGCAGGGCTC-AGGCTAC-TCGTAGCATCTACTGA
+          610       620       630        640        650       660  
+
+          30        40         50         60        70          80 
+       GCGGTGGCCAACCGGTAA-ATCTTTGGATAG-TATACTCTATATATACT--TAACTCCTC
+        : ::: :::   : ::  : ::: :: : : : :  :::: :::  ::  ::: : :::
+       -CTGTGACCACTAGATACTACCTTGGGCTTGCTTTGGTCTACATACCCTATTAAATACTC
+             670       680       690       700       710       720 
+
+              90       100                                         
+       GCAAAGAGCTGGAGATGAG                                         
+       :    :: :::::::: :                                          
+       GTG--GACCTGGAGATCAACCAGAACGGTACATCTGAGTGTGCTCTCCGAAGGCACGTAT
+               730       740       750       760       770         
+
+>> random1358                                             (1000 nt)
+ initn:  50 init1:  50 opt:  93  Z-score: 92.8  bits: 25.4 E():   23
+Smith-Waterman score: 93; 66.1% identity (66.1% similar) in 59 nt overlap (5-56:760-818)
+
+                                         10            20        30
+                                 GGCTCGATGTTACCTCCTA----TACGGTGCGGT
+                                     ::: ::::::::::     : :::    ::
+       ACGAGGCAACTCAGCATTGCGAACATTATGCGAGGTTACCTCCTCAGCCTCCGGAAGAGT
+     730       740       750       760       770       780         
+
+                40          50        60        70        80       
+       GGCCAAC-CGGTAA--ATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAG
+       ::::: : :::  :  :::: :: :: ::                               
+       GGCCACCTCGGGCAGGATCTGTGTATTGTCGGATATAGGCCTAGGAAGATTCAAATAAAT
+     790       800       810       820       830       840         
+
+>> random6665                                             (1000 nt)
+ initn:  40 init1:  40 opt:  93  Z-score: 92.8  bits: 25.4 E():   23
+Smith-Waterman score: 93; 63.1% identity (63.1% similar) in 84 nt overlap (3-86:8-85)
+
+                    10        20        30        40        50     
+            GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGGATAG
+              : :::: :: ::::::::      :: :: :: :: ::: :  : :   ::::
+       TATTGAACCCGAT-TTGCCTCCTATTTC--ACGTTGACCGAC-GGTTATGCGTGTTATAG
+               10         20          30         40        50      
+
+          60        70        80        90       100               
+       TATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG               
+       :::   ::: :: : ::  :: :::::  ::                             
+       TATTAGCTA-ATGTGCTGGAC-CCTCGATAATGTACGTAGGGCAAAGGCGGTATGGCCGC
+         60         70         80        90       100       110    
+
+       AGCTCTGATTATTGGGCCCTGGAATGGTTGACTCAGGTGCCCTCATTCTTCAGGCCCCGC
+          120       130       140       150       160       170    
+
+>> random739                                              (1000 nt)
+ initn:  45 init1:  45 opt:  93  Z-score: 92.8  bits: 25.4 E():   23
+Smith-Waterman score: 93; 62.2% identity (62.2% similar) in 98 nt overlap (13-99:476-562)
+
+                                 10        20         30        40 
+                         GGCTCGATGTTACCTCCTATACGGTG-CGGTGGCCAACCGGT
+                                     ::::: ::  :::  :: : : ::: ::  
+       CTCTAAGTAACCGTGGACTCTTCGGAACACCCTCCCAT--GGTAACGTTAGTCAAACG--
+         450       460       470       480         490       500   
+
+              50             60        70         80          90   
+       AAATCTTTGGATAGTA-----TACTCTATATATACTTA-ACTCCTCGCAAA--GAGCT--
+         : ::::  :::: :     :::::::: :: :::   ::::::   :::  :: ::  
+       --ACCTTT--ATAGCAACCAATACTCTATCTACACTGGTACTCCT---AAACGGACCTTC
+                 510       520       530       540          550    
+
+             100                                                   
+       GGAGATGAG                                                   
+       ::: : ::                                                    
+       GGATAGGATGACCTAAAAGTGCGAAAGTGCGGCCTAATGATCGTACGATGGGGAAGTATG
+          560       570       580       590       600       610    
+
+>> random9188                                             (1000 nt)
+ initn:  67 init1:  67 opt:  92  Z-score: 91.7  bits: 25.2 E():   27
+Smith-Waterman score: 92; 71.1% identity (71.1% similar) in 45 nt overlap (52-94:388-430)
+
+              30        40        50        60        70           
+       CGGTGCGGTGGCCAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACT--CC
+                                     :::::: :: :::::::   ::::::  ::
+       GATCCGGCTTGGTTCAGCTATTGTAAGCCAATAGTAGACCCTATATAG--TTAACTGGCC
+       360       370       380       390       400         410     
+
+      80        90       100                                       
+       TCGCAAAGAGCTGGAGATGAG                                       
+       :::  :: : : : :                                             
+       TCGTTAATATCCGCATCCCGAGCGTGCGCGTTGGGGATTGGGGTTGAGTGCTAAAGCGAG
+         420       430       440       450       460       470     
+
+>> random5555                                             (1000 nt)
+ initn:  54 init1:  54 opt:  92  Z-score: 91.7  bits: 25.2 E():   27
+Smith-Waterman score: 92; 60.8% identity (60.8% similar) in 79 nt overlap (7-82:621-690)
+
+                                       10        20           30   
+                               GGCTCGATGTTACCTCCTATACGGTGCG---GTGGC
+                                     ::  ::: :: :::: :  :::   ::: :
+       TCGCTCCTTGATACCTGAAGGGTGTGTTATATTATACGTC-TATAAGTCGCGTGGGTGTC
+              600       610       620       630        640         
+
+            40        50        60        70        80        90   
+       CAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGG
+       :::    ::: : : :   : ::: :::    :::::: :   ::::::           
+       CAA----TAAGTATCTCACTGGTAGACT----ATATACGTTCGTCCTCGTCCTGTTACTG
+     650           660       670           680       690       700 
+
+           100                                                     
+       AGATGAG                                                     
+                                                                   
+       CGTACACCACCTCAGTAGGCGACGAAATACAACCTTAGTGAGGTTAATGAGCACCTATAG
+             710       720       730       740       750       760 
+
+>> random3715                                             (1000 nt)
+ initn:  79 init1:  79 opt:  91  Z-score: 90.7  bits: 25.0 E():   31
+Smith-Waterman score: 91; 78.1% identity (78.1% similar) in 32 nt overlap (61-89:169-200)
+
+               40        50        60        70        80          
+       GGCCAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGC---AAAG
+                                     :::::: : :::::  :::::::   ::::
+       AGTCAGCTAAAACCTGGAGGGACGGCGGCGTCTATAGAAACTTAGTTCCTCGCTTTAAAG
+      140       150       160       170       180       190        
+
+        90       100                                               
+       AGCTGGAGATGAG                                               
+       ::                                                          
+       AGTCGTCGGCAAGCACAGCGCAGGCGACCGTTCGCTTTTAGACCAGAGACGTCGTGGTAC
+      200       210       220       230       240       250        
+
+>> random4523                                             (1000 nt)
+rev-comp initn:  50 init1:  50 opt:  91  Z-score: 90.7  bits: 25.0 E():   31
+Smith-Waterman score: 91; 70.7% identity (70.7% similar) in 41 nt overlap (91-51:30-67)
+
+                         100        90        80        70         
+-                          CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGA
+                                    ::  :::::::::: ::::: ::: :  : :
+       CAGCTCGGAGAGTGTACCGAGGCCCGAAAAGGACTTTGCGAGGTGTTAAATATCTTAACA
+               10        20        30        40        50        60
+
+      60        50        40        30        20        10         
+-      GTATACTATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC
+          :::: ::                                                  
+       ---TACTTTCTGTGTTCCCCAAACCTGTGTTGCTCGGCAAGGCTTCAAGGTGGTTCTAAG
+                  70        80        90       100       110       
+
+>> random9357                                             (1000 nt)
+rev-comp initn:  45 init1:  45 opt:  91  Z-score: 90.7  bits: 25.0 E():   31
+Smith-Waterman score: 91; 65.1% identity (65.1% similar) in 63 nt overlap (64-4:274-333)
+
+          90        80        70        60        50        40     
+-      TCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTATCCAAAGATTTACCGGTT
+                                     :::: : :: : ::::::::: :: :: : 
+       GATGGACCGCCGCATTTGTCAGAGAGCAAGTAGACT-TAATCTCCAAAGATCTATCGCTA
+           250       260       270        280       290       300  
+
+          30        20          10                                 
+-      GGCCACCGCACCGTATAGG--AGGTAACATCGAGCC                        
+       :  :::   ::::: : :   :::  ::: : :                           
+       GCGCACG--ACCGTCTGGCCCAGGCCACAACTACAGGTGTGATCTGATCCACGTTGGTCC
+              310       320       330       340       350       360
+
+       AGACACCACATGCAGTGACGGGTCTATTTGATATGGTTAACGATGGAACGCCTCGCCGGA
+              370       380       390       400       410       420
+
+>> random3042                                             (1000 nt)
+ initn:  45 init1:  45 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 90; 68.0% identity (68.0% similar) in 50 nt overlap (2-50:950-996)
+
+                                            10        20        30 
+                                    GGCTCGATGTTACCTCCTATACGGTGCGGTG
+                                     : : ::: :::::: ::   :  : :: : 
+       GCACCAACTCGGTGTTCTGGAGTACGTAGAGGTGGATTTTACCTGCT---CCTTTCGATT
+     920       930       940       950       960          970      
+
+               40        50        60        70        80        90
+       GCC-AACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGC
+       ::  ::::::::: ::: ::                                        
+       GCATAACCGGTAACTCTATGTCTT                                    
+        980       990      1000                                    
+
+>> random5231                                             (1000 nt)
+rev-comp initn:  53 init1:  53 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 90; 62.9% identity (62.9% similar) in 70 nt overlap (100-35:129-197)
+
+                                   100        90        80         
+-                                    CTCATCTCCAGCTCTTTGCGAGGAGTTAAG
+                                     ::  ::  :: :: ::: : :: ::  :::
+       GTGACCTGTGATCCATAGACGGATGAAAGGCTGCTCCGCACCTATTTACAAGTAGGAAAG
+      100       110       120       130       140       150        
+
+      70        60            50        40        30        20     
+-      TATATATAGAGTAT---ACT-ATCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGA
+       ::::::   ::::    ::: : ::  : :::  ::: ::                    
+       TATATAACAAGTACCGGACTGAGCCGTATATTG-CCGCTTTCTTCGATGCACAAGGAGGG
+      160       170       180       190        200       210       
+
+          10                                                       
+-      GGTAACATCGAGCC                                              
+                                                                   
+       TGCAATTGTAGAGGAACATCAGAATTCCAAGGAGTGACTAAGGAGGTTCAGCGGTTATCT
+       220       230       240       250       260       270       
+
+>> random4815                                             (1000 nt)
+ initn:  45 init1:  45 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 90; 63.2% identity (63.2% similar) in 76 nt overlap (17-87:486-555)
+
+                             10        20        30         40     
+                     GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACC-GGTAAAT
+                                     :::  :  : : :::::::::  ::::   
+       ACATGCTCAGTTCAGTTTATCACGGTGAGTCTACTCCTTTCTGTGGCCAACAAGGTA---
+         460       470       480       490       500       510     
+
+          50        60        70            80        90       100 
+       CTTTGGATAGTATACTCTATATATAC---TTAACTC-CTCGCAAAGAGCTGGAGATGAG 
+        : :: :::  : ::::: : ::: :   :::: :  : :: ::::              
+       -TGTGTATA--ACACTCTCTCTATGCGTGTTAATTGTCCCGGAAAGCTCGGTCCTGTACA
+             520         530       540       550       560         
+
+       TAAGGGGGGCGGTCCAAGATGGGTAAGGTCCCGAGCTTCATCCACGAAGTAACTAGCGTC
+     570       580       590       600       610       620         
+
+>> random397                                              (1000 nt)
+ initn:  50 init1:  50 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 90; 63.9% identity (63.9% similar) in 72 nt overlap (26-96:351-417)
+
+                    10        20        30        40        50     
+            GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGGATAG
+                                     :: ::::  :: :::  ::    :: :: :
+       GAGTCAGGTCTGTTCCTATTTGCCCTGCTGGCAGTGGA-AAGCGGATAAAGGGTGTATTG
+              330       340       350        360       370         
+
+           60        70        80        90       100              
+       T-ATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG              
+       : ::: :  ::  : :::   :::: ::  :::::::::: :                  
+       TTATAGTGGATC-AGACT---CTCCGCGAGAAGAGCTGGACACTCCCCCATAGTGAGATT
+     380       390           400       410       420       430     
+
+       CTCAAAGTACTTCACACATCATACCGGATGGCTCGTTACCTTGCGCCGTAACATGCCAAA
+         440       450       460       470       480       490     
+
+>> random1332                                             (1000 nt)
+rev-comp initn:  35 init1:  35 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 90; 61.5% identity (61.5% similar) in 65 nt overlap (82-18:417-480)
+
+                 100        90        80        70        60       
+-                  CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTA
+                                     ::::: :: ::: : : : :   : ::  :
+       CGCCGGCGTTGTGTTATCACAGGACCGGACCGAGGGGT-AAGGAGAGACACCATCTAAAA
+        390       400       410       420        430       440     
+
+        50        40        30        20        10                 
+-      TCCAAAGATTTACCGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC        
+         ::: :   ::  :: ::::::: : :: : :::                         
+       ATCAATGCCATAAGGGGTGGCCACTGAACAGGATACAACGATAAGGCACGGACCAAGTCT
+         450       460       470       480       490       500     
+
+       CCCGTAGATACAGGCCTTCAATACGAGAATCTAAGCACAGCCCGTATGCTTTTAAGAATA
+         510       520       530       540       550       560     
+
+>> random4126                                             (1000 nt)
+rev-comp initn:  45 init1:  45 opt:  90  Z-score: 89.6  bits: 24.8 E():   35
+Smith-Waterman score: 98; 61.4% identity (61.4% similar) in 88 nt overlap (100-16:543-621)
+
+                                   100        90        80         
+-                                    CTCATCTCCAGCTCTTTGCGAGGAGTTAAG
+                                     ::::: : ::: :::::::::    :::::
+       GAGGGGGGCCGCCGCTTTCTAAGTAGGAGGCTCATTTTCAGATCTTTGCGA----TTAAG
+            520       530       540       550       560            
+
+      70        60        50        40          30         20      
+-      TATATATAGAGTATACTATCCAAAGATTTACCG--GTTGGCCACCGCACCGT-ATAGGAG
+          :: ::    :: :::::   :: : : : :  :  :   ::   ::::: :::::  
+       CGGATCTA----AT-CTATCTCTAGCTCTTCAGACGACGTAGACGAGACCGTCATAGGCA
+      570            580       590       600       610       620   
+
+         10                                                        
+-      GTAACATCGAGCC                                               
+                                                                   
+       CACTGTAATAGCCGTTGATACTCTATATTTCCACCTCCCTGCATCGCTAAGGGGTGGTCT
+           630       640       650       660       670       680   
+
+>> random7984                                             (1000 nt)
+ initn:  55 init1:  55 opt:  89  Z-score: 88.5  bits: 24.6 E():   40
+Smith-Waterman score: 89; 63.1% identity (63.1% similar) in 65 nt overlap (17-75:789-845)
+
+                             10        20        30             40 
+                     GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCG-----GT
+                                     :::::::::::   :::::: ::     ::
+       TCCGGGATATTGGACTACCACATACCCGGACTATACGGTGCA--GGCCAATCGCGAGGGT
+      760       770       780       790       800         810      
+
+              50        60         70        80        90       100
+       AAATCTTTGGATAGTATACTCT-ATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG
+       : ::      : :::::: :   : : ::::: ::                         
+       ATAT------AAAGTATAATTGCACACATACTAAAGGTATATGTCCGATTCAGGGCATCG
+        820             830       840       850       860       870
+
+       GCCTTAGCGCGAGAGTCCCAGTGCTTCTTACGGCCCCTTAATGATCGGACTGATCGTAGA
+              880       890       900       910       920       930
+
+>> random8015                                             (1000 nt)
+rev-comp initn:  50 init1:  50 opt:  89  Z-score: 88.5  bits: 24.6 E():   40
+Smith-Waterman score: 89; 58.3% identity (58.3% similar) in 84 nt overlap (82-9:328-405)
+
+                 100        90        80        70        60       
+-                  CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTA
+                                     :: :: :::: ::  :  : : ::   :  
+       GAGTCTTCGCGCGGAACCTAGCGCATGCCCCGCGGGGTTATGTTCAAGTTGCGT---CGC
+       300       310       320       330       340       350       
+
+        50            40        30        20              10       
+-      TCCAAAG----ATTTACCGGTTGGCCACCGCACCGTATA------GGAGGTAACATCGAG
+        : ::::    ::: :::: :::   :  ::::::::::      ::: : :::      
+       CCTAAAGTGGTATTGACCGCTTG---AATGCACCGTATAAAGGACGGATGAAACTCTCAG
+          360       370          380       390       400       410 
+
+                                                                   
+-      CC                                                          
+                                                                   
+       AGCTTGCAACGGCTCCGCACTCACGGACCAAGGGACAGCTTGGTTAGCTCCGACAGTAGG
+             420       430       440       450       460       470 
+
+>> random9185                                             (1000 nt)
+rev-comp initn:  74 init1:  74 opt:  89  Z-score: 88.5  bits: 24.6 E():   40
+Smith-Waterman score: 89; 64.7% identity (64.7% similar) in 51 nt overlap (66-18:42-84)
+
+            90        80        70        60        50          40 
+-      TCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTATCCAAAGA--TTTACC
+                                     :::::: :: ::: : ::::::  ::::: 
+       TACCACACAGTCACAGTAAGGCAATCTCGTTATAGAATAAACTGTTCAAAGACATTTACT
+              20        30        40        50        60        70 
+
+              30        20        10                               
+-      GGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC                      
+       :        :: :::::  ::                                       
+       G--------CCACACCGATTATCACCCCCGGAGACTAACACTGCCTAATACGGTCAGCGA
+                      80        90       100       110       120   
+
+>> random7117                                             (1000 nt)
+ initn:  45 init1:  45 opt:  89  Z-score: 88.5  bits: 24.6 E():   40
+Smith-Waterman score: 99; 60.5% identity (60.5% similar) in 81 nt overlap (4-84:229-300)
+
+                                          10        20        30   
+                                  GGCTCGATGTTACCTCCTATACGGTGCGGTGGC
+                                     :: : : :::: : :::::: :::: : : 
+       AGAAGGGTTAGATGGACGCGATTAGCAATGTCCACGCTACCGC-TATACGTTGCGATAGT
+      200       210       220       230       240        250       
+
+            40        50        60        70        80        90   
+       CAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGG
+       : ::    :   ::  ::: ::  :: ::      :: : : :::::::::         
+       CTAC----ACGACTGGGGAGAGCGTAGTCAG----TAGTAAGCTCCTCGCATTAGCTAGG
+       260           270       280           290       300         
+
+           100                                                     
+       AGATGAG                                                     
+                                                                   
+       CTATCCGGACTCGCTGCTCAAATTTTGAGAATTGCACCTTGGATCCCCATGGGTCCTAGA
+     310       320       330       340       350       360         
+
+>> random1783                                             (1000 nt)
+ initn:  40 init1:  40 opt:  89  Z-score: 88.5  bits: 24.6 E():   40
+Smith-Waterman score: 89; 57.3% identity (57.3% similar) in 110 nt overlap (2-98:63-162)
+
+                                            10                 20  
+                                    GGCTCGATGT--TACCTCC-------TATAC
+                                     ::: :: ::  ::::: :       : : :
+       AATCGGGTCCCTGCTTAGTCTCTCGCTCAAGCTGGACGTACTACCTGCATTTGACTGTCC
+             40        50        60        70        80        90  
+
+             30          40        50        60        70          
+       GGTGCGGTGG--CCAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAAC--TC
+       : ::::: ::  : :     : :: ::::   ::: :      ::::  : ::::   ::
+       GTTGCGGAGGATCAAGAAATTCAAGCTTT---TAGAA------ATATTGAATTAAGAGTC
+            100       110       120                130       140   
+
+       80        90       100                                      
+       CTCGCAAAGAGCTGGAGATGAG                                      
+       : :::::::: : : ::: :                                        
+       CACGCAAAGAAC-GAAGACGTTCGAGCGTCCGTATTCATCATGATACATTGCGGGGGCCA
+           150        160       170       180       190       200  
+
+>> random4999                                             (1000 nt)
+ initn:  40 init1:  40 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 59.4% identity (59.4% similar) in 101 nt overlap (2-95:497-592)
+
+                                            10           20        
+                                    GGCTCGATGTTACCTCCT---ATACGGTGCG
+                                     : :::::  :::: : :   :: :     :
+       CACGGCAGTAACTACGTTGGGTTAAAACAAGTTCGATCATACCGCGTTGGATTCCAAAAG
+        470       480       490       500       510       520      
+
+         30        40        50         60        70        80     
+       --GTGGCCAACCGGTAAATCTTTG-GATAGTATACTCTATATATACTTAACTCCTCG-CA
+         ::::::::    : :::: ::  : :::  :: :   : :::: : : ::::::: : 
+       TCGTGGCCAA----TGAATCGTTATGCTAGCCTAATTCCTGTATAAT-ATCTCCTCGTCG
+        530           540       550       560        570       580 
+
+           90       100                                            
+       AAGAGCTGGAGATGAG                                            
+       : ::  :: ::                                                 
+       AGGATGTGTAGTCTCGGGCCCATACCATGGACCACACATGTCTGGCCGTTTATACTCCTT
+             590       600       610       620       630       640 
+
+>> random9854                                             (1000 nt)
+ initn:  50 init1:  50 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 78.0% identity (78.0% similar) in 41 nt overlap (8-42:690-730)
+
+                                      10           20         30   
+                              GGCTCGATGTTAC--CTCC-TATA-CGGTGCGGTGG-
+                                     ::::::  :::  :::: ::::::::::  
+       CCAACAGAACACGAGGGTGTTTCAACTGTGTGTTACTGCTCGGTATATCGGTGCGGTGCA
+     660       670       680       690       700       710         
+
+              40        50        60        70        80        90 
+       -CCAACCGGTAAATCTTTGGATAGTATACTCTATATATACTTAACTCCTCGCAAAGAGCT
+        :::::::: :                                                 
+       TCCAACCGGCACCAGTGATATGGCCGTCTCGCCGGGAGCGGGTGTAGTAAGCTAGCATTC
+     720       730       740       750       760       770         
+
+>> random513                                              (1000 nt)
+rev-comp initn:  40 init1:  40 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 68.1% identity (68.1% similar) in 47 nt overlap (77-34:778-821)
+
+            100        90        80        70        60        50  
+-             CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTATCCAA
+                                     ::::  :  :::::::: :   :::::: :
+       CTTCACGTACTGTCCAAGCAACCCATGCCAAGTTTTGGCTATATAGATT---CTATCCCA
+       750       760       770       780       790          800    
+
+                40        30        20        10                   
+-      AGATTTAC---CGGTTGGCCACCGCACCGTATAGGAGGTAACATCGAGCC          
+       : : ::::   :::: :                                           
+       AAAATTACAAACGGTGGAGGCAAAGGAGATATAGTGAGCACAAGATGACAGTGCGTAGGA
+          810       820       830       840       850       860    
+
+>> random6069                                             (1000 nt)
+ initn:  40 init1:  40 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 63.3% identity (63.3% similar) in 79 nt overlap (24-97:719-795)
+
+                      10        20        30         40        50  
+              GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCG-GTAAATCTTTGGA
+                                     :: ::: ::: :  :: ::: : :::::: 
+       CGGAGGATTAGAAATACACGGCCCGCTGACGTCCGG-GGCGACGCGCGTAGAACTTTGGT
+      690       700       710       720        730       740       
+
+             60        70           80         90       100        
+       TAGTATACTCTATATATACTTAACT---CCTCGCAA-AGAGCTGGAGATGAG        
+        ::   ::  : :::::  :::      ::  :::: ::  ::::::::           
+       GAGCGGACAAT-TATATTTTTATAAGAGCCAAGCAAGAGTTCTGGAGATCCGCAACCTCG
+       750        760       770       780       790       800      
+
+       TTCCGTAGCGCTCACACTGGTCATCGAAATGAGGGAAGTTCTCCGCCCGTACGTGCTCCT
+        810       820       830       840       850       860      
+
+>> random3774                                             (1000 nt)
+rev-comp initn:  40 init1:  40 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 64.6% identity (64.6% similar) in 65 nt overlap (71-11:629-688)
+
+      100        90        80        70        60        50        
+-       CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATATATAGAGTATACTATCCAAAGATTT
+                                     ::: :  :: :::: :::::::: :    :
+       ATAGTTTATACCGGGTGAAAAAAGCCACGGGTACAGCTA-AGTAGACTATCCAGA----T
+      600       610       620       630        640       650       
+
+       40        30            20        10                        
+-      ACCGGTTGGCCACCGC---AC-CGTATAGGAGGTAACATCGAGCC               
+       : :: : ::: : :::   :: : :::  : ::::                         
+       AACGTTCGGCTATCGCTTTACTCATATCCGCGGTATTTGGGACCTTCACAAGATCGTAGA
+           660       670       680       690       700       710   
+
+       AGACCATAAAGTGTGACGTTCCAGCCTAGCTGCTGGGGATCATCTGCCATCATGCTCTTG
+           720       730       740       750       760       770   
+
+>> random9278                                             (1000 nt)
+rev-comp initn:  52 init1:  52 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 89; 72.1% identity (72.1% similar) in 43 nt overlap (51-10:346-386)
+
+       80        70        60        50        40        30        
+-      GAGGAGTTAAGTATATATAGAGTATACTATCCAAAGATTTACCGGTTGGCCACCGCACCG
+                                     :: ::: :: :::: ::: :::: :::: :
+       GCGCCAGCTTAGCGGCCGCTGTCTCTAGTGCCGAAGCTTCACCGCTTGCCCACTGCACAG
+         320       330       340       350       360       370     
+
+       20         10                                               
+-      TATAGGAG-GTAACATCGAGCC                                      
+        :   ::: ::::                                               
+       CAC--GAGTGTAAATTAAATGAAGAACAGAGCGCTTCTCCGCCTAACGGGATAGGTCCCT
+           380       390       400       410       420       430   
+
+>> random8335                                             (1000 nt)
+rev-comp initn:  55 init1:  55 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 60.6% identity (60.6% similar) in 66 nt overlap (99-42:98-163)
+
+                                  100        90         80         
+-                                   CTCATCTCCAGCTCTTT-GCGAGGAGTTAAG
+                                     :::::  ::: ::::  : : : ::::  :
+       TATTCCAGGTTATTGGTTATTGTAGTATGATCATCAGCAGGTCTTCAGTGTGTAGTTTCG
+        70        80        90       100       110       120       
+
+      70        60               50        40        30        20  
+-      TATATATAGAGTATAC-------TATCCAAAGATTTACCGGTTGGCCACCGCACCGTATA
+         :   : ::: :::        : :::::::::::                        
+       CGTTCCTCGAGCATAACTTGCGGTCTCCAAAGATTTGAGAGAACAGCGGGGAGGAACAAG
+       130       140       150       160       170       180       
+
+             10                                                    
+-      GGAGGTAACATCGAGCC                                           
+                                                                   
+       ATCCGATCGGTCGTTGGACAAGCGTCCCCCTATGACAATCTGCGCCGAGTGTGATAGCAA
+       190       200       210       220       230       240       
+
+>> random5700                                             (1000 nt)
+ initn:  55 init1:  55 opt:  88  Z-score: 87.5  bits: 24.4 E():   46
+Smith-Waterman score: 88; 59.5% identity (59.5% similar) in 84 nt overlap (22-100:449-532)
+
+                        10        20        30        40        50 
+                GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGG
+                                     ::: : ::  :   :  ::::::::::: :
+       GTTGCCACAGAATACCACTCCGTGCCCGCTCGGGGGGGCAGATCAGTGGTAAATCTTTCG
+      420       430       440       450       460       470        
+
+               60         70           80        90       100      
+       ATAGTATA-CTCTATAT-ATACTTAA---CTCCTCGCAAAGAGCTGGAGATGAG      
+       :  : ::  : : : :  :: : : :   :::::   :::::: : ::   :::      
+       AGGGAATTTCCCGACAAGATTCCTCAGGGCTCCTTTAAAAGAGGTCGAATGGAGGGTCAG
+      480       490       500       510       520       530        
+
+       ACGGATTTGGTTAGATTGTAGTTTTGTTGCCGCGTACCAGACTATGTAGGACCGCCGTTC
+      540       550       560       570       580       590        
+
+>> random2502                                             (1000 nt)
+ initn:  40 init1:  40 opt:  87  Z-score: 86.4  bits: 24.2 E():   53
+Smith-Waterman score: 87; 59.3% identity (59.3% similar) in 86 nt overlap (19-100:885-964)
+
+                           10        20        30        40        
+                   GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAA-ATCT
+                                     ::::  :  : :  : :: ::::   : ::
+       CAGGTGCTACTCCATTGGGATTCGAAATGAATACCCTCGGATTACAAAGCGGTCCCAGCT
+          860       870       880       890       900       910    
+
+        50        60        70           80        90       100    
+       TTGGATAGTATACTCTATATATACTT---AACTCCTCGCAAAGAGCTGGAGATGAG    
+         :: :::::::     ::::: :::   :  :  ::  : :: ::::::  ::::    
+       AAGG-TAGTATA-----TATATCCTTTGAATGTTATCAGATAGCGCTGGAATTGAGGGTG
+           920            930       940       950       960        
+
+       TGACTATAAACCTCCGTGTTTCAGTACACTTG
+      970       980       990      1000
+
+>> random1098                                             (1000 nt)
+ initn:  63 init1:  63 opt:  87  Z-score: 86.4  bits: 24.2 E():   53
+Smith-Waterman score: 87; 62.3% identity (62.3% similar) in 69 nt overlap (27-91:144-210)
+
+                   10        20        30        40        50      
+           GGCTCGATGTTACCTCCTATACGGTGCGGTGGCCAACCGGTAAATCTTTGGAT---
+                                     ::::  ::  ::: : :  :::::: :   
+       CTACCTTAGCTCGGGAGCGCTATTTTCTCTCGGTC-CCTTCCGTTCATCCTTTGGCTGTT
+           120       130       140        150       160       170  
+
+             60        70        80        90       100            
+       -AGTATACTCTATATATACTTAACTCCTCGCAAAGAGCTGGAGATGAG            
+        : ::: : :     ::: :::::::  : ::::::: :                     
+       AACTATCCCCGGGCCATA-TTAACTCTACACAAAGAGTTTATACATTAAACTCGCGTGAG
+            180       190        200       210       220       230 
+
+       GTGCTTTCGGCCTGTCCGGGGTCGTTCTGCACATATTTTCGAGCAATCGCCCAGCAATCC
+             240       250       260       270       280       290 
+
+>> random8640                                             (1000 nt)
+rev-comp initn:  40 init1:  40 opt:  87  Z-score: 86.4  bits: 24.2 E():   53
+Smith-Waterman score: 87; 59.4% identity (59.4% similar) in 96 nt overlap (96-8:51-144)
+
+                               100        90        80        70   
+-                                CTCATCTCCAGCTCTTTGCGAGGAGTTAAGTATA
+                                     ::: :  :::  ::: :: :   : ::  :
+       GAGTACATTGGTAATTACGGATGTCCTCTGTCTACCTCTCCCTGCAAGTAAG-ACGTGGA
+               30        40        50        60        70          
+
+            60          50         40        30            20      
+-      TATAGAGTAT--ACTATCCAAAGATTTA-CCGGTTGGCCACCGCAC----CGTATAGGAG
+        ::::::::   ::: : : :  :  :: :::::  :  ::  ::     ::::: ::: 
+       AATAGAGTAAGGACTCTACGAGAACGTATCCGGTGAGTTACGCCAGACAGCGTATTGGAT
+      80        90       100       110       120       130         
+
+         10                                                        
+-      GTAACATCGAGCC                                               
+       : ::::                                                      
+       G-AACAGACCAGGCTCGCTCTTCTGACGCAGCCTATGAGCCATCGATAACAACAGCAGTT
+     140        150       160       170       180       190        
+
+
+
+
+100 residues in 1 query   sequences
+10000000 residues in 10000 library sequences
+ Scomplib [35.04]
+ start: Wed Nov 21 11:12:33 2012 done: Wed Nov 21 11:13:55 2012
+ Total Scan time:  1.730 Total Display time:  0.180
+
+Function used was FASTA [version 35.04 Feb. 20, 2010]
