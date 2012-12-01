@@ -12,7 +12,7 @@ GAAGGTGTGAAGGACGCTGAGGGTAACGTTGTGGTACACGGTATTTTTGCCAGCGTACCGTACTGCATTC\
 AGTTGCTGGAAGGGCCATACGTTGAAACGGCACCGGAAGTGGTTGCAGCATTCAGACCGAAGAGTGCAAG\
 ACGCGACGTTAGCGAATAA";
 
-FF = {
+M2 = {
 "UUU": 19.7,
 "UCU": 5.7,
 "UAU": 16.8,
@@ -79,7 +79,7 @@ FF = {
 "GGG": 8.6
 }
 
-f = {
+M = {
 "TTT": 19.7,
 "TCT": 5.7,
 "TAT": 16.8,
@@ -94,7 +94,7 @@ f = {
 "TGA": 1.0,
 "TTG": 11.9,
 "TCG": 8.0,
-"TAG": 0.000001,	# must not be zero
+"TAG": 0.0,
 "TGG": 10.7,
 "CTT": 11.9,
 "CCT": 8.4,
@@ -146,70 +146,53 @@ f = {
 "GGG": 8.6
 }
 
-def getH(seq):
-	return sum([math.log(f[seq[n:n+3]]) for n in range(0, len(seq), 3)])
+def MF(M, K):
+	F = {}
+	for codon, m in M.iteritems():
+		if m == 0.0: m = 1.0
+		F[codon] = math.log(m / float(K))
+	return F
 
-def main(seq, winsize):
-	fsize = 3 * winsize
+def framescore(seq, F):
+	return sum([F[seq[n:n+3]] for n in range(0, len(seq), 3)])
+
+def analyze(seq, winsize):
+	data = []
+	fsize = 3 * winsize		# frame size from window size
 	H, P = [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]
-	orf = seq[:fsize]
+	F = MF(M, 1000)			# prepared frequencies
+
 	step = 0
+	orf = seq[:fsize]		# open readig frame
 	
 	for n in seq[:-fsize]:
-		rfn = step % 3
-		H[rfn] = H[rfn] + getH(orf)
+		rfn = step % 3		# reading frame number is 0, 1 or 2
+		H[rfn] = framescore(orf, F)
 
 		if rfn == 2:
 			A = sum(H) / float(len(H))
 			H = map(lambda Hi: math.exp(Hi - A), H)
-			print(step, rfn, A, H)
 			P = map(lambda Hi: Hi / sum(H), H)
-			#print(math.log10(P / 1.0 - P))
+			P = map(lambda Pi: math.log10(Pi / (1.0 - Pi)), P)
+			data.append((step, P[0], P[1], P[2]))
 
 		step = step + 1;
 		orf = orf[1:] + n
-	return
+	return data
 
-def main2(seq, winsize):
-	H1, H2, H3 = 0, 0, 0
-	for step in range(winsize):
-		take_start, take_end = step * 3, (step + 1) * 3
-		print(step, take_start, take_end)
-		H1 = H1 + F[seq[take_start:take_end]]
-		H2 = H2 + F[seq[take_start+1:take_end+1]]
-		H3 = H3 + F[seq[take_start+2:take_end+2]]
+def latex(data):
+	xscale = 1
+	yscale = 2
+	ymax = yscale * 10
+	print "\\begin{picture}(" + str(xscale * len(data)) + "," + str(yscale * 2 * ymax) + ")(0," + str(yscale * ymax) + ")"
+	print "\\put(0,0){\\vector(1,0){" + str(xscale * len(data) * 3) + "}}"
+	print "\\put(0,0){\\vector(0,1){" + str(yscale * ymax) + "}}"
+	print "\\put(0,0){\\vector(0,-1){" + str(yscale * ymax) + "}}"
+	for step, P1, P2, P3 in data:
+		print "\\put(" + str(xscale * step) + "," + str(yscale * P1) + "){\\circle*{0.1}}"
+		print "\\put(" + str(xscale * step) + "," + str(yscale * P2) + "){\\circle*{0.1}}"
+		print "\\put(" + str(xscale * step) + "," + str(yscale * P3) + "){\\circle*{0.1}}"
+	print "\\end{picture}"
 
-	for step in range(winsize, len(seq) / 3):
-		take_start, take_end = step * 3, (step + 1) * 3
-		drop_start, drop_end = take_start - 3 * winsize, take_end - 3 * winsize
-		print(step, drop_start, drop_end, take_start, take_end)
-
-		H1 = H1 - F[seq[drop_start:drop_end]] + F[seq[take_start:take_end]]
-		H2 = H2 - F[seq[drop_start+1:drop_end+1]] + F[seq[take_start+1:take_end+1]]
-		H3 = H3 - F[seq[drop_start+2:drop_end+2]] + F[seq[take_start+2:take_end+2]]
-
-		A = (H1 + H2 + H3) / 3.0
-		h1, h2, h3 = math.exp(H1 - A), math.exp(H2 - A), math.exp(H3 - A)
-		dvsr = h1 + h2 + h3
-		P1, P2, P3 = h1 / dvsr, h2 / dvsr, h3 / dvsr
-
-		print(P1, P2, P3)
-		print(math.log10(P1 / 1.0 - P1))
-		print(math.log10(P2 / 1.0 - P2))
-		print(math.log10(P3 / 1.0 - P3))
-	return
-
-main(sequence, 30);
-
-
-
-
-
-
-
-
-
-
-
-
-
+data = analyze(sequence, 30)
+latex(data)
