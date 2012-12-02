@@ -153,21 +153,21 @@ def MF(M, K):
 		F[codon] = math.log(m / float(K))
 	return F
 
-def framescore(seq, F):
+def winscore(seq, F):
 	return sum([F[seq[n:n+3]] for n in range(0, len(seq), 3)])
 
 def analyze(seq, winsize):
 	data = []
-	fsize = 3 * winsize		# frame size from window size
+	winsize = 3 * winsize	# window size in nucletides
 	H, P = [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]
 	F = MF(M, 1000)			# prepared frequencies
 
 	step = 0
-	orf = seq[:fsize]		# open readig frame
+	win = seq[:winsize]		# current window
 	
-	for n in seq[:-fsize]:
+	for n in seq[winsize:]:
 		rfn = step % 3		# reading frame number is 0, 1 or 2
-		H[rfn] = framescore(orf, F)
+		H[rfn] = winscore(win, F)
 
 		if rfn == 2:
 			A = sum(H) / float(len(H))
@@ -177,20 +177,23 @@ def analyze(seq, winsize):
 			data.append((step, P[0], P[1], P[2]))
 
 		step = step + 1;
-		orf = orf[1:] + n
+		win = win[1:] + n
 	return data
 
 def latex(data):
-	xscale = 1
-	yscale = 2
+	xscale = 1.0/3.0
+	yscale = 3
 	ymax = yscale * 10
-	print "\\begin{picture}(" + str(xscale * len(data)) + "," + str(yscale * 2 * ymax) + ")(0," + str(yscale * ymax) + ")"
+	print "\\begin{picture}(" + str(xscale * len(data)) + "," + str(yscale * 2 * ymax) + ")(0,-" + str(yscale * ymax) + ")"
 	print "\\put(0,0){\\vector(1,0){" + str(xscale * len(data) * 3) + "}}"
 	print "\\put(0,0){\\vector(0,1){" + str(yscale * ymax) + "}}"
 	print "\\put(0,0){\\vector(0,-1){" + str(yscale * ymax) + "}}"
 	for step, P1, P2, P3 in data:
+		print "\color{red}"
 		print "\\put(" + str(xscale * step) + "," + str(yscale * P1) + "){\\circle*{0.1}}"
+		print "\color{green}"
 		print "\\put(" + str(xscale * step) + "," + str(yscale * P2) + "){\\circle*{0.1}}"
+		print "\color{blue}"
 		print "\\put(" + str(xscale * step) + "," + str(yscale * P3) + "){\\circle*{0.1}}"
 	print "\\end{picture}"
 
