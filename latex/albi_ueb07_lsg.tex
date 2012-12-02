@@ -19,21 +19,66 @@
 
 Abgabe am 10. Dezember 2012
 
-\begin{enumerate}
-\item
-\item
-\item
-\item
-\item 
-\end{enumerate}
+%\begin{enumerate}
+%\item
+%\item
+%\item
+%\item
+%\item 
+%\end{enumerate}
 
 \aufgabe{Coding capacity}{60}
-$$AAA f_{AAA} F_{AAA} = \log f_{AAA}$$
-$$H_1 = \sum_{codons ABC \in window} F_{ABC}$$
-$$H_2 = $$
-$$H_3 = $$
-$$P_i = \frac{e^{H_i}}{e^{H_1} + e^{H_2} + e^{H_3}}$$
+Für ein Codon $ABC$ mit einer absoluten Häufigkeit von $M_{ABC}$ auf $K$
+gezählte Codons gilt
+$$F_{ABC} = \ln f_{ABC} = \ln \frac{M_{ABC}}{K}.$$
+
+Die Scores $i \in {1,2,3}: H_i$ für ein Fenster $w$ berechnen sich als
+$$H_i = \sum_{ABC \in w} F_{ABC}.$$
+
+Daraus berechnen sich die Wahrscheinlichkeiten $i \in {1,2,3}: P_i$ dafür, dass
+der Leserahmen $i$ in dem Fenster ein kodierender Abschnitt der Sequenz ist als
+$$P_i = \frac{\exp H_i}{\exp H_1 + \exp H_2 + \exp H_3}.$$
+
 $$\log \frac{P_i}{1-P_i}$$
+
+Diese Formeln setzen wir um in folgendem Programm. Dabei ist $M$ ein
+\textit{dictionary} mit Codons $ABC$ als Schlüssel und Werten $M_{ABC}$.
+
+\begin{lstlisting}[language=python]
+def MF(M, K):
+	F = {}
+	for codon, m in M.iteritems():
+		if m == 0.0: m = 1.0
+		F[codon] = math.log(m / float(K))
+	return F
+
+def winscore(seq, F):
+	return sum([F[seq[n:n+3]] for n in range(0, len(seq), 3)])
+
+def analyze(seq, winsize):
+	data = []
+	winsize = 3 * winsize	# window size in nucletides
+	H, P = [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]
+	F = MF(M, 1000)			# prepared frequencies
+
+	step = 0
+	win = seq[:winsize]		# current window
+	
+	for n in seq[winsize:]:
+		rfn = step % 3		# reading frame number is 0, 1 or 2
+		H[rfn] = winscore(win, F)
+
+		if rfn == 2:
+			A = sum(H) / float(len(H))
+			H = map(lambda Hi: math.exp(Hi - A), H)
+			P = map(lambda Hi: Hi / sum(H), H)
+			P = map(lambda Pi: math.log10(Pi / (1.0 - Pi)), P)
+			data.append((step, P[0], P[1], P[2]))
+
+		step = step + 1;
+		win = win[1:] + n
+	return data
+\end{lstlisting}
 
 \begin{center}
 \setlength{\unitlength}{0.3mm}
