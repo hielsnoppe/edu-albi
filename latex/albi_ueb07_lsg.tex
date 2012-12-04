@@ -39,7 +39,7 @@ Daraus berechnen sich die Wahrscheinlichkeiten $i \in {1,2,3}: P_i$ dafür, dass
 der Leserahmen $i$ in dem Fenster ein kodierender Abschnitt der Sequenz ist als
 $$P_i = \frac{\exp H_i}{\exp H_1 + \exp H_2 + \exp H_3}.$$
 
-$$\log \frac{P_i}{1-P_i}$$
+%$$\log \frac{P_i}{1-P_i}$$
 
 Diese Formeln setzen wir um in folgendem Programm. Dabei ist $M$ ein
 \textit{dictionary} mit Codons $ABC$ als Schlüssel und Werten $M_{ABC}$.
@@ -80,25 +80,30 @@ def analyze(seq, winsize):
 	return data
 \end{lstlisting}
 
+\begin{enumerate}
+\item Der Wertebereich reichte von Werten kleiner $10^{-10}$ bis hin zu Werten
+größer $10^{10}$. Eine geeignete Darstellung wäre nur mit Hilfe einer
+logarithmischen Skala möglich gewesen und wäre dann wiederum identisch mit der
+Darstellung in (b).
+
+\item In der folgenden Abbildung ist der erste Leserahmen rot, der zweite grün
+und der dritte blau dargestellt.
+
 \begin{center}
 \setlength{\unitlength}{0.3mm}
-\input{albi_ueb07_a25.tex}
+\input{albi_ueb07_a25_ii.tex}
 \end{center}
-
-\begin{enumerate}
-\item
-\item
 \end{enumerate}
 
 \aufgabe{RNA Sekundärstruktur}{40}
 
-Geht schneller von Hand, zeichne ich dann ein.
+Handschriftlich auf der Rückseite.
 
-\begin{enumerate}
-\item
-\item
-\item
-\end{enumerate}
+%\begin{enumerate}
+%\item
+%\item
+%\item
+%\end{enumerate}
 
 \end{enumerate}
 \end{document}

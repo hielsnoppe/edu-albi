@@ -1,0 +1,71 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\usepackage{hyperref}
+\usepackage{color}
+
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{8}
+\date{Montag, dem 10. Dezember 2012}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00}
+\tutor{Alena van Bömmel (Übungsgruppe 3)}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{}{}
+
+Nussinov
+
+w(i,j) = score, max. # Basenpaare für Subseqeunz x_i, ..., x_j
+\delta (i, j) = \begin{cases}
+1 & \text{ if } i \cdot j\\
+0 & \text{ else }
+\end{cases}
+
+Initialisierung
+w(i, i) = 0; w(i, i-1) = 0; i = 2, ..., L
+
+Rekursion
+alle Subsequenzen der Länge 2 ... L
+w(i, j) = \max \begin{cases}
+w(i+1, j)								& (1)\\
+w(i, j-1)								& (2)\\
+w(i+1, j-1) + \delta(i, j)				& (3)\\
+\max_{i < k < j} w(i, k) + w(k+1, j)	& (4)
+\end{cases}
+
+Traceback
+
+push(1, L)
+
+pop(i, j)
+if j \geq i: continue
+elif w(i+1,j) = w(i, j): push(i+1, j)
+elif w(i, i-1) = W[i, j]: push(i, j-1)
+elif W[i+1, j-1] + delta(i, j) = W[i, j]:
+	push(i+1, j-1)
+	print(i, j)
+else:
+	for k in range(i+1, j-1):
+		if W[i, k] + W[k+1, j] = W[i, j]:
+			push(i, k)
+			push(k+1, j)
+			break
+
+
+
+Information content IC von (P(X)M)_{PSSM}
+
+self-information - \log_2(P_{i,j})
+(avg) expected information -P_{i,j} \log_2(P{i,j}
+IC entropy - \sum_{i,j} P{i,j} \cdot \log_2(P_{i,j}) \Rightarrow (i)
+relative entropy \sum_{i,j} P_{i,j} \cdot \log_2(\frac{P_{i,j}}{P_B})
+f_{i,j](a,b) = H_{i,j} = - \sum_{a,b \in \mathcal{A}} f_{i,j}(a,b) \cdot \log_2 \frac{f_{i,j}(a,b)}{f_i(a) \cdot f_j(b)}
+Häufigkeit von Paar (a,b) in Spalten i und j
+
+
+\end{enumerate}
+\end{document}

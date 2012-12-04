@@ -164,6 +164,8 @@ def analyze(seq, winsize):
 
 	step = 0
 	win = seq[:winsize]		# current window
+
+	mini, maxi = pow(10, 10), 0
 	
 	for n in seq[winsize:]:
 		rfn = step % 3		# reading frame number is 0, 1 or 2
@@ -172,8 +174,10 @@ def analyze(seq, winsize):
 		if rfn == 2:
 			A = sum(H) / float(len(H))
 			H = map(lambda Hi: math.exp(Hi - A), H)
-			P = map(lambda Hi: Hi / sum(H), H)
-			P = map(lambda Pi: math.log10(Pi / (1.0 - Pi)), P)
+			S = sum(H)
+			P = map(lambda Hi: Hi / S, H)
+			#P = map(lambda Pi: Pi / (1.0 - Pi), P)				# (i)
+			P = map(lambda Pi: math.log10(Pi / (1.0 - Pi)), P)	# (ii)
 			data.append((step, P[0], P[1], P[2]))
 
 		step = step + 1;
@@ -182,8 +186,8 @@ def analyze(seq, winsize):
 
 def latex(data):
 	xscale = 1.0/3.0
-	yscale = 3
-	ymax = yscale * 10
+	yscale = 5
+	ymax = 15
 	print "\\begin{picture}(" + str(xscale * len(data)) + "," + str(yscale * 2 * ymax) + ")(0,-" + str(yscale * ymax) + ")"
 	print "\\put(0,0){\\vector(1,0){" + str(xscale * len(data) * 3) + "}}"
 	print "\\put(0,0){\\vector(0,1){" + str(yscale * ymax) + "}}"
