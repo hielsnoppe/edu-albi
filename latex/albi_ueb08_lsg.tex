@@ -15,57 +15,160 @@
 \maketitle
 \begin{enumerate} 
 
-\aufgabe{}{}
+\aufgabe{Nussinov-Algorithmus}{80}
 
-Nussinov
+%Nussinov
+%
+%w(i,j) = score, max. Anz. Basenpaare für Subseqeunz x_i, ..., x_j
+%\delta (i, j) = \begin{cases}
+%1 & \text{ if } i \cdot j\\
+%0 & \text{ else }
+%\end{cases}
+%
+%Initialisierung
+%w(i, i) = 0; w(i, i-1) = 0; i = 2, ..., L
+%
+%Rekursion
+%alle Subsequenzen der Länge 2 ... L
+%w(i, j) = \max \begin{cases}
+%w(i+1, j)								& (1)\\
+%w(i, j-1)								& (2)\\
+%w(i+1, j-1) + \delta(i, j)				& (3)\\
+%\max_{i < k < j} w(i, k) + w(k+1, j)	& (4)
+%\end{cases}
+%
+%Traceback
+%
+%push(1, L)
+%
+%pop(i, j)
+%if j \geq i: continue
+%elif w(i+1,j) = w(i, j): push(i+1, j)
+%elif w(i, i-1) = W[i, j]: push(i, j-1)
+%elif W[i+1, j-1] + delta(i, j) = W[i, j]:
+%	push(i+1, j-1)
+%	print(i, j)
+%else:
+%	for k in range(i+1, j-1):
+%		if W[i, k] + W[k+1, j] = W[i, j]:
+%			push(i, k)
+%			push(k+1, j)
+%			break
+%
+%
+%
+%Information content IC von (P(X)M)_{PSSM}
+%
+%self-information - \log_2(P_{i,j})
+%(avg) expected information -P_{i,j} \log_2(P{i,j}
+%IC entropy - \sum_{i,j} P{i,j} \cdot \log_2(P_{i,j}) \Rightarrow (i)
+%relative entropy \sum_{i,j} P_{i,j} \cdot \log_2(\frac{P_{i,j}}{P_B})
+%f_{i,j](a,b) = H_{i,j} = - \sum_{a,b \in \mathcal{A}} f_{i,j}(a,b) \cdot \log_2 \frac{f_{i,j}(a,b)}{f_i(a) \cdot f_j(b)}
+%Häufigkeit von Paar (a,b) in Spalten i und j
+\begin{enumerate}
+\item Das vorhandene Python Programm wurde an wenigen Stellen angepasst, um unseren Bedürfnissen gerecht zu werden. Um mit dem Fasta Format umgehen zu können, werden beim Einlesen der Sequenz alle Zeilen beginnend mit einem '$>$' Zeichen ausgelassen. 
+Weiterhin müssen alle Zeilen zusammen als eine Sequenz behandelt werden.
+\begin{verbatim}
+seq=[]
+stringSeq = ""
 
-w(i,j) = score, max. # Basenpaare für Subseqeunz x_i, ..., x_j
-\delta (i, j) = \begin{cases}
-1 & \text{ if } i \cdot j\\
-0 & \text{ else }
-\end{cases}
+for line in f:
+    # meta daten des fasta formats skippen
+    if not line.startswith('>'):
+        stringSeq += string.strip(line)
+    # else: TODO: neue Sequenz zu seq hinzufuegen
 
-Initialisierung
-w(i, i) = 0; w(i, i-1) = 0; i = 2, ..., L
+seq.append(stringSeq)
+\end{verbatim}
+\item
+Im Traceback Schritt muss beim Hinzufügen eines Basenpaares darauf geachtet werden, dass $i$ und $j$ einen Mindestabstand von 3 haben:
+\begin{verbatim}
+# auf hairpin loops >= 3 achten!
+elif s[i,j]==s[i+1,j-1]+delta(seq[i],seq[j]) and j-i >= 3:
+    pair.append([i,j,str(seq[i]),str(seq[j])]);
+    traceback(s,seq,i+1,j-1,pair);
+\end{verbatim}
+Die angepasste Scoringfunction ist gegeben durch:
+\begin{verbatim}
+def delta(l,m):
+    delta=0;
+    if l=='A' and m=='U':
+        return 2;
+    elif l=='U' and m=='A':
+        return 2;
+    elif l=='G' and m=='C':
+        return 3;
+    elif l=='C' and m=='G':
+        return 3;
+    else:
+        return 0;
+\end{verbatim}
 
-Rekursion
-alle Subsequenzen der Länge 2 ... L
-w(i, j) = \max \begin{cases}
-w(i+1, j)								& (1)\\
-w(i, j-1)								& (2)\\
-w(i+1, j-1) + \delta(i, j)				& (3)\\
-\max_{i < k < j} w(i, k) + w(k+1, j)	& (4)
-\end{cases}
+\item
+Wir ersetzen alle 'T's durch ein 'U' durch:
+\begin{verbatim}
+seq = map(lambda x: str.replace(x, "T", "U"), seq)
+\end{verbatim}
 
-Traceback
+Das Programm liefert folgendes Ergebnis:
+\begin{verbatim}
+max # of folding pairs:  162
+\end{verbatim}
+\item 
+Bracket- bzw. Vienna-Darstellung (Berechnung, siehe Quellcode).
+\begin{verbatim}
+0   ATGCCGTCCAAGGGCCCGCTGCAGTCTGTG
+    .(()()(((.(((())())))(((.)))((
+30  CAGGTCTTCGGACGCAAGAAGACAGCGACA
+    )))(((((()(.()))))).(((.)()(((
+60  GCTGTGGCGCACTGCAAACGCGGCAATGGT
+    ())))(()()(((())..()()().()).)
+90  CTCATCAAGGTGAACGGGCGGCCCCTGGAG
+    )))()))).(((((().(((())((.))((
+120 ATGATTGAGCCGCGCACGCTACAGTACAAG
+    (((()(.)()(())))()(()(.(())(((
+150 CTGCTGGAGCCAGTTCTGCTTCTCGGCAAG
+    ))())))(()(.))))))))))(()())((
+180 GAGCGATTTGCTGGTGTAGACATCCGTGTC
+    ((.()()((()(((((()(((()(().)((
+210 CGTGTAAAGGGTGGTGGTCACGTGGCCCAG
+    ().(()((((((((.(((((())(())(.)
+240 ATTTATGCTATCCGTCAGTCCATCTCCAAA
+    ()((()()(()(()(.))(((()(((((((
+270 GCCCTGGTGGCCTATTACCAGAAATATGTG
+    ()((.)))(()))()()((.)..(()))))
+300 GATGAGGCTTCCAAGAAGGAGATCAAAGAC
+    )().))()((.(..))))))(())))))))
+330 ATCCTCATCCAGTATGACCGGACCCTGCTG
+    ())).)().(((()(.)(()(.)((.().)
+360 GTAGCTGACCCTCGTCGCTGCGAGTCCAAA
+    )())))))))))())(().)))))))))((
+390 AAGTTTGGAGGCCCTGGTGCCCGCGCTCGC
+    ((.)))(((.()((.)))())(()))))()
+420 TACCAGAAATCCTACCGATAA
+    ())(.))))))))))()()..
+\end{verbatim}
+Base Pair Graph, erzeugt mit der VARNA GUI:
+\includegraphics[scale=0.25]{../data/u8_aufg27_nussinov}
 
-push(1, L)
+\item
+\begin{verbatim}
+RNAfold -p -d2 --noLP < rna16s.fa > zuker.out
+\end{verbatim}
 
-pop(i, j)
-if j \geq i: continue
-elif w(i+1,j) = w(i, j): push(i+1, j)
-elif w(i, i-1) = W[i, j]: push(i, j-1)
-elif W[i+1, j-1] + delta(i, j) = W[i, j]:
-	push(i+1, j-1)
-	print(i, j)
-else:
-	for k in range(i+1, j-1):
-		if W[i, k] + W[k+1, j] = W[i, j]:
-			push(i, k)
-			push(k+1, j)
-			break
+\includegraphics[scale=0.5]{../data/u8_aufg27_zuker_output}
 
+\item
+Der Nussinov-Algorithmus findet 199 (ohne Hairpin-Loop Restriktion) bzw. 162 Basenpaare. Der Basenpaar-Graph wirkt durch die vielen Loops sehr chaotisch. Beim Zuker Algorithmus werden 116 Basenpaare gefunden. 
+Der Graph enthält viel weniger Loops und wirkt einfacher. 
+Die Unterschiede sind auf die Biologische Relevanz zurückzuführen. Siehe Wikipedia Eintrag zum Nussinov-Algorithmus:\\
+\textit{Die Sekundärstruktur, welche die maximale Anzahl von Basenpaaren enthält ist nicht unbedingt die Struktur, die in der Natur (in einer Zelle) auftritt. Deshalb wird in der Praxis der Nussinov-Algorithmus nicht zur Strukturvorhersage von RNA-Sequenzen eingesetzt. In der Praxis wird die Sekundärstruktur beispielsweise unter einem thermodynamischen Modell vorhergesagt, was zu biologisch sinnvolleren Ergebnissen führt.}
+
+\end{enumerate}
 
 
-Information content IC von (P(X)M)_{PSSM}
-
-self-information - \log_2(P_{i,j})
-(avg) expected information -P_{i,j} \log_2(P{i,j}
-IC entropy - \sum_{i,j} P{i,j} \cdot \log_2(P_{i,j}) \Rightarrow (i)
-relative entropy \sum_{i,j} P_{i,j} \cdot \log_2(\frac{P_{i,j}}{P_B})
-f_{i,j](a,b) = H_{i,j} = - \sum_{a,b \in \mathcal{A}} f_{i,j}(a,b) \cdot \log_2 \frac{f_{i,j}(a,b)}{f_i(a) \cdot f_j(b)}
-Häufigkeit von Paar (a,b) in Spalten i und j
-
+\aufgabe{Entropie}{60}
+\aufgabe{STS Content Mapping}{50}
 
 \end{enumerate}
 \end{document}
