@@ -33,11 +33,7 @@ def delta(l,m):
 	elif l=='G' and m=='C':
 		return 3;
 	elif l=='C' and m=='G':
-		return 3;
-	#elif l=='G' and m=='U':
-	#	return 1;
-	#elif l=='U' and m=='G':
-	#	return 1;	
+		return 3;	
 	else:
 		return 0;
 
@@ -67,7 +63,7 @@ def traceback(s,seq,i,j,pair):
 		elif s[i,j]==s[i,j-1]:
 			traceback(s,seq,i,j-1,pair);
 		# auf hairpin loops > 3 achten!
-		elif s[i,j]==s[i+1,j-1]+delta(seq[i],seq[j]):# and j-i > 3:
+		elif s[i,j]==s[i+1,j-1]+delta(seq[i],seq[j]) and j-i > 3:
 			pair.append([i,j,str(seq[i]),str(seq[j])]);
 			traceback(s,seq,i+1,j-1,pair);
 		else:
@@ -81,8 +77,8 @@ def traceback(s,seq,i,j,pair):
 for q in xrange(0,len(seq)):
 	pair=traceback(buildDP(seq[q]),seq[q],0,len(seq[q])-1,[])
  	print "max # of folding pairs: ",len(pair);
-	#for x in xrange(0,len(pair)):
-	#	print '%d %d %s==%s' % (pair[x][0],pair[x][1],pair[x][2],pair[x][3]);
+	for x in xrange(0,len(pair)):
+		print '%d %d %s==%s' % (pair[x][0],pair[x][1],pair[x][2],pair[x][3]);
 	print "---";
 	
 	# Vienna Darstellung

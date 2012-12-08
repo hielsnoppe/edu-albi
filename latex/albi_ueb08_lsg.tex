@@ -168,6 +168,93 @@ Die Unterschiede sind auf die Biologische Relevanz zurückzuführen. Siehe Wikip
 
 
 \aufgabe{Entropie}{60}
+\begin{itemize}
+	\item
+	\item
+Zum Erzeugen der Sequenzen nutzen wir folgenden Converter:
+\begin{verbatim}
+#!/usr/bin/env python
+
+import math
+import csv
+import sys
+
+data = []
+reader = csv.reader(open(sys.argv[1], "rb")) # TATA Box einlesen
+for row in reader:
+  row = list(int(elem) for elem in row)
+  data.append(row)
+  
+multi_align = []
+for x in range(389):
+  multi_align.append("")
+
+nukleotid = ['A','C','G','T']
+
+for pos in range(len(data[0])):
+  seq_index = 0
+  for nuk in range(4): 
+    val = data[nuk][pos]
+    for i in range(val):
+      multi_align[seq_index] += nukleotid[nuk]
+      seq_index += 1
+      
+for seq in multi_align:
+  print seq
+\end{verbatim}
+
+\includegraphics[scale=0.6]{../data/u8_aufg28b}
+	\item
+\begin{verbatim}
+#!/usr/bin/env python
+import math
+
+# Spalte 1,2,3
+f_i = [	[2,2,2], # A
+        [2,2,1], # C
+        [2,2,4], # G
+        [2,2,1]] # U
+f_ij = [[0,1,0], # AA
+        [0,0,1], # AC
+        [0,1,1], # AG
+        [2,0,0], # AU
+        [0,0,1], # CA
+        [0,0,0], # ...
+        [2,2,0],
+        [0,0,1],
+        [0,1,1], # GA
+        [2,0,0],
+        [0,0,2],
+        [0,1,0],
+        [2,0,1], # UA
+        [0,1,0],
+        [0,1,1],
+        [0,0,0]] # UU
+
+H = 0
+
+for i in range(4):
+  for j in range(4): 
+    for spalte in range(3):
+      p = f_ij[i*4+j][spalte]
+      a = f_i[i][spalte]
+      b = f_i[j][spalte]
+      
+      if p == 0:
+        p = float(1)/16 # pseudocount
+      else:
+        p = float(p)/8
+      
+      a = float(a)/8
+      b = float(b)/8
+      
+      H += p * math.log((p/(a*b)), 2)
+      
+print (-H) # -4.9375
+\end{verbatim}	
+	
+\end{itemize}
+
 \aufgabe{STS Content Mapping}{50}
 
 \end{enumerate}
