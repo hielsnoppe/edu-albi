@@ -256,6 +256,30 @@ print (-H) # -4.9375
 \end{itemize}
 
 \aufgabe{STS Content Mapping}{50}
+\begin{enumerate}
+
+\item Graph aus Hamming-Distanzen der Sonden und MST daraus (Adjazenzmatrix, Zeichnung von Hand):
+\begin{verbatim}
+  ABCD     ABCD
+A  331   A    1
+B 3 22   B   22
+C 31 4   C  2
+D 124    D 12
+\end{verbatim}
+
+\item Aus dem MST ergibt sich als kürzester Pfad mit Länge $5$ die Anordnung der Sonden als $(A,D,B,C)$:
+
+\begin{tabular}{l|cccc}
+	& A	& D	& B	& C\\\hline
+1	& 1	& 1	& 1	& 0\\
+2	& 1	& 1	& 0	& 0\\
+3	& 0	& 0	& 1	& 1\\
+4	& 1	& 0	& 0	& 1
+\end{tabular}
+
+\item Der Einträge $4A$ oder $4C$ widersprechen der C1P und sind darum wahrscheinlich fehlerhaft.
+
+\end{enumerate}
 
 \end{enumerate}
 \end{document}
