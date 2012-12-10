@@ -258,14 +258,17 @@ print (-H) # -4.9375
 \aufgabe{STS Content Mapping}{50}
 \begin{enumerate}
 
-\item Graph aus Hamming-Distanzen der Sonden und MST daraus (Adjazenzmatrix, Zeichnung von Hand):
-\begin{verbatim}
-  ABCD     ABCD
-A  331   A    1
-B 3 22   B   22
-C 31 4   C  2
-D 124    D 12
-\end{verbatim}
+\item Aus den Hamming-Distanzen der Sonden ergibt sich der linke Graph, indem wir den rechten MST berechnen:
+
+\newpage
+
+% \begin{verbatim}
+%   ABCD     ABCD
+% A  331   A    1
+% B 3 22   B   22
+% C 31 4   C  2
+% D 124    D 12
+% \end{verbatim}
 
 \item Aus dem MST ergibt sich als kürzester Pfad mit Länge $5$ die Anordnung der Sonden als $(A,D,B,C)$:
 
@@ -277,9 +280,234 @@ D 124    D 12
 4	& 1	& 0	& 0	& 1
 \end{tabular}
 
-\item Der Einträge $4A$ oder $4C$ widersprechen der C1P und sind darum wahrscheinlich fehlerhaft.
+\item Die Einträge $4A$ oder $4C$ widersprechen der C1P und sind darum wahrscheinlich fehlerhaft.
 
 \end{enumerate}
+
+\aufgabe{Gene finding (Übungsblatt 7)}{100}
+
+Mit Hilfe der Funktion \texttt{train} erzeugen wir für jeden reading-frame ein eigenes Modell in Form einer Transitionsmatrix.
+Zur besseren Lesbarkeit sind die Transitionsmatrizen jeweils mit $10^3$ skaliert dargestellt.
+
+\begin{lstlisting}[language=python]
+def train(seqs):
+	nucs = ["a", "c", "g", "t"]
+	binucs = list(itertools.product(nucs, repeat=2))
+	trinucs = list(itertools.product(nucs, repeat=3))
+
+	C = [dict([("".join(trinuc), 1.0) for trinuc in trinucs]) for i in range(3)]
+	A = [dict([("".join(binuc),
+		dict([("".join(binuc), 0.0) for binuc in binucs]))
+		for binuc in binucs]) for i in range(3)]
+
+	for seq in seqs:
+		step = 0
+		cod = seq[:3]			# current codon
+
+		for nuc in seq:
+			rfn = step % 3		# reading frame number is 0, 1 or 2
+			C[rfn][cod] = C[rfn][cod] + 1
+			step = step + 1;
+			cod = cod[1:] + nuc
+
+	for i in range(len(C)):
+		for trinuc in C[i]:
+			rs, st = trinuc[:2], trinuc[1:]
+			A[i][rs][st] = C[i][trinuc] / sum([C[i][rs+l] for l in nucs])
+
+	return (A[0], A[1], A[2])
+\end{lstlisting}
+
+\begin{enumerate}
+
+\item Modell für \texttt{Genes.fa}
+
+\tiny
+
+\normalsize
+reading-frame 1
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 308 & 187 &   0 & 256 &   0 &   0 &   0 &   0 &   0 &   0 & 248 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 234 & 294 & 115 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 357\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 399 &   0 &   0 &   0 & 175 & 193 & 234 &   0\\
+ag &   0 &   0 & 231 &   0 &   0 &   0 &   0 & 145 &   0 & 154 &   0 & 471 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 148 & 419 & 120 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 312\\
+ca & 442 & 154 &   0 & 182 &   0 &   0 &   0 &   0 &   0 &   0 & 222 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 469 &   0 &   0 &   0 &   0 & 132 &   0 & 177 &   0 & 221 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 532 &   0 &   0 &   0 &   0 & 107 &   0 & 169 &   0 & 192 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 256 &   0 &   0 &   0 & 287 & 269 & 187 &   0\\
+gc &   0 &   0 &   0 &   0 & 247 & 254 &  97 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 402\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 346 &   0 &   0 &   0 & 256 & 178 & 220 &   0\\
+ga & 374 & 175 &   0 & 150 &   0 &   0 &   0 &   0 &   0 &   0 & 301 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 338 &   0 &   0 &   0 &   0 & 401 &   0 & 213 &   0 &  48 &   0 &   0 &   0 &   0\\
+ta &  21 & 452 &   0 &  15 &   0 &   0 &   0 &   0 &   0 &   0 & 512 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 229 & 277 & 120 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 374\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 287 &   0 &   0 &   0 & 258 & 313 & 141 &   0\\
+\end{tabular}
+
+\normalsize
+reading-frame 2
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 338 & 153 &   0 & 282 &   0 &   0 &   0 &   0 &   0 &   0 & 226 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 156 & 354 & 266 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 225\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 194 &   0 &   0 &   0 & 355 & 322 & 128 &   0\\
+ag &   0 &   0 & 200 &   0 &   0 &   0 &   0 & 279 &   0 & 182 &   0 & 340 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 124 & 452 & 222 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 202\\
+ca & 330 & 171 &   0 & 259 &   0 &   0 &   0 &   0 &   0 &   0 & 240 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 222 &   0 &   0 &   0 &   0 & 255 &   0 & 194 &   0 & 330 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 250 &   0 &   0 &   0 &   0 & 244 &   0 & 175 &   0 & 331 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 245 &   0 &   0 &   0 & 335 & 248 & 171 &   0\\
+gc &   0 &   0 &   0 &   0 & 161 & 372 & 238 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 230\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 224 &   0 &   0 &   0 & 326 & 298 & 152 &   0\\
+ga & 383 & 139 &   0 & 253 &   0 &   0 &   0 &   0 &   0 &   0 & 226 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 170 &   0 &   0 &   0 &   0 & 300 &   0 & 153 &   0 & 377 &   0 &   0 &   0 &   0\\
+ta & 308 & 194 &   0 & 262 &   0 &   0 &   0 &   0 &   0 &   0 & 237 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 167 & 415 & 224 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 194\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 231 &   0 &   0 &   0 & 319 & 282 & 168 &   0\\
+\end{tabular}
+
+\normalsize
+reading-frame 3
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 387 & 181 &   0 & 198 &   0 &   0 &   0 &   0 &   0 &   0 & 235 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 284 & 361 & 100 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 255\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 442 &   0 &   0 &   0 & 108 & 184 & 266 &   0\\
+ag &   0 &   0 & 190 &   0 &   0 &   0 &   0 & 187 &   0 & 192 &   0 & 431 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 252 & 416 &  97 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 236\\
+ca & 383 & 193 &   0 & 181 &   0 &   0 &   0 &   0 &   0 &   0 & 243 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 204 &   0 &   0 &   0 &   0 & 206 &   0 & 185 &   0 & 405 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 194 &   0 &   0 &   0 &   0 & 156 &   0 & 223 &   0 & 427 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 423 &   0 &   0 &   0 & 103 & 154 & 320 &   0\\
+gc &   0 &   0 &   0 &   0 & 252 & 388 & 107 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 253\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 416 &   0 &   0 &   0 & 109 & 168 & 307 &   0\\
+ga & 413 & 161 &   0 & 162 &   0 &   0 &   0 &   0 &   0 &   0 & 264 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 206 &   0 &   0 &   0 &   0 & 192 &   0 & 216 &   0 & 386 &   0 &   0 &   0 &   0\\
+ta & 361 & 212 &   0 & 141 &   0 &   0 &   0 &   0 &   0 &   0 & 286 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 294 & 380 &  92 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 234\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 414 &   0 &   0 &   0 & 118 & 176 & 292 &   0\\
+\end{tabular}
+
+\normalsize
+
+\item Modell für \texttt{Noncoding.fa}
+
+reading-frame 1
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 385 & 172 &   0 & 182 &   0 &   0 &   0 &   0 &   0 &   0 & 260 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 258 & 303 & 151 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 288\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 353 &   0 &   0 &   0 & 185 & 233 & 229 &   0\\
+ag &   0 &   0 & 236 &   0 &   0 &   0 &   0 & 181 &   0 & 199 &   0 & 383 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 225 & 351 & 115 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 310\\
+ca & 380 & 194 &   0 & 161 &   0 &   0 &   0 &   0 &   0 &   0 & 266 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 266 &   0 &   0 &   0 &   0 & 206 &   0 & 214 &   0 & 314 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 258 &   0 &   0 &   0 &   0 & 182 &   0 & 201 &   0 & 360 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 409 &   0 &   0 &   0 & 190 & 148 & 254 &   0\\
+gc &   0 &   0 &   0 &   0 & 254 & 307 & 135 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 305\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 340 &   0 &   0 &   0 & 153 & 308 & 198 &   0\\
+ga & 421 & 151 &   0 & 142 &   0 &   0 &   0 &   0 &   0 &   0 & 286 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 283 &   0 &   0 &   0 &   0 & 203 &   0 & 201 &   0 & 313 &   0 &   0 &   0 &   0\\
+ta & 317 & 197 &   0 & 147 &   0 &   0 &   0 &   0 &   0 &   0 & 338 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 247 & 273 & 139 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 341\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 442 &   0 &   0 &   0 & 155 & 169 & 234 &   0\\
+\end{tabular}
+
+\normalsize
+reading-frame 2
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 387 & 183 &   0 & 181 &   0 &   0 &   0 &   0 &   0 &   0 & 249 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 245 & 309 & 166 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 281\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 327 &   0 &   0 &   0 & 246 & 256 & 171 &   0\\
+ag &   0 &   0 & 269 &   0 &   0 &   0 &   0 & 201 &   0 & 202 &   0 & 328 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 196 & 342 & 156 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 307\\
+ca & 379 & 176 &   0 & 186 &   0 &   0 &   0 &   0 &   0 &   0 & 260 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 327 &   0 &   0 &   0 &   0 & 172 &   0 & 236 &   0 & 265 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 332 &   0 &   0 &   0 &   0 & 182 &   0 & 212 &   0 & 274 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 365 &   0 &   0 &   0 & 214 & 196 & 225 &   0\\
+gc &   0 &   0 &   0 &   0 & 219 & 335 & 165 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 280\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 301 &   0 &   0 &   0 & 189 & 302 & 208 &   0\\
+ga & 388 & 164 &   0 & 176 &   0 &   0 &   0 &   0 &   0 &   0 & 273 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 282 &   0 &   0 &   0 &   0 & 219 &   0 & 209 &   0 & 291 &   0 &   0 &   0 &   0\\
+ta & 302 & 188 &   0 & 126 &   0 &   0 &   0 &   0 &   0 &   0 & 384 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 219 & 284 & 144 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 353\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 342 &   0 &   0 &   0 & 191 & 247 & 219 &   0\\
+\end{tabular}
+
+\normalsize
+reading-frame 3
+\tiny
+
+\begin{tabular}{c|cccccccccccccccc}
+   & aa & ac & gt & ag & cc & ca & cg & gg & tt & gc & at & ga & tg & ta & tc & ct\\\hline
+aa & 378 & 156 &   0 & 207 &   0 &   0 &   0 &   0 &   0 &   0 & 259 &   0 &   0 &   0 &   0 &   0\\
+ac &   0 &   0 &   0 &   0 & 206 & 329 & 210 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 255\\
+gt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 318 &   0 &   0 &   0 & 221 & 297 & 164 &   0\\
+ag &   0 &   0 & 245 &   0 &   0 &   0 &   0 & 217 &   0 & 192 &   0 & 345 &   0 &   0 &   0 &   0\\
+cc &   0 &   0 &   0 &   0 & 207 & 388 & 126 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 279\\
+ca & 344 & 206 &   0 & 185 &   0 &   0 &   0 &   0 &   0 &   0 & 265 &   0 &   0 &   0 &   0 &   0\\
+cg &   0 &   0 & 337 &   0 &   0 &   0 &   0 & 172 &   0 & 199 &   0 & 292 &   0 &   0 &   0 &   0\\
+gg &   0 &   0 & 296 &   0 &   0 &   0 &   0 & 197 &   0 & 186 &   0 & 321 &   0 &   0 &   0 &   0\\
+tt &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 398 &   0 &   0 &   0 & 201 & 220 & 180 &   0\\
+gc &   0 &   0 &   0 &   0 & 181 & 306 & 173 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 339\\
+at &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 300 &   0 &   0 &   0 & 209 & 324 & 166 &   0\\
+ga & 393 & 159 &   0 & 181 &   0 &   0 &   0 &   0 &   0 &   0 & 267 &   0 &   0 &   0 &   0 &   0\\
+tg &   0 &   0 & 264 &   0 &   0 &   0 &   0 & 246 &   0 & 188 &   0 & 303 &   0 &   0 &   0 &   0\\
+ta & 267 & 205 &   0 & 183 &   0 &   0 &   0 &   0 &   0 &   0 & 346 &   0 &   0 &   0 &   0 &   0\\
+tc &   0 &   0 &   0 &   0 & 208 & 313 & 122 &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 357\\
+ct &   0 &   0 &   0 &   0 &   0 &   0 &   0 &   0 & 352 &   0 &   0 &   0 & 219 & 222 & 207 &   0\\
+\end{tabular}
+
+\normalsize
+
+\item
+
+Die Funktion \texttt{analyze} schiebt ein Fenster über die Sequenz und berechnet an jeder Position die Werte für $S$.
+Um die Funktion \texttt{Pr} einzeln implementieren zu können, verwenden wir die Gleichung
+$$\sum \log \frac{a}{b} = \sum \log a - \sum \log b.$$
+
+\begin{lstlisting}[language=python]
+def Pr(seq, A):
+	return sum([math.log(A[seq[n:n+2]][seq[n+1:n+3]]) for n in range(0, len(seq)-3)])
+
+def analyze(seq, Gmod, NCmod, winsize):
+	data = []
+	S = [0.0, 0.0, 0.0]
+
+	step = 0
+	win = seq[:winsize]		# current window
+
+	for n in seq[winsize:]:
+		rfn = step % 3		# reading frame number is 0, 1 or 2
+		S[rfn] = Pr(win, Gmod) - Pr(win, NCmod)
+
+		if rfn == 2:
+			data.append((step, S[0], S[1], S[2]))
+
+		step = step + 1;
+		win = win[1:] + n
+	return data
+\end{lstlisting}
+
+\item
+\item
+
+\end{enumerate}
+
+
 
 \end{enumerate}
 \end{document}
