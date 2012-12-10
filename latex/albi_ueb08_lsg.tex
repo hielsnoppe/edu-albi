@@ -170,6 +170,31 @@ Die Unterschiede sind auf die Biologische Relevanz zurückzuführen. Siehe Wikip
 \aufgabe{Entropie}{60}
 \begin{itemize}
 	\item
+Wir lassen die Entropie mit folgendem Python Programm berechnen, wobei $data$ die Tata-Box als Matrix \textit{Nukleotid} $\times$ \textit{\#\_Vorkommen\_an\_Position\_k} ist:
+\begin{verbatim}
+def H(data):
+  if not data:
+    return 0
+  entropy = []
+  
+  total = []
+  for i in range(len(data)):
+  	total.append(sum(data[i]))
+
+  for k in range(len(data[0])):
+  	entropy_k = 0
+  	for x in range(len(data)):
+  		p_x = float(data[x][k])/float(total[x])
+    	if p_x > 0.0:
+      		entropy_k += - p_x*math.log(p_x, 2)
+  	entropy.append(entropy_k)  	
+  return entropy
+\end{verbatim}	
+Entropie an den einzelnen Stellen:
+[0.12184801315067625, 0.4813339454925309, 0.13318690772179287, 0.5089006190074657, 0.11893257617525575, 0.3055540303148797, 0.03375187186546901, 0.3055540303148797, 0.12758004245962837, 0.16701068307825856, 0.12184801315067625, 0.17663295008310864, 0.19715528596320855, 0.22641255122744397, 0.21835301025523862]
+
+Gesamtentropie: 3.24405453026
+
 	\item
 Zum Erzeugen der Sequenzen nutzen wir folgenden Converter:
 \begin{verbatim}
