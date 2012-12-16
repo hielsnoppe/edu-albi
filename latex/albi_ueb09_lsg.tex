@@ -101,14 +101,15 @@
 \centering
 
 \begin{picture}(1870,800)(0,0)
-\put(0,000){\vector(1,0){500}}
-\put(50,100){\vector(1,0){500}}
-\put(750,200){\vector(-1,0){500}}
-\put(1100,300){\vector(-1,0){500}}
-\put(700,400){\vector(1,0){500}}
-\put(1020,500){\vector(1,0){500}}
-\put(1630,600){\vector(-1,0){500}}
-\put(1870,700){\vector(-1,0){500}}
+\footnotesize
+\put(0,000){\vector(1,0){500}} \put(600,000){$f_1: (0,500)$}
+\put(50,100){\vector(1,0){500}} \put(650,100){$f_6: (50,550)$}
+\put(750,200){\vector(-1,0){500}} \put(850,200){$f_7: (750,250)$}
+\put(1100,300){\vector(-1,0){500}} \put(1200,300){$f_5: (1100,600)$}
+\put(700,400){\vector(1,0){500}} \put(1300,400){$f_8: (700,1200)$}
+\put(1020,500){\vector(1,0){500}} \put(520,500){$f_3: (1020,1520)$}
+\put(1630,600){\vector(-1,0){500}} \put(630,600){$f_4: (1630,1130)$}
+\put(1870,700){\vector(-1,0){500}} \put(870,700){$f_2: (1870,1370)$}
 \end{picture}
 
 \caption{Layout}
@@ -120,7 +121,8 @@
 
 \aufgabe{Sequencing by Hybridisation}{}
 
-Habe ich auf Papier fertig, füge ich dann ein.
+Wir erstellen zuerst einen Overlap-Graphen und verwenden anschließend den Euler-Trick,
+um die ursprüngliche Sequenz zu rekonstruieren.
 
 \begin{figure}[H]
 \setlength{\unitlength}{1.5cm}
@@ -138,20 +140,16 @@ Habe ich auf Papier fertig, füge ich dann ein.
 \put(0,2){\texttt{ACC}}
 \put(0,1){\texttt{TAC}}
 
-\footnotesize
-\put(1,0){\line(1,0){1}}
-\put(1,0){\line(0,1){3}}
-\put(1,0){\line(-1,2){1}}
-\put(2,0){\line(1,1){1}}
-\put(2,0){\line(1,2){1}}
-\put(3,1){\line(0,1){1}}
-\put(3,1){\line(-1,2){1}}
-\put(3,1){\line(-1,0){3}}
-\put(3,2){\line(-3,-1){3}}
-\put(2,3){\line(-2,-1){2}}
-\put(2,3){\line(-1,-1){2}}
-\put(1,3){\line(-1,-1){1}}
-\put(0,2){\line(0,-1){1}}
+\put(1,0){\vector(1,3){1}}
+\put(2,0){\vector(-1,0){1}}
+\put(3,2){\vector(0,-1){1}}
+\put(2,3){\vector(-1,0){1}}
+\put(2,3){\vector(-2,-1){2}}
+\put(1,3){\vector(1,-3){1}}
+\put(1,3){\vector(1,-1){2}}
+\put(0,2){\vector(1,0){3}}
+\put(0,1){\vector(0,1){1}}
+\put(0,1){\vector(1,2){1}}
 \end{picture}
 
 \caption{Overlap-Graph}
@@ -169,28 +167,24 @@ Habe ich auf Papier fertig, füge ich dann ein.
 \put(1,3){\texttt{AC}}
 \put(0,2){\texttt{TA}}
 
-\footnotesize
-\put(1,0){\line(1,0){1}}
-\put(1,0){\line(0,1){3}}
-\put(1,0){\line(-1,2){1}}
-\put(2,0){\line(1,1){1}}
-\put(2,0){\line(1,2){1}}
-\put(3,1){\line(0,1){1}}
-\put(3,1){\line(-1,2){1}}
-\put(3,1){\line(-1,0){3}}
-\put(3,2){\line(-3,-1){3}}
-\put(2,3){\line(-2,-1){2}}
-\put(2,3){\line(-1,-1){2}}
-\put(1,3){\line(-1,-1){1}}
-\put(0,2){\line(0,-1){1}}
+\put(1,0){\vector(1,0){1}}
+\put(2,0){\vector(-1,3){1}}
+\put(3,1){\vector(-2,-1){2}}
+\put(3,1){\vector(0,1){1}}
+\put(2,3){\vector(1,-2){1}}
+\put(1,3){\vector(1,0){1}}
+\put(1,3){\vector(1,-1){2}}
+\put(0,2){\vector(1,1){1}}
 \end{picture}
 
 \caption{Euler-Trick}
 \label{fig:31b}
 \end{subfigure}
 
-\caption{Sequencing by hybridisation}
+\caption{Sequencing by Hybridisation}
 \end{figure}
+
+Aus beiden Graphen lässt sich \texttt{TACCGCACGT} als zusammengesetzte Sequenz ablesen.
 
 
 \aufgabe{Euler-Zyklus/Hammilton}{}
