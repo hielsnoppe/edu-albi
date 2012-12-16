@@ -18,7 +18,7 @@
 \maketitle
 \begin{enumerate} 
 
-\aufgabe{Overlap-Graph}{}
+\aufgabe{Overlap-Graph}{\qquad}
 
 % 1) Overlap phase -> alle Paare vergleichen; Overlap Graph
 % 2) Layout phase -> Position von jedem Read
@@ -45,20 +45,20 @@
 \put(0,2){$f_7$}
 \put(0,1){$f_8$}
 
-\footnotesize
-\put(1,0){\line(1,0){1}} \put(1.5,0){$-40$}		% 1,2
-\put(1,0){\line(0,1){3}} \put(0,0){$-450$}		% 1,6
-\put(1,0){\line(-1,2){1}} \put(0,0){$-250$}		% 1,7
-\put(2,0){\line(1,1){1}} \put(0,0){$-150$}		% 2,3
-\put(2,0){\line(1,2){1}} \put(0,0){$-260$}		% 2,4
-\put(3,1){\line(0,1){1}} \put(0,0){$-390$}		% 3,4
-\put(3,1){\line(-1,2){1}} \put(0,0){$-80$}		% 3,5
-\put(3,1){\line(-1,0){3}} \put(0,0){$-180$}		% 3,8
-\put(3,2){\line(-3,-1){3}} \put(0,0){$-70$}		% 4,8
-\put(2,3){\line(-2,-1){2}} \put(0,0){$-150$}	% 5,7
-\put(2,3){\line(-1,-1){2}} \put(0,0){$-400$}	% 5,8
-\put(1,3){\line(-1,-1){1}} \put(0,0){$-300$}	% 6,7
-\put(0,2){\line(0,-1){1}} \put(0,0){$-50$}		% 7,8
+\tiny
+\put(1,0){\line(1,0){1}} \put(1.5,0){$-40$}			% 1,2
+\put(1,0){\line(0,1){3}} \put(1,1.5){$-450$}		% 1,6
+\put(1,0){\line(-1,2){1}} \put(0.5,1){$-250$}		% 1,7
+\put(2,0){\line(1,1){1}} \put(2.5,0.5){$-150$}		% 2,3
+\put(2,0){\line(1,2){1}} \put(2.5,1){$-260$}		% 2,4
+\put(3,1){\line(0,1){1}} \put(3,1.5){$-390$}		% 3,4
+\put(3,1){\line(-1,2){1}} \put(2.5,2){$-80$}		% 3,5
+\put(3,1){\line(-1,0){3}} \put(1.5,1){$-180$}		% 3,8
+\put(3,2){\line(-3,-1){3}} \put(1.5,1.5){$-70$}		% 4,8
+\put(2,3){\line(-2,-1){2}} \put(1,2.5){$-150$}		% 5,7
+\put(2,3){\line(-1,-1){2}} \put(1,2){$-400$}		% 5,8
+\put(1,3){\line(-1,-1){1}} \put(0.5,2.5){$-300$}	% 6,7
+\put(0,2){\line(0,-1){1}} \put(0,1.5){$-50$}		% 7,8
 \end{picture}
 
 \caption{Overlap-Graph}
@@ -77,14 +77,14 @@
 \put(0,2){$f_7$}
 \put(0,1){$f_8$}
 
-\footnotesize
-\put(1,0){\line(0,1){3}} \put(0,0){$-450$}		% 1,6
-\put(2,0){\line(1,2){1}} \put(0,0){$-260$}		% 2,4
-\put(3,1){\line(0,1){1}} \put(0,0){$-390$}		% 3,4
-\put(3,1){\line(-1,0){3}} \put(0,0){$-180$}		% 3,8
-\put(2,3){\line(-2,-1){2}} \put(0,0){$-150$}	% 5,7
-\put(2,3){\line(-1,-1){2}} \put(0,0){$-400$}	% 5,8
-\put(1,3){\line(-1,-1){1}} \put(0,0){$-300$}	% 6,7
+\tiny
+\put(1,0){\line(0,1){3}} \put(1,1.5){$-450$}		% 1,6
+\put(2,0){\line(1,2){1}} \put(2.5,1){$-260$}		% 2,4
+\put(3,1){\line(0,1){1}} \put(3,1.5){$-390$}		% 3,4
+\put(3,1){\line(-1,0){3}} \put(1.5,1){$-180$}		% 3,8
+\put(2,3){\line(-2,-1){2}} \put(1,2.5){$-150$}		% 5,7
+\put(2,3){\line(-1,-1){2}} \put(1,2){$-400$}		% 5,8
+\put(1,3){\line(-1,-1){1}} \put(0.5,2.5){$-300$}	% 6,7
 \end{picture}
 
 \caption{Minimum spanning tree}
@@ -112,14 +112,27 @@
 \put(1870,700){\vector(-1,0){500}} \put(870,700){$f_2: (1870,1370)$}
 \end{picture}
 
-\caption{Layout}
+\caption{Layout und Koordinaten der Reads}
 \label{fig:30iii}
 \end{figure}
 
-\item
+\item Zu überprüfen bleiben die Kanten, die nicht im minimum spanning tree enthalten sind:
+
+\begin{description}
+\item[$(f_1, f_2)$:] $500 - 1370 = -870 \neq -40$
+\item[$(f_1, f_7)$:] $250 - 500 = -250$
+\item[$(f_2, f_3)$:] $1370 - 1520 = -250$
+\item[$(f_3, f_5)$:] $600 - 1520 = -920 \neq -80$
+\item[$(f_4, f_8)$:] $1130 - 1200 = -70$
+\item[$(f_7, f_8)$:] $700 - 750 = -50$
+\end{description}
+
+Es gibt also Inkonsistenzen bei $(f_1, f_2)$ und $(f_3, f_5)$.
+Diese könnten zum Beispiel auf Sequenzierfehler oder lange Repeats zurückzuführen sein.
+
 \end{enumerate}
 
-\aufgabe{Sequencing by Hybridisation}{}
+\aufgabe{Sequencing by Hybridisation}{\qquad}
 
 Wir erstellen zuerst einen Overlap-Graphen und verwenden anschließend den Euler-Trick,
 um die ursprüngliche Sequenz zu rekonstruieren.
@@ -187,7 +200,7 @@ um die ursprüngliche Sequenz zu rekonstruieren.
 Aus beiden Graphen lässt sich \texttt{TACCGCACGT} als zusammengesetzte Sequenz ablesen.
 
 
-\aufgabe{Euler-Zyklus/Hammilton}{}
+\aufgabe{Euler-Zyklus/Hammilton}{\qquad}
 
 Es gibt einen Euler-Pfad (s. Abb. \ref{fig:32a}), der jedoch nicht zyklisch ist.
 Ein Euler-Zyklus ist nicht möglich, da der Graph ungerichtet ist und es ungerade Knotengrade bei $(0,0)$ und $(1,0)$ gibt.
@@ -249,7 +262,7 @@ Ein Hammilton-Zyklus lässt sich jedoch einfach finden (s. Abb. \ref{fig:32b}).
 \caption{Das Haus vom Nikolaus}
 \end{figure}
 
-\aufgabe{Poissonprozess}{}
+\aufgabe{Poissonprozess}{\qquad}
 
 % Poissonprozess mit Intensität \lambda > 0; \{X(t): E \geq 0\}
 % 1) X(0) = 0
@@ -264,9 +277,24 @@ Ein Hammilton-Zyklus lässt sich jedoch einfach finden (s. Abb. \ref{fig:32b}).
 % = P(X(\frac{1}{2})=1, X(\frac{5}{2} - X(\frac{1}{2})=4)
 
 \begin{enumerate}
-\item
-\item
-\item
+\item \begin{eqnarray*}
+P_i(k=1, \lambda = \frac{4}{h}, t=0.5h)
+& = & e^{-\lambda t} \cdot \frac{(\lambda t)^k}{k!}\\
+& = & e^{-4 \cdot 0,5} \cdot \frac{(4 \cdot 0.5)^1}{1!}\\
+& = & 0.271
+\end{eqnarray*}
+\item \begin{eqnarray*}
+P_{ii}(k=4, \lambda = \frac{4}{h}, t=2h)
+& = & e^{-4 \cdot 2} \cdot \frac{(4 \cdot 2)^4}{4!}\\
+& = & 0.057\\
+P & = & P_i \cdot P_{ii} = 0.015\\
+\end{eqnarray*}
+\item \begin{eqnarray*}
+P_{iii}(k=5, \lambda = \frac{4}{h}, t=5.5h)
+& = & e^{-4 \cdot 5,5} \cdot \frac{(4 \cdot 5.5)^5}{5!}\\
+& = & 0.00001\\
+P & = & P_i \cdot P_{ii} \cdot P_{iii} = 1.8 \cdot 10^{-7}\\
+\end{eqnarray*}
 \end{enumerate}
 
 
