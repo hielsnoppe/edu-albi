@@ -2,6 +2,9 @@
 \usepackage{marvosym}
 \usepackage{hyperref}
 \usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
 
 \course{Algorithmische Bioinformatik}
 \semester{Wintersemester 2012 / 2013}
@@ -24,48 +27,104 @@
 \begin{enumerate}
 \item
 \item
-\item
+\item Aus dem MST ergibt sich folgendes Layout:
+
+\begin{figure}[h]
+\setlength{\unitlength}{0.05mm}
+\centering
+
+\begin{picture}(1400,800)(0,0)
+\put(0,000){\vector(1,0){500}}
+\put(50,100){\vector(1,0){500}}
+\put(750,200){\vector(-1,0){500}}
+\put(1100,300){\vector(-1,0){500}}
+\put(700,400){\vector(1,0){500}}
+\put(1020,500){\vector(1,0){500}}
+\put(1630,600){\vector(-1,0){500}}
+\put(1870,700){\vector(-1,0){500}}
+\end{picture}
+\caption{Layout}
+\label{fig:Layout}
+\end{figure}
+
 \item
 \end{enumerate}
 
 \aufgabe{Sequencing by Hybridisation}{}
 
+Habe ich auf Papier fertig, füge ich dann ein.
+
 \aufgabe{Euler-Zyklus/Hammilton}{}
 
-Euler-Zyklus NEIN, Graph ungerichtet und ungerade Knotengrade vorhanden (unten links)
+Es gibt einen Euler-Pfad (s. Abb. \ref{fig:Euler-Pfad}), der jedoch nicht zyklisch ist.
+Ein Euler-Zyklus ist nicht möglich, da der Graph ungerichtet ist und es ungerade Knotengrade bei $(0,0)$ und $(1,0)$ gibt.
+Ein Hammilton-Zyklus lässt sich jedoch einfach finden (s. Abb. \ref{fig:Hammilton-Zyklus}).
 
-Hammilton-Zyklus JA, starte unten links, gehe über oben, rechts runter, über Mittelpunkt zurüch nach unten links
-
+\begin{figure}[h]
 \setlength{\unitlength}{2.0cm}
+\centering
+
+\begin{subfigure}[b]{0.49\linewidth}
+\centering
 \begin{picture}(1,2)
 \put(0,0){\circle*{0.1}}
 \put(0,1){\circle*{0.1}}
 \put(1,0){\circle*{0.1}}
 \put(1,1){\circle*{0.1}}
-\put(0.5,2){\circle*{0.1}}
+\put(0.5,1.75){\circle*{0.1}}
 \put(0.5,0.5){\circle*{0.1}}
-
+\thicklines
 \put(0,0){\vector(0,1){1}}
-\put(0,1){\vector(1,2){1.118}}
-\put(0.5,2){\vector(1,-2){1.118}}
+\put(0,1){\vector(2,3){0.5}}
+\put(0.5,1.75){\vector(2,-3){0.5}}
 \put(1,1){\vector(0,-1){1}}
-\put(1,0){\vector(-1,1){0.7071}}
-\put(0.5,0.5){\vector(-1,-1){0.7071}}
+\put(1,0){\vector(-1,0){1}}
+\put(0,0){\vector(1,1){0.5}}
+\put(0.5,0.5){\vector(1,1){0.5}}
+\put(1,1){\vector(-1,0){1}}
+\put(0,1){\vector(1,-1){0.5}}
+\put(0.5,0.5){\vector(1,-1){0.5}}
 \end{picture}
+\caption{Euler-Pfad}
+\label{fig:Euler-Pfad}
+\end{subfigure}
+\begin{subfigure}[b]{0.49\linewidth}
+\centering
+\begin{picture}(1,2)
+\put(0,0){\circle*{0.1}}
+\put(0,1){\circle*{0.1}}
+\put(1,0){\circle*{0.1}}
+\put(1,1){\circle*{0.1}}
+\put(0.5,1.75){\circle*{0.1}}
+\put(0.5,0.5){\circle*{0.1}}
+\thicklines
+\put(0,0){\vector(0,1){1}}
+\put(0,1){\vector(2,3){0.5}}
+\put(0.5,1.75){\vector(2,-3){0.5}}
+\put(1,1){\vector(0,-1){1}}
+\put(1,0){\vector(-1,1){0.5}}
+\put(0.5,0.5){\vector(-1,-1){0.5}}
+\end{picture}
+\caption{Hammilton-Zyklus}
+\label{fig:Hammilton-Zyklus}
+\end{subfigure}
+
+\caption{Das Haus des Nikolaus}
+\end{figure}
 
 \aufgabe{Poissonprozess}{}
 
-Poissonprozess mit Intensität \lambda > 0; \{X(t): E \geq 0\}
-1) X(0) = 0
-2) Independent increment: t_0 = 0 < t_1 < t_2 < \ldots < t_n
-[X(t_1)-X(t_0)];[X(t_2)-X(t_1)]; \ldots [X(t_n)-X(t_{n-1})]
-unabhängige ZV
-3) Homogenity in time: s \geq 0, t \geq 0 ist die ZV
-[X(s+t)-X(s)] \tilde P_0(t \cdot \lambda), d.h.
-P\{X(s+t)-X(s)=k\} = \frac{(\lambda t)^k \cdot e^{-\lambda t}}{k!}
-k=0,1,2,\ldots
-P(X_t(\frac{1}{2}) = 1, X(\frac{5}{2} = 5)
-= P(X(\frac{1}{2})=1, X(\frac{5}{2} - X(\frac{1}{2})=4)
+% Poissonprozess mit Intensität \lambda > 0; \{X(t): E \geq 0\}
+% 1) X(0) = 0
+% 2) Independent increment: t_0 = 0 < t_1 < t_2 < \ldots < t_n
+% [X(t_1)-X(t_0)];[X(t_2)-X(t_1)]; \ldots [X(t_n)-X(t_{n-1})]
+% unabhängige ZV
+% 3) Homogenity in time: s \geq 0, t \geq 0 ist die ZV
+% [X(s+t)-X(s)] \tilde P_0(t \cdot \lambda), d.h.
+% P\{X(s+t)-X(s)=k\} = \frac{(\lambda t)^k \cdot e^{-\lambda t}}{k!}
+% k=0,1,2,\ldots
+% P(X_t(\frac{1}{2}) = 1, X(\frac{5}{2} = 5)
+% = P(X(\frac{1}{2})=1, X(\frac{5}{2} - X(\frac{1}{2})=4)
 
 \begin{enumerate}
 \item
