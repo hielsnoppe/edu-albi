@@ -85,11 +85,45 @@ Keine Ahnung, komische Aufgabenstellung...Es gibt ja durch die Simulation keine 
 
 \aufgabe{Lowess Normalisierung}{70}
 
-\begin{enumerate}
-\item 
-\item 
-\item
-\end{enumerate}
+\begin{verbatim}
+# einlesen der Daten, Teilaufgabe (i)
+data <- read.delim("wood_data.txt")
+
+# Einige Plot Eigenschaften, damit die Anzeige schoen ist
+# - Fenster initialisieren
+# - Plotten in einer 5x4 Matrix
+dev.new()
+op <- par(no.readonly = TRUE)
+dev.off()
+op
+par(mfrow=c(5,4))
+
+
+# beginne bei Spalte 3 und betrachte jeweils 2 Spalten
+# Teilaufgabe (ii)
+for (i in seq(3,(length(data)-1),2)){
+		m <- log(x=as.vector(as.matrix(data[i]/data[i+1])), base=2)
+		a <- 0.5*log(x=as.vector(as.matrix(data[i]*data[i+1])), base=2)
+	
+		# entferne alle unbrauchbaren Werte (NA, NaN, Inf, -Inf)
+		# m <- m[!is.nan(m)]
+		# m <- m[!is.na(m)]
+		m <- m[is.finite(m)]
+		a <- a[is.finite(a)]
+		
+		column = names(data)[i]				
+		plot(y=m, x=a, type = "p", main=column)	
+
+        # Teilaufgabe (iii)
+		lines(x=seq(1,15), y=seq(1,15)*0 + mean(m), col="blue")
+		# Fensterbreite fuer lowess = 2/3 (default)
+		# zu kleine Werte fuehren zu vielen kleinen Ausschlaegen
+		# bei zu grossen Werten wird zu viel geglaettet
+		lines(lowess(y=m, x=a, f=0.66), col="red")
+}
+\end{verbatim}
+
+\includegraphics[scale=0.3]{../data/aufg_37}
 
 \aufgabe{Quantilnormalisierung}{50}
 
