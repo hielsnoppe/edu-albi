@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{color}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{float}
 
 \course{Algorithmische Bioinformatik}
@@ -29,22 +30,83 @@ Daher kann hier von einer Normalverteilung ausgegangen werden.
 \item
 Wikipedia: \textit{Da die Exponentialverteilung auch als Lebensdauerverteilung verwendet wird, ist es möglich,
 damit zusammenhängende Größen wie Überlebenswahrscheinlichkeit,
-die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben.} \\
+die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben.}
 \end{enumerate}
 
 \aufgabe{Gibbs Sampler}{30}
 
+\aufgabe{Genstrukturen}{30}
+
 \aufgabe{Sequencing by Hybridisation}{30}
 \begin{enumerate}
 \item
+Das Spektrum der Sequenz ist die Menge aller in ihr enthaltenen Teilsequenzen der Länge 3:
+$$S = \{\texttt{ATC}, \texttt{TCG}, \texttt{CGT}, \texttt{GTC}, \texttt{CGA}, \texttt{GAT}\}$$
+
+Erstellt man aus diesem Spektrum einen Overlap-Graphen, so zeigt sich, dass in diesem kein Hammilton-Pfad existiert.
+Auch wenn man den Euler-Trick anwendet, bleibt das Problem bestehen, da in dem resultierenden Graphen kein Euler-Pfad existiert.
+
 \item
+Wir erstellen zuerst einen Overlap-Graphen und verwenden anschließend den Euler-Trick,
+um die ursprüngliche Sequenz zu rekonstruieren.
+
+\begin{figure}[H]
+\setlength{\unitlength}{1.5cm}
+\centering
+
+\begin{subfigure}{0.5\linewidth}
+\centering
+\begin{picture}(3,3)(0,0)
+\put(1,0){\texttt{CGT}$^{3}$}
+\put(2,0){\texttt{TCG}$^{5}$}
+\put(3,1){\texttt{ACG}$^{2}$}
+\put(3,2){\texttt{TAC}$^{1}$}
+\put(2,3){\texttt{GTC}$^{4}$}
+
+\put(1,0){\vector(1,1){1}}		% CGT, GTC
+\put(2,0){\vector(1,1){1}}		% TCG, CGT
+\put(3,1){\vector(1,1){1}}		% ACG, CGT
+\put(3,2){\vector(1,1){1}}		% TAC, ACG
+\put(2,3){\vector(1,1){1}}		% GTC, TCG
+\end{picture}
+
+\caption{Overlap-Graph}
+\label{fig:31a}
+\end{subfigure}%
+\begin{subfigure}{0.5\linewidth}
+\centering
+
+\begin{picture}(3,3)(0,0)
+\put(1,0){\texttt{CG}$^{3,6}$}
+\put(2,0){\texttt{GT}$^{4}$}
+\put(3,1){\texttt{TC}$^{5}$}
+\put(3,2){\texttt{AC}$^{2}$}
+\put(2,3){\texttt{TA}$^{1}$}
+
+\put(1,0){\vector(1,1){1}}		% CG, GT
+\put(2,0){\vector(1,1){1}}		% GT, TC
+\put(3,1){\vector(1,1){1}}		% TC, CG
+\put(3,2){\vector(1,1){1}}		% AC, CG
+\put(2,3){\vector(1,1){1}}		% TA, AC
+\end{picture}
+
+\caption{Euler-Trick}
+\label{fig:31b}
+\end{subfigure}
+
+\caption{Sequencing by Hybridisation}
+\end{figure}
+
+Aus beiden Graphen lassen sich \texttt{TACCGCACGT} und \texttt{TACGCACCGT} als zusammengesetzte Sequenzen ablesen.
 \end{enumerate}
 
 \aufgabe{Lowess Normalisierung}{40}
 \begin{enumerate}
 \item
 \item
-\item
+\item Der Kernel ermöglicht eine Gewichtung der Punkte, die zur Normalisierung herangezogen werden.
+Es kann zum Beispiel eine Normalverteilung als Gewichtung gewählt werden, um solche Punkte, die nahe am zu normalisierenden Punkt liegen,
+stärker zu gewichten, als solche, die eine große Distanz zu ihm haben.
 \end{enumerate}
 
 \aufgabe{RNA-Struktur}{30}
@@ -59,9 +121,9 @@ widerspricht. Das zeigt sich deutlich im Kreisdiagramm:
 
 \aufgabe{Clustering}{40}
 \begin{enumerate}
-\item
-\item
-\item
+\item ((AB)((CD)(EF)))
+\item (((AB)(CD))(EF))
+\item $x \in B$
 \end{enumerate}
 
 \end{enumerate}
