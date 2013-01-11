@@ -27,13 +27,39 @@ Um die Ausbrüche auf den Zeitraum von einem Jahr zu beziehen, bietet sich die P
 Bei Hochleistungssport ist davon auszugehen, dass alle Athleten ungefähr die gleiche Leistung bringen.
 Die Sieger werden nur einige wenige Zentimeter weiter und die Letzten nur einige wenige Zentimeter weniger springen als der Rest.
 Daher kann hier von einer Normalverteilung ausgegangen werden.
-\item
+\item % TODO
 Wikipedia: \textit{Da die Exponentialverteilung auch als Lebensdauerverteilung verwendet wird, ist es möglich,
 damit zusammenhängende Größen wie Überlebenswahrscheinlichkeit,
 die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben.}
 \end{enumerate}
 
 \aufgabe{Gibbs Sampler}{30}
+
+Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersucht. U.a. soll herausgefunden werden, ob es gemeinsame Muster (Motifs) enthalten sind. Da diese Muster unterschiedliche Ausprägungen haben können, wird von Hidden Motifs gesprochen.\\
+1. Schritt - Initialization:
+\begin{itemize}
+	\item Die Länge des Hidden Motifs sei $m$, die Länge der Stichproben-Sequenzen sei $n$.
+	\item In jeder Sequenz $i$ wird die initiale Position $p_i$ des Hidden Motifs geraten, wobei $n-m \geq i$.
+	\item Alternativ können auch Algorithmen wie Expectation-Maximization genutzt werden.
+\end{itemize}
+2. Schritt - Predictive Update Step
+\begin{itemize}
+	\item Wähle zufällig eine Sequenz und berechne anhand der restlichen Sequenzen ein Profil $P$ (Profil-Matrix)
+\end{itemize}
+3. Schritt - Sampling Step
+\begin{itemize}
+	\item Hier wird für jede mögliche Startposition $(1..n)$ des Hidden Motifs in der ausgewählten Sequenz die Wahrscheinlichkeit des Profils $P$ errechnet.
+	\item Aus den Wahrscheinlichkeiten lässt sich eine Verteilung der neuen Startpositionen ableiten.
+	\item Berechne die Wahrscheinlichkeiten der neuen Startpositionen.
+	\item Setzte neues Sampling (also das Profil) an die Startposition mit der höchsten Wahrscheinlichkeit.
+\end{itemize}
+4. Schritt - Iterieren
+\begin{itemize}
+	\item Die Schritte 2+3 werden für jede Sequenz mehrfach wiederholt (z.B. so häufig, bis sich das neue Sampling nicht mehr verändert).
+	\item Als Resultat erhält man die Startposition für die Hidden Motifs und deren Profil Matrix.
+\end{itemize}
+
+Im Schritt 3 kann die höchste Wahrscheinlichkeit der neuen Startposition auch ein lokales Optimum bedeuten. Da aber ggf. eine sehr hohe Anzahl möglicher neuer Startpositionen möglich ist (im worst-case $n-m$), wäre das Durchprobieren aller Startpositionen sehr rechenaufwendig. Durch den Greedy Ansatz verringert sich in diesem Schritt der Aufwand von $O(n)$ auf $O(1)$. Um lokale Optimas zu umgehen, kann das Gibbs-Sampling mehrfach mit unterschiedlichen Seeds (d.h. Startpositionen Schritt 1 + Auswahl Sequenz Schritt 2) wiederholt werden. 
 
 \aufgabe{Genstrukturen}{30}
 
