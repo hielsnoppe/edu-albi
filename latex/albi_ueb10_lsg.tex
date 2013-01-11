@@ -20,8 +20,11 @@
 \aufgabe{Lander-Waterman-Statistik}{\qquad}
 
 \begin{enumerate}
-\item 
-\item 
+\item
+$$G = 20Mbp, N = 100.000, l = 100, \theta = 0.25$$
+$$#contigs = N \cdot e^{(-1-\theta) \cdot l \cdot \frac{N}{G}}$$
+$41$ Tage
+\item Repeats können verhindern, dass bestimmte Bereiche gelesen werden können.
 \end{enumerate}
 
 \aufgabe{Praktisches Assembly}{100}
@@ -44,8 +47,8 @@ data = read.table("stats.txt", header=TRUE)
 hist(data$short1_cov, breaks=1000)
 weighted.hist(data$short1_cov, data$lgth, breaks=0:50)
 \end{verbatim}
-\includegraphics[scale=0.3]{../data/aufg_36_3_a}
-\includegraphics[scale=0.3]{../data/aufg_36_3_b}
+\includegraphics[scale=0.3]{data/aufg_36_3_a}
+\includegraphics[scale=0.3]{data/aufg_36_3_b}
 
 Wir setzen den Cov\_{}Cutoff bei 4.
 \item 
@@ -79,7 +82,8 @@ Gn.Ex Type S .Begin ...End .Len Fr Ph I/Ac Do/T CodRg P.... Tscr..
  1.00 Prom -  13209  13170   40                               2.02
 \end{verbatim}
 \item 
-Keine Ahnung, komische Aufgabenstellung...Es gibt ja durch die Simulation keine Referenzsequenz. 
+Keine Ahnung, komische Aufgabenstellung... Es gibt ja durch die Simulation keine Referenzsequenz.
+Schade, kein Zebrafisch, sondern Mensch oder Gorilla.
 \item 
 \end{enumerate}
 
@@ -122,15 +126,36 @@ for (i in seq(3,(length(data)-1),2)){
 }
 \end{verbatim}
 
-\includegraphics[scale=0.3]{../data/aufg_37}
+\includegraphics[scale=0.3]{data/aufg_37}
 
 \aufgabe{Quantilnormalisierung}{50}
 
 \begin{enumerate}
-\item 
-\item 
-\item
-\item
+\item Ziehen von jeweils $1000$ Werten aus einer Normalverteilung und einer $\gamma$-Verteilung:
+\begin{lstlisting}[language=r]
+NORM <- rnorm(1000, 1 ,1)
+GAMMA <- rgamma(1000, 2, 1, 1/1)
+\end{lstlisting}
+\item In den Q-Q-Plots ist zu beobachten, dass die Werte, die aus der Normalverteilung gezogen wurden,
+dicht an der Referenzlinie liegen, während die Werte, die aus der $\gamma$-Verteilung gezogen wurden,
+deutlich davon abweichen. Dies rührt daher, dass die Referenzlinie aus einem Q-Q-Plot der Normalverteilung gegen sich selbst resultiert. 
+
+\includegraphics[scale=0.35]{data/albi_ueb10_a38_qqnorm.png}
+\includegraphics[scale=0.35]{data/albi_ueb10_a38_qqgamma.png}
+\item Wir normalisieren durch Bildung der Mittelwerte.
+Das Aufheben der Sortierung ist zur Erstellung der Plots nicht notwendig.
+\begin{lstlisting}[language=r]
+SNORM = sort(NORM)
+SGAMMA = sort(GAMMA)
+MEANS = (sort(NORM) + sort(GAMMA)) / 2
+boxplot(NORM, GAMMA, MEANS, horizontal=TRUE)
+\end{lstlisting}
+
+Daraus ergibt sich folgender Q-Q-Plot und Boxplot:
+
+\includegraphics[scale=0.35]{data/albi_ueb10_a38_qqmeans.png}
+\includegraphics[scale=0.35]{data/albi_ueb10_a38_boxplot.png}
+\item Da nach der Normalisierung beide Verteilungen die gleichen Werte enthalten, würde der Q-Q-Plot immer auf der Referenzlinie liegen.
 \end{enumerate}
 
 \end{enumerate}

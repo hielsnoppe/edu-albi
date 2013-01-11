@@ -122,13 +122,13 @@
 \item[$(f_1, f_2)$:] $500 - 1370 = -870 \neq -40$
 \item[$(f_1, f_7)$:] $250 - 500 = -250$
 \item[$(f_2, f_3)$:] $1370 - 1520 = -250$
-\item[$(f_3, f_5)$:] $600 - 1520 = -920 \neq -80$
+\item[$(f_3, f_5)$:] $1020 - 1100 = -80$
 \item[$(f_4, f_8)$:] $1130 - 1200 = -70$
 \item[$(f_7, f_8)$:] $700 - 750 = -50$
 \end{description}
 
-Es gibt also Inkonsistenzen bei $(f_1, f_2)$ und $(f_3, f_5)$.
-Diese könnten zum Beispiel auf Sequenzierfehler oder lange Repeats zurückzuführen sein.
+Es gibt also eine Inkonsistenz bei $(f_1, f_2)$.
+Diese könnte zum Beispiel auf Sequenzierfehler oder lange Repeats zurückzuführen sein.
 
 \end{enumerate}
 
@@ -198,7 +198,7 @@ um die ursprüngliche Sequenz zu rekonstruieren.
 \caption{Sequencing by Hybridisation}
 \end{figure}
 
-Aus beiden Graphen lässt sich \texttt{TACCGCACGT} als zusammengesetzte Sequenz ablesen.
+Aus beiden Graphen lassen sich \texttt{TACCGCACGT} und \texttt{TGCACGCCAT} als zusammengesetzte Sequenzen ablesen.
 
 
 \aufgabe{Euler-Zyklus/Hammilton}{\qquad}
@@ -290,9 +290,9 @@ P_i(k=1, \lambda = \frac{4}{h}, t=0.5h)
 P_{ii}(k=4, \lambda = \frac{4}{h}, t=2h)
 & = & e^{-4 \cdot 2} \cdot \frac{(4 \cdot 2)^4}{4!}\\
 & = & 0.057\\
-P & = & P_i \cdot P_{ii} = 0.015\\
+%P & = & P_i \cdot P_{ii} = 0.015\\	% scheinbar falsch?
 \end{eqnarray*}
-\item \begin{eqnarray*}
+\item Achtung, Fehler! ("`Zuwächse unabhängig, Information schon in $k=5$"') \begin{eqnarray*}
 P_{iii}(k=5, \lambda = \frac{4}{h}, t=5.5h)
 & = & e^{-4 \cdot 5,5} \cdot \frac{(4 \cdot 5.5)^5}{5!}\\
 & = & 0.00001\\
