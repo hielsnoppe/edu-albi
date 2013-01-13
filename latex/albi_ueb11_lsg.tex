@@ -27,15 +27,18 @@ Um die Ausbrüche auf den Zeitraum von einem Jahr zu beziehen, bietet sich die P
 Bei Hochleistungssport ist davon auszugehen, dass alle Athleten ungefähr die gleiche Leistung bringen.
 Die Sieger werden nur einige wenige Zentimeter weiter und die Letzten nur einige wenige Zentimeter weniger springen als der Rest.
 Daher kann hier von einer Normalverteilung ausgegangen werden.
-\item % TODO
+\item
+Wir kennen uns leider mit dem Wachstum von Hefe nicht aus. Wenn diese ungefähr gleich schnell Wachsen, dann wird sich ein Mittelwert des Durschnitts ergeben. Hier wäre also eine Gauss-Verteilung angebracht.\\
+Interessant ist aber auch:
 Wikipedia: \textit{Da die Exponentialverteilung auch als Lebensdauerverteilung verwendet wird, ist es möglich,
 damit zusammenhängende Größen wie Überlebenswahrscheinlichkeit,
 die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben.}
+Evtl. fallen auch einige Hefezellen komplett raus oder wachsen nicht mehr weiter bzw. andere deutlich schneller. Dann könnte man auch die Exponentialverteilung nutzen.
 \end{enumerate}
 
 \aufgabe{Gibbs Sampler}{30}
 
-Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersucht. U.a. soll herausgefunden werden, ob es gemeinsame Muster (Motifs) enthalten sind. Da diese Muster unterschiedliche Ausprägungen haben können, wird von Hidden Motifs gesprochen.\\
+Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersucht. U.a. soll herausgefunden werden, ob es gemeinsame Muster (Motifs) enthalten sind und an welchen Stellen diese zu finden sind. Da diese Muster unterschiedliche Ausprägungen haben können, wird von Hidden Motifs gesprochen.\\
 1. Schritt - Initialization:
 \begin{itemize}
 	\item Die Länge des Hidden Motifs sei $m$, die Länge der Stichproben-Sequenzen sei $n$.
@@ -48,7 +51,7 @@ Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersuc
 \end{itemize}
 3. Schritt - Sampling Step
 \begin{itemize}
-	\item Hier wird für jede mögliche Startposition $(1..n)$ des Hidden Motifs in der ausgewählten Sequenz die Wahrscheinlichkeit des Profils $P$ errechnet.
+	\item Hier wird für jede mögliche Startposition $i:(1..n-m)$ des Hidden Motifs in der ausgewählten Sequenz die Wahrscheinlichkeit, dass das Profil $P$ an Position $i$ steht, errechnet.
 	\item Aus den Wahrscheinlichkeiten lässt sich eine Verteilung der neuen Startpositionen ableiten.
 	\item Berechne die Wahrscheinlichkeiten der neuen Startpositionen.
 	\item Setzte neues Sampling (also das Profil) an die Startposition mit der höchsten Wahrscheinlichkeit.
@@ -62,6 +65,8 @@ Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersuc
 Im Schritt 3 kann die höchste Wahrscheinlichkeit der neuen Startposition auch ein lokales Optimum bedeuten. Da aber ggf. eine sehr hohe Anzahl möglicher neuer Startpositionen möglich ist (im worst-case $n-m$), wäre das Durchprobieren aller Startpositionen sehr rechenaufwendig. Durch den Greedy Ansatz verringert sich in diesem Schritt der Aufwand von $O(n)$ auf $O(1)$. Um lokale Optimas zu umgehen, kann das Gibbs-Sampling mehrfach mit unterschiedlichen Seeds (d.h. Startpositionen Schritt 1 + Auswahl Sequenz Schritt 2) wiederholt werden. 
 
 \aufgabe{Genstrukturen}{30}
+
+Kodierende Sequenzen lassen sich m.H. des Codongebrauchs der unterschiedlichen Spezien erkennen. Ein Codon ist dabei ein Nukleotid-Triplet, welches bestimmte Aminosäuren kodiert. Um eine Sequenz algorithmisch zu verarbeiten, benötigt es 3 Modelle in Form einer Markov-Kette 2. Ordnung. Jedes Modell ist um eine Position verschoben, woraus sich 3 Reading Frames ergeben. Für jedes Codon lässt sich für jede Position im Reading Frame die Wahrscheinlichkeit des Auftretens errechnen (dazu muss vorher die Gesamtzahl der Codons in der Sequenz gezählt werden). Bereits bekannte Gene in dieser Sequenz werden durch ähnliche Codons kodiert. Wird die Markov-Kette vorher darauf trainiert, sind die resultierenden  Wahrscheinlichkeiten zuverlässiger.
 
 \aufgabe{Sequencing by Hybridisation}{30}
 \begin{enumerate}
@@ -181,8 +186,12 @@ Aus beiden Graphen lässt sich \texttt{TACGTCG} als zusammengesetzte Sequenzen a
 
 \aufgabe{Lowess Normalisierung}{40}
 \begin{enumerate}
+<<<<<<< HEAD
 \item In dem gegebenen MvA-Plot (s. Abb. \ref{fig:43}) zeigt sich ein systematischer Fehler.
 Der betroffene Bereich ist in \textcolor{red}{rot} gekennzeichnet.
+Der Bereich unten links ist als Fehler zu erkennen.
+Dies ist ein systematischer Gerätefehler während der Erstellung des MicroArrays.
+Durch Normalisierung (siehe b) kann dieser Fehler geglättet werden.
 
 \begin{figure}
 \centering
@@ -192,6 +201,8 @@ Der betroffene Bereich ist in \textcolor{red}{rot} gekennzeichnet.
 \end{figure}
 
 \item Die Regression ist in \textcolor{magenta}{violett} eingezeichnet.
+Bei der Normalisierung wird der durchschnittliche Abstand zu allen Punkten einer Fensterbreite errechnet.
+Je weiter ein Punkt von der entstehenden Regressionslinie entfernt ist, desto stärker wird er durch die Normalisierung verschoben.
 
 \item Der Kernel ermöglicht eine Gewichtung der Punkte, die zur Normalisierung herangezogen werden.
 Es kann zum Beispiel eine Normalverteilung als Gewichtung gewählt werden, um solche Punkte, die nahe am zu normalisierenden Punkt liegen,
