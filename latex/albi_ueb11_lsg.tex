@@ -28,27 +28,36 @@ Bei Hochleistungssport ist davon auszugehen, dass alle Athleten ungefähr die gl
 Die Sieger werden nur einige wenige Zentimeter weiter und die Letzten nur einige wenige Zentimeter weniger springen als der Rest.
 Daher kann hier von einer Normalverteilung ausgegangen werden.
 \item
-Wir kennen uns leider mit dem Wachstum von Hefe nicht aus. Wenn diese ungefähr gleich schnell Wachsen, dann wird sich ein Mittelwert des Durschnitts ergeben. Hier wäre also eine Gauss-Verteilung angebracht.\\
-Interessant ist aber auch:
-Wikipedia: \textit{Da die Exponentialverteilung auch als Lebensdauerverteilung verwendet wird, ist es möglich,
+Wir kennen uns leider mit dem Wachstum von Hefe nicht aus.
+Wenn diese ungefähr gleich schnell Wachsen, dann wird sich ein Mittelwert des Durchschnitts ergeben.
+Hier wäre also eine Gauss-Verteilung angebracht.
+
+Interessant ist aber auch (Wikipedia):
+\textit{"`Da die Exponentialverteilung auch als Lebensdauerverteilung verwendet wird, ist es möglich,
 damit zusammenhängende Größen wie Überlebenswahrscheinlichkeit,
-die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben.}
-Evtl. fallen auch einige Hefezellen komplett raus oder wachsen nicht mehr weiter bzw. andere deutlich schneller. Dann könnte man auch die Exponentialverteilung nutzen.
+die Restlebensdauer und die Ausfallrate mit Hilfe der Verteilungsfunktion anzugeben."'}
+Eventuell fallen auch einige Hefezellen komplett raus oder wachsen nicht mehr weiter bzw. andere deutlich schneller.
+Dann könnte man auch die Exponentialverteilung nutzen.
 \end{enumerate}
 
 \aufgabe{Gibbs Sampler}{30}
 
-Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersucht. U.a. soll herausgefunden werden, ob es gemeinsame Muster (Motifs) enthalten sind und an welchen Stellen diese zu finden sind. Da diese Muster unterschiedliche Ausprägungen haben können, wird von Hidden Motifs gesprochen.\\
+Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersucht.
+Unter anderem soll herausgefunden werden, ob es gemeinsame Muster (Motifs) enthalten sind und an welchen Stellen diese zu finden sind.
+Da diese Muster unterschiedliche Ausprägungen haben können, wird von Hidden Motifs gesprochen.
+
 1. Schritt - Initialization:
 \begin{itemize}
 	\item Die Länge des Hidden Motifs sei $m$, die Länge der Stichproben-Sequenzen sei $n$.
 	\item In jeder Sequenz $i$ wird die initiale Position $p_i$ des Hidden Motifs geraten, wobei $n-m \geq i$.
 	\item Alternativ können auch Algorithmen wie Expectation-Maximization genutzt werden.
 \end{itemize}
+
 2. Schritt - Predictive Update Step
 \begin{itemize}
 	\item Wähle zufällig eine Sequenz und berechne anhand der restlichen Sequenzen ein Profil $P$ (Profil-Matrix)
 \end{itemize}
+
 3. Schritt - Sampling Step
 \begin{itemize}
 	\item Hier wird für jede mögliche Startposition $i:(1..n-m)$ des Hidden Motifs in der ausgewählten Sequenz die Wahrscheinlichkeit, dass das Profil $P$ an Position $i$ steht, errechnet.
@@ -56,6 +65,7 @@ Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersuc
 	\item Berechne die Wahrscheinlichkeiten der neuen Startpositionen.
 	\item Setzte neues Sampling (also das Profil) an die Startposition mit der höchsten Wahrscheinlichkeit.
 \end{itemize}
+
 4. Schritt - Iterieren
 \begin{itemize}
 	\item Die Schritte 2+3 werden für jede Sequenz mehrfach wiederholt (z.B. so häufig, bis sich das neue Sampling nicht mehr verändert).
@@ -85,9 +95,9 @@ Das Spektrum der Sequenz ist die Menge aller in ihr enthaltenen Teilsequenzen de
 $$S = \{\texttt{ATC}, \texttt{TCG}, \texttt{CGT}, \texttt{GTC}, \texttt{CGA}, \texttt{GAT}\}$$
 
 Erstellt man aus diesem Spektrum einen Overlap-Graphen (s. Abb. \ref{fig:42aa}), so zeigt sich,
-dass in diesem kein Hammilton-Pfad existiert.
+dass in diesem kein Hammilton-Pfad existiert (Schritte 2 und 5 verwenden den selben Knoten).
 Auch wenn man den Euler-Trick anwendet (s. Abb. \ref{fig:42ab}), bleibt das Problem bestehen,
-da in dem resultierenden Graphen kein Euler-Pfad existiert.
+da in dem resultierenden Graphen kein Euler-Pfad existiert (Schritt 6 verwendet Kante zum zweiten Mal).
 
 \begin{figure}
 \setlength{\unitlength}{1cm}
@@ -96,12 +106,12 @@ da in dem resultierenden Graphen kein Euler-Pfad existiert.
 \begin{subfigure}{0.5\linewidth}
 \centering
 \begin{picture}(4,4)(0,0)
-\put(1.5,3.5){\texttt{ATC}$^{3}$}
-\put(3,2.5){\texttt{TCG}$^{3}$}
+\put(1.5,3.5){\texttt{ATC}$^{1}$}
+\put(3,2.5){\texttt{TCG}$^{2,5}$}
 \put(3,1){\texttt{CGT}$^{3}$}
-\put(1.5,0){\texttt{GTC}$^{3}$}
-\put(0,1){\texttt{CGA}$^{3}$}
-\put(0,2.5){\texttt{GAT}$^{3}$}
+\put(1.5,0){\texttt{GTC}$^{4}$}
+\put(0,1){\texttt{CGA}$^{6}$}
+\put(0,2.5){\texttt{GAT}$^{7}$}
 
 \put(1.5,3.5){\vector(3,-2){1.5}}
 \put(3,2.5){\vector(0,-1){1.5}}
@@ -119,11 +129,11 @@ da in dem resultierenden Graphen kein Euler-Pfad existiert.
 \centering
 
 \begin{picture}(4,4)(0,0)
-\put(2,4){\texttt{AT}$^{3}$}
-\put(4,2.5){\texttt{TC}$^{5}$}
-\put(3,0){\texttt{CG}$^{2}$}
-\put(1,0){\texttt{GT}$^{1}$}
-\put(0,2.5){\texttt{GA}$^{4}$}
+\put(2,4){\texttt{AT}$^{1}$}
+\put(4,2.5){\texttt{TC}$^{2,5}$}
+\put(3,0){\texttt{CG}$^{3,6}$}
+\put(1,0){\texttt{GT}$^{4}$}
+\put(0,2.5){\texttt{GA}$^{7}$}
 
 \put(2,4){\vector(4,-3){2}}		% 
 \put(4,2.5){\line(-2,-5){1}}	% 
@@ -210,6 +220,7 @@ Er kann während der Erstellung des Micro-Arrays entstehen und z.B. durch Lowess
 \item Die Regression ist in \textcolor{magenta}{violett} eingezeichnet.
 Bei der Normalisierung wird der durchschnittliche Abstand zu allen Punkten einer Fensterbreite errechnet.
 Je weiter ein Punkt von der entstehenden Regressionslinie entfernt ist, desto stärker wird er durch die Normalisierung verschoben.
+Zwei Punkte, die besonders stark (A) bzw. nicht (B) verschoben werden, sind in \textcolor{blue}{blau} eingezeichnet.
 
 \item Der Kernel ermöglicht eine Gewichtung der Punkte, die zur Normalisierung herangezogen werden.
 Es kann zum Beispiel eine Normalverteilung als Gewichtung gewählt werden, um solche Punkte, die nahe am zu normalisierenden Punkt liegen,
@@ -234,14 +245,14 @@ da sie der Bedingung der Zugänglichkeit widerspricht.
 Das zeigt sich deutlich an den sich kreuzenden Linien Abbildung \ref{fig:44b}.
 
 \begin{figure}
-\setlength{\unitlength}{1cm}
+\setlength{\unitlength}{1.5cm}
 \centering
 
 \begin{picture}(5,5)(0,0)
-\qbezier(0,2.5)(0.2,4.8)(2.5,5)
-\qbezier(2.5,5)(4.8,4.8)(5,2.5)
-\qbezier(5,2.5)(4.8,0.2)(2.5,0)
-\qbezier(2.5,0)(0.2,0.2)(0,2.5)
+\qbezier(0,2.5)(0.1,4.9)(2.5,5)
+\qbezier(2.5,5)(4.9,4.9)(5,2.5)
+\qbezier(5,2.5)(4.9,0.1)(2.5,0)
+\qbezier(2.5,0)(0.1,0.1)(0,2.5)
 \end{picture}
 
 \caption{Kreisdiagramm}
