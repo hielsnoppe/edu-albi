@@ -62,11 +62,21 @@ Beim Gibbs Sampling werden verschiedene Stichproben-Sequenzen einer DNA untersuc
 	\item Als Resultat erhält man die Startposition für die Hidden Motifs und deren Profil Matrix.
 \end{itemize}
 
-Im Schritt 3 kann die höchste Wahrscheinlichkeit der neuen Startposition auch ein lokales Optimum bedeuten. Da aber ggf. eine sehr hohe Anzahl möglicher neuer Startpositionen möglich ist (im worst-case $n-m$), wäre das Durchprobieren aller Startpositionen sehr rechenaufwendig. Durch den Greedy Ansatz verringert sich in diesem Schritt der Aufwand von $O(n)$ auf $O(1)$. Um lokale Optimas zu umgehen, kann das Gibbs-Sampling mehrfach mit unterschiedlichen Seeds (d.h. Startpositionen Schritt 1 + Auswahl Sequenz Schritt 2) wiederholt werden. 
+Im Schritt 3 kann die höchste Wahrscheinlichkeit der neuen Startposition auch ein lokales Optimum bedeuten.
+Da aber ggf. eine sehr hohe Anzahl möglicher neuer Startpositionen möglich ist (im worst-case $n-m$),
+wäre das Durchprobieren aller Startpositionen sehr rechenaufwendig.
+Durch den Greedy Ansatz verringert sich in diesem Schritt der Aufwand von $O(n)$ auf $O(1)$.
+Um lokale Optimas zu umgehen, kann das Gibbs-Sampling mehrfach mit unterschiedlichen Seeds (d.h. Startpositionen Schritt 1 + Auswahl Sequenz Schritt 2) wiederholt werden. 
 
 \aufgabe{Genstrukturen}{30}
 
-Kodierende Sequenzen lassen sich m.H. des Codongebrauchs der unterschiedlichen Spezien erkennen. Ein Codon ist dabei ein Nukleotid-Triplet, welches bestimmte Aminosäuren kodiert. Um eine Sequenz algorithmisch zu verarbeiten, benötigt es 3 Modelle in Form einer Markov-Kette 2. Ordnung. Jedes Modell ist um eine Position verschoben, woraus sich 3 Reading Frames ergeben. Für jedes Codon lässt sich für jede Position im Reading Frame die Wahrscheinlichkeit des Auftretens errechnen (dazu muss vorher die Gesamtzahl der Codons in der Sequenz gezählt werden). Bereits bekannte Gene in dieser Sequenz werden durch ähnliche Codons kodiert. Wird die Markov-Kette vorher darauf trainiert, sind die resultierenden  Wahrscheinlichkeiten zuverlässiger.
+Kodierende Sequenzen lassen sich anhand des Codongebrauchs der unterschiedlichen Spezien erkennen.
+Ein Codon ist dabei ein Nukleotid-Triplet, welches bestimmte Aminosäuren kodiert.
+Um eine Sequenz algorithmisch zu verarbeiten, benötigt es 3 Modelle in Form einer Markov-Kette 2. Ordnung.
+Jedes Modell ist um eine Position verschoben, woraus sich 3 Reading Frames ergeben.
+Für jedes Codon lässt sich für jede Position im Reading Frame die Wahrscheinlichkeit des Auftretens errechnen (dazu muss vorher die Gesamtzahl der Codons in der Sequenz gezählt werden).
+Bereits bekannte Gene in dieser Sequenz werden durch ähnliche Codons kodiert.
+Wird die Markov-Kette vorher darauf trainiert, sind die resultierenden Wahrscheinlichkeiten zuverlässiger.
 
 \aufgabe{Sequencing by Hybridisation}{30}
 \begin{enumerate}
@@ -186,12 +196,9 @@ Aus beiden Graphen lässt sich \texttt{TACGTCG} als zusammengesetzte Sequenzen a
 
 \aufgabe{Lowess Normalisierung}{40}
 \begin{enumerate}
-<<<<<<< HEAD
-\item In dem gegebenen MvA-Plot (s. Abb. \ref{fig:43}) zeigt sich ein systematischer Fehler.
+\item In dem gegebenen MvA-Plot (s. Abb. \ref{fig:43}) zeigt sich ein systematischer Gerätefehler unten links.
 Der betroffene Bereich ist in \textcolor{red}{rot} gekennzeichnet.
-Der Bereich unten links ist als Fehler zu erkennen.
-Dies ist ein systematischer Gerätefehler während der Erstellung des MicroArrays.
-Durch Normalisierung (siehe b) kann dieser Fehler geglättet werden.
+Er kann während der Erstellung des Micro-Arrays entstehen und z.B. durch Lowess-Normalisierung geglättet werden.
 
 \begin{figure}
 \centering
@@ -250,6 +257,7 @@ In Tabelle \ref{tab:45a} sind in jeder Spalte die Einträge der Distanzmatrix f�
 Es wird jeweils das Cluster mit dem kleinsten Wert ausgewählt und die nächste Spalte mittels complete-linkage berechnet.
 
 \begin{table}
+\centering
 \begin{tabular}{|c|cccccc|}
 \hline
  	& D & D & D & D & D & D \\\hline\hline
@@ -281,6 +289,7 @@ Es ergibt sich daraus schließlich das Clustering \texttt{((AB)((CD)(EF)))}.
 Tabelle \ref{tab:45b} ist aufgebaut wie Tabelle \ref{tab:45a}, jedoch werden neue Spalten mit single-linkage berechnet.
 
 \begin{table}
+\centering
 \begin{tabular}{|c|cccccc|}
 \hline
  	& D & D & D & D & D & D\\\hline\hline
