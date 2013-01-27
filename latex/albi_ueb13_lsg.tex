@@ -1,0 +1,85 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{13}
+\date{Montag, dem 28. Januar 2013}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00}
+\tutor{Alena van Bömmel (Übungsgruppe 3)}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{ChIP-Seq}{100}
+\begin{enumerate}
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{enumerate}
+
+\aufgabe{Proteomics}{}
+
+\begin{enumerate}
+\item
+Eine genaue Bestimmung des Verhältnisses der Masse zur Ladung von Ionen und Ionengemischen wie z.B. Peptiden,
+die aus Proteinen durch enzymatische Verdauung gewonnen werden.
+Mit dem entstehenden Spektrum kann dann eine Proteinidentifikation durchgeführt,
+oder auch eine komplette Proteinsequenz berechnet werden.
+\item
+Ein ganzes Protein ist zur Sequenzierung schlichtweg zu groß.
+Zerteilt man es durch eine enzymatische Verdauung in Peptide,
+so lassen sich diese Peptide nicht einfach zu einer Sequenz zusammenfügen,
+da sie durch die spezifischen Schnittstellen des verwendeten Enzyms keine Überlapps besitzen.
+Stattdessen werden die Peptide erneut fragmentiert und durch eine weitere Massenspektrometrie die Peptidsequenz bestimmt.
+\item
+Der Nobelpreis wurde für zwei unterschiedliche Leistungen vergeben.
+Fenn und Tanaka erhielten ihn dafür, dass es ihnen gelang,
+ein komplettes Protein zu ionisieren und massenspektrometrisch zu untersuchen.
+Dazu ist die geschickte Wahl von Trägermatrix und Wellenlänge und Intensität des Lasers nötig.
+Wüthrichs Leistung steht nicht in direkter Verbindung zu Proteomics.
+\item
+Ja, das ist möglich.
+In der Praxis ist dafür jedoch einerseits ein sehr genaues Massenspektrometer nötig,
+um z.B. die Aminosäuren K und Q unterscheiden zu können und die Aminosäuren Leucin und Isoleucin unterscheiden sich in ihrer Masse gar nicht.
+\item Die $a_m$, $b_m$ und $c_m$ Ionen sind Burchteile der Peptide.
+Sie entstehen durch die Fragmentierung und unterscheiden sich darin,
+dass die Peptide an unterschiedlichen Stellen auseinander brechen.
+\item
+Die $x_{(n-m)}$, $y_{(n-m)}$ und $z_{(n-m)}$ Ionen korrelieren jeweils mit den $a_m$, $b_m$ bzw. $c_m$ Ionen insofern,
+als dass sie das jeweils verbleibende Bruchstück darstellen,
+das das zugehörige $a_m$, $b_m$ bzw. $c_m$ Ion zum vollständigen Peptid ergänzt.
+\item \begin{description}
+\item[Abbildung a]
+zeigt ein Chromatogramm, das durch Aufteilung der Peptide z.B. in einer Säule,
+die die Peptide je nach ihrer Wechselwirkung mit dem Material der Säule
+in unterschiedlichen Zeiten (x-Achse, Retentionszeit in Minuten) passieren, entsteht.
+Die Intensität (y-Achse) gibt an, wie viele Ladungen pro Sekunde den Detektor passieren.
+\item[Abbildung b]
+zeigt das Spektrum der Peptidmischung, die zu der in Abbildung a hervorgehobenen Zeitspanne von der Säule eluiert.
+Die x-Achse zeigt dabei das Verhältnis Masse zu Ladung (Dalton pro Elementarladung),
+während die y-Achse die jeweilige Intensität als Anzahl von Einschlägen auf dem Detektor darstellt.
+\item[Abbildung c]
+zeigt das Fragmentspektrum der aus dem in Abbildung b hervorgehobenen Peptid gewonnenen Fragmenten
+mit aufgrund der beobachteten Massendifferenzen zugeordneten Aminosäuresequenz.
+Die Achsen entsprechend Abbildung b.
+\end{description}
+\item
+Die absolute Quantifizierung gibt die absolute Menge des untersuchten Proteins bzw. der jeweiligen Peptide an,
+während die relative Quantifizierung das Mengenverhältnis zwischen Peptiden eines Proteins
+in unterschiedlichen Zuständen (z.B. krank/gesund, behandelt/unbeandelt, \ldots) ermittelt.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
