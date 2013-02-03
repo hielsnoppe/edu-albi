@@ -1,0 +1,71 @@
+\documentclass{homework}
+\usepackage{marvosym}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+\course{Algorithmische Bioinformatik}
+\semester{Wintersemester 2012 / 2013}
+\no{14}
+\date{Montag, dem 4. Februar 2013}
+\author{Stefan Meißner (4279113) und Niels Hoppe (4356370)}
+\tutorial{Dienstag 08:00 - 10:00}
+\tutor{Alena van Bömmel (Übungsgruppe 3)}
+
+\begin{document}
+\maketitle
+\begin{enumerate} 
+
+\aufgabe{Isotopenverteilung}{50 + 100}
+\begin{enumerate}
+\item
+Wir berechnen die Isotopenverteilung für $C_{60}$ mit Hilfe der Bernoulli-Verteilung.
+Dafür verwenden wir $n = 60$ und $p = 0.01$ als Wahrscheinlichkeit für ein $^{13}C$.
+$k$ gibt die Anzahl vorkommender $^{13}C$ an.
+Daraus ergibt sich die Isotopenverteilung in Tabelle \ref{tab:a49i}.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{clc}
+$\#^{13}C$	& $Pr$	& mass\\\hline
+0	& 0.54716	& 720\\
+1	& 0.33161	& 721\\
+2	& 0.09881	& 722\\
+3	& 0.0193	& 723\\
+4	& 0.00278	& 724\\
+5	& 0.00031	& 725\\
+6	& 0.00003	& 726\\
+\ldots	& $\leq$ 0.00001	& $\geq$ 727\\
+\end{tabular}
+\caption{Isotopenverteilung für $C_{60}$}
+\label{tab:a49i}
+\end{table}
+
+\item 
+\item 
+\end{enumerate}
+
+\aufgabe{Proteinidentifizierung}{100}
+\begin{enumerate}
+\item (\ldots.0875.2.dat)
+Zur Identifizierung haben wir zuerst die NCBInr-Datenbank mit allen Taxa durchsucht.
+Um die Signifikanz zu verbessern haben wir dann verschiedene Kombinationen der Parameter für die Massentoleranzen probiert,
+bis wir eine relativ gute Signifikanz, allerdings noch keine Identifikation erhielten.
+Mit diesen Parametern ($pmt = \pm 0.9 Da$ und $fmt = \pm 0.6 Da$) haben wir anschließen die SwissProt-Datebank durchsucht und dabei einen Treffer bei den Säugetieren gefunden.
+Diesen Treffer konnten wir anschließend auch in der NCBInr-Datenbank unter Einschränkung auf Säugetiere finden.
+
+Identifiziert wurde das Peptid \texttt{K.DNPQTHYYAVAVVK.K} aus dem Protein \textbf{Serotransferrin} mit einem Score von \textbf{46}.
+\item (\ldots.1449.2.dta)
+Unter Beibehaltung der Parameter für die Massentoleranzen haben wir mit dem gleichen Vorgehen das Peptid
+\texttt{K.VIPAADLSEQISTAGTEASGTGNMK.F} aus dem Protein \textbf{Glycogen phosphorylase} mit einem Score von \textbf{41} identifiziert.
+\item (\ldots.1883.2.dta)
+Auch mit kleineren Modifikationen der Parameter konnten wir keine eindeutige Identifizierung vornehmen.
+Den besten Treffer mit einem Score von \textbf{30} brachte das Peptid \texttt{VYVEELKPTPEGDLEILLQK}.
+\end{enumerate}
+
+\aufgabe{Feature-Based Alignment}{80}
+
+\end{enumerate}
+\end{document}
